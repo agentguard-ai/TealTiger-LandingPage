@@ -39,7 +39,7 @@ export default function Home() {
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 dark:bg-teal-900/20 border border-teal-200 dark:border-teal-800 rounded-full mb-8">
             <span className="w-2 h-2 bg-teal-500 rounded-full animate-pulse" />
             <span className="text-sm font-semibold text-teal-900 dark:text-teal-100">
-              TypeScript v1.1.0 Live • Python v1.1.0 Coming Q2 2026
+              TypeScript v1.1.0 Live • TealEngine • 7 Providers • Python v1.1.0 Coming Q2 2026
             </span>
           </div>
           
@@ -54,7 +54,8 @@ export default function Home() {
           </h1>
           
           <p className="text-xl sm:text-2xl text-slate-600 dark:text-slate-300 mb-10 leading-relaxed max-w-3xl mx-auto">
-            Drop-in SDK for OpenAI, Anthropic, Gemini & more. Add security guardrails and cost tracking in one line of code.
+            Drop-in SDK for OpenAI, Anthropic, Gemini & more. Add security guardrails and cost tracking in one line of code. 
+            <span className="font-semibold text-orange-600 dark:text-orange-400"> Covers 70% of OWASP Top 10 for Agentic AI.</span>
           </p>
 
           {/* Install Commands */}
@@ -412,6 +413,323 @@ response = client.chat.completions.create(
                 <span className="text-teal-500">✓</span> No telemetry
               </li>
             </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* TealEngine Policy Engine Section */}
+      <section className="bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-950 py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-full mb-6">
+              <span className="text-2xl">⚙️</span>
+              <span className="text-sm font-semibold text-blue-900 dark:text-blue-100">
+                TypeScript v1.1.0 Feature
+              </span>
+            </div>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                TealEngine: Policy-Driven AI Control
+              </span>
+            </h2>
+            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+              Define policies once, enforce everywhere. TealEngine validates, caches, and executes policies across all your AI operations.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+            {/* Left: Features */}
+            <div className="space-y-6">
+              <div className="flex gap-4">
+                <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+                  <span className="text-white text-2xl">📋</span>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Policy Validation</h3>
+                  <p className="text-slate-600 dark:text-slate-300">
+                    Validate policies at load time with comprehensive schema checking and error reporting.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-4">
+                <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+                  <span className="text-white text-2xl">⚡</span>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Smart Caching</h3>
+                  <p className="text-slate-600 dark:text-slate-300">
+                    LRU cache with TTL support ensures fast policy lookups without sacrificing freshness.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-4">
+                <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+                  <span className="text-white text-2xl">🔄</span>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Dynamic Updates</h3>
+                  <p className="text-slate-600 dark:text-slate-300">
+                    Update policies at runtime without restarting your application. Changes take effect immediately.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-4">
+                <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+                  <span className="text-white text-2xl">🧪</span>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Policy Testing</h3>
+                  <p className="text-slate-600 dark:text-slate-300">
+                    Built-in testing framework to validate policies before deployment with comprehensive test suites.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Code Example */}
+            <div className="rounded-xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-700">
+              <div className="bg-slate-800 px-6 py-3 border-b border-slate-700">
+                <span className="text-slate-300 font-semibold">TealEngine Policy Example</span>
+              </div>
+              <div className="bg-slate-950 p-6">
+                <pre className="text-sm text-slate-300 overflow-x-auto">
+                  <code>{`import { TealEngine } from 'tealtiger';
+
+const engine = new TealEngine({
+  policies: {
+    'prod-safety': {
+      guardrails: {
+        pii: { enabled: true, action: 'block' },
+        toxicity: { threshold: 0.7 }
+      },
+      cost: {
+        maxCostPerRequest: 0.50,
+        dailyBudget: 100.00
+      },
+      monitoring: {
+        anomalyDetection: true,
+        alertThreshold: 10
+      }
+    }
+  },
+  cache: {
+    enabled: true,
+    ttl: 3600,
+    maxSize: 1000
+  }
+});
+
+// Apply policy to any AI call
+const result = await engine.execute(
+  'prod-safety',
+  async () => client.chat.completions.create({
+    model: 'gpt-4',
+    messages: [{ role: 'user', content: input }]
+  })
+);`}</code>
+                </pre>
+              </div>
+            </div>
+          </div>
+
+          {/* Components Grid */}
+          <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-blue-500 dark:hover:border-blue-500 transition-all">
+              <div className="text-3xl mb-3">🛡️</div>
+              <h4 className="font-bold text-slate-900 dark:text-white mb-2">TealGuard</h4>
+              <p className="text-sm text-slate-600 dark:text-slate-300">Security guardrails with PII detection and content filtering</p>
+            </div>
+
+            <div className="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-blue-500 dark:hover:border-blue-500 transition-all">
+              <div className="text-3xl mb-3">📊</div>
+              <h4 className="font-bold text-slate-900 dark:text-white mb-2">TealMonitor</h4>
+              <p className="text-sm text-slate-600 dark:text-slate-300">Real-time monitoring with anomaly detection and alerts</p>
+            </div>
+
+            <div className="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-blue-500 dark:hover:border-blue-500 transition-all">
+              <div className="text-3xl mb-3">⚡</div>
+              <h4 className="font-bold text-slate-900 dark:text-white mb-2">TealCircuit</h4>
+              <p className="text-sm text-slate-600 dark:text-slate-300">Circuit breaker pattern for resilient AI operations</p>
+            </div>
+
+            <div className="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-blue-500 dark:hover:border-blue-500 transition-all">
+              <div className="text-3xl mb-3">📝</div>
+              <h4 className="font-bold text-slate-900 dark:text-white mb-2">TealAudit</h4>
+              <p className="text-sm text-slate-600 dark:text-slate-300">Comprehensive audit logging for compliance and debugging</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* OWASP Coverage Section */}
+      <section className="bg-gradient-to-br from-orange-50 via-red-50 to-pink-50 dark:from-orange-950/20 dark:via-red-950/20 dark:to-pink-950/20 py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-100 dark:bg-orange-900/30 border border-orange-300 dark:border-orange-800 rounded-full mb-6">
+              <span className="text-2xl">🛡️</span>
+              <span className="text-sm font-semibold text-orange-900 dark:text-orange-100">
+                OWASP Top 10 for Agentic AI Security 2026
+              </span>
+            </div>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+              <span className="bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
+                70% OWASP Coverage
+              </span>
+              <br />
+              <span className="text-slate-900 dark:text-white">
+                Zero Infrastructure Required
+              </span>
+            </h2>
+            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
+              TealTiger covers 7 out of 10 OWASP Top 10 risks for Agentic AI Applications with just an SDK. 
+              No servers, no databases, no DevOps complexity.
+            </p>
+          </div>
+
+          {/* Coverage Grid */}
+          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-12">
+            {/* Covered Risks */}
+            <div className="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-xl border-2 border-green-500">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center">
+                  <span className="text-white font-bold text-2xl">✓</span>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-slate-900 dark:text-white">7 Covered</h3>
+                  <p className="text-sm text-slate-600 dark:text-slate-300">SDK-Only Protection</p>
+                </div>
+              </div>
+              
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <span className="text-green-500 text-xl mt-1">✓</span>
+                  <div>
+                    <div className="font-semibold text-slate-900 dark:text-white">ASI01: Prompt Injection</div>
+                    <div className="text-sm text-slate-600 dark:text-slate-400">TealGuard detects and blocks injection attempts</div>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <span className="text-green-500 text-xl mt-1">✓</span>
+                  <div>
+                    <div className="font-semibold text-slate-900 dark:text-white">ASI02: Sensitive Info Disclosure</div>
+                    <div className="text-sm text-slate-600 dark:text-slate-400">PII detection prevents data leaks</div>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <span className="text-green-500 text-xl mt-1">✓</span>
+                  <div>
+                    <div className="font-semibold text-slate-900 dark:text-white">ASI04: Unbounded Consumption</div>
+                    <div className="text-sm text-slate-600 dark:text-slate-400">Cost tracking and budget limits</div>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <span className="text-green-500 text-xl mt-1">✓</span>
+                  <div>
+                    <div className="font-semibold text-slate-900 dark:text-white">ASI05: Improper Output Handling</div>
+                    <div className="text-sm text-slate-600 dark:text-slate-400">Content moderation and filtering</div>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <span className="text-green-500 text-xl mt-1">✓</span>
+                  <div>
+                    <div className="font-semibold text-slate-900 dark:text-white">ASI06: Excessive Agency</div>
+                    <div className="text-sm text-slate-600 dark:text-slate-400">Policy-based action controls</div>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <span className="text-green-500 text-xl mt-1">✓</span>
+                  <div>
+                    <div className="font-semibold text-slate-900 dark:text-white">ASI08: Insufficient Monitoring</div>
+                    <div className="text-sm text-slate-600 dark:text-slate-400">TealMonitor + TealAudit logging</div>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <span className="text-green-500 text-xl mt-1">✓</span>
+                  <div>
+                    <div className="font-semibold text-slate-900 dark:text-white">ASI09: Misinformation</div>
+                    <div className="text-sm text-slate-600 dark:text-slate-400">Content validation and fact-checking hooks</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Platform Required */}
+            <div className="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-xl border-2 border-amber-500">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-amber-500 rounded-xl flex items-center justify-center">
+                  <span className="text-white font-bold text-2xl">🏗️</span>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-slate-900 dark:text-white">3 Platform-Only</h3>
+                  <p className="text-sm text-slate-600 dark:text-slate-300">Requires Infrastructure</p>
+                </div>
+              </div>
+              
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <span className="text-amber-500 text-xl mt-1">⚠️</span>
+                  <div>
+                    <div className="font-semibold text-slate-900 dark:text-white">ASI03: Supply Chain Vulnerabilities</div>
+                    <div className="text-sm text-slate-600 dark:text-slate-400">Needs centralized dependency scanning</div>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <span className="text-amber-500 text-xl mt-1">⚠️</span>
+                  <div>
+                    <div className="font-semibold text-slate-900 dark:text-white">ASI07: System Prompt Leakage</div>
+                    <div className="text-sm text-slate-600 dark:text-slate-400">Requires server-side prompt management</div>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <span className="text-amber-500 text-xl mt-1">⚠️</span>
+                  <div>
+                    <div className="font-semibold text-slate-900 dark:text-white">ASI10: Insecure Plugins</div>
+                    <div className="text-sm text-slate-600 dark:text-slate-400">Needs plugin marketplace infrastructure</div>
+                  </div>
+                </div>
+
+                <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+                  <p className="text-sm text-blue-900 dark:text-blue-100">
+                    <span className="font-semibold">Coming Soon:</span> TealTiger Platform will address these 3 risks with centralized infrastructure.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Key Differentiator */}
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="bg-gradient-to-r from-orange-600 to-red-600 text-white p-8 rounded-2xl shadow-2xl">
+              <h3 className="text-3xl font-bold mb-4">The SDK-Only Advantage</h3>
+              <p className="text-lg text-orange-50 mb-6">
+                Most AI security solutions require complex infrastructure. TealTiger gives you 70% OWASP coverage with just npm install.
+              </p>
+              <div className="grid md:grid-cols-3 gap-6 text-center">
+                <div>
+                  <div className="text-4xl font-bold mb-2">0</div>
+                  <div className="text-orange-100">Servers to Manage</div>
+                </div>
+                <div>
+                  <div className="text-4xl font-bold mb-2">0</div>
+                  <div className="text-orange-100">Databases to Setup</div>
+                </div>
+                <div>
+                  <div className="text-4xl font-bold mb-2">5min</div>
+                  <div className="text-orange-100">Time to Production</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
