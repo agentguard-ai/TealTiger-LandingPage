@@ -31,7 +31,7 @@ function IconWallet(props: React.SVGProps<SVGSVGElement>) {
         strokeWidth="1.7"
       />
       <path
-        d="M20 9h-4.5A2.5 2.5 0 0013 11.5v1A2.5 2.5 0 0015.5 15H20"
+        d="M20 9h-4.5A2.5 2.5 0 00 13 11.5v1A2.5 2.5 0 0015.5 15H20"
         stroke="currentColor"
         strokeWidth="1.7"
       />
@@ -115,3 +115,59 @@ function SectionTitle({
   subtitle,
 }: {
   eyebrow?: string;
+  title: string;
+  subtitle?: string;
+}) {
+  return (
+    <div className="max-w-3xl mx-auto text-center">
+      {eyebrow ? (
+        <div className="inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900/60 px-4 py-2 text-sm text-slate-200">
+          <span className="inline-block h-2 w-2 rounded-full bg-teal-400" />
+          <span className="font-semibold tracking-wide">{eyebrow}</span>
+        </div>
+      ) : null}
+
+      <h2 className="mt-6 text-3xl sm:text-4xl font-bold tracking-tight text-white">
+        {title}
+      </h2>
+
+      {subtitle ? (
+        <p className="mt-4 text-lg leading-relaxed text-slate-300">{subtitle}</p>
+      ) : null}
+    </div>
+  );
+}
+
+export default function Home() {
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100">
+      {/* Top Nav */}
+      <nav className="sticky top-0 z-50 border-b border-slate-900 bg-slate-950/70 backdrop-blur">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <Image
+              src="/tealtiger-logo.png"
+              alt="TealTiger"
+              width={32}
+              height={32}
+              className="rounded-lg"
+            />
+            <span className="text-lg font-semibold tracking-tight text-white">
+              TealTiger
+            </span>
+          </div>
+
+          <div className="hidden md:flex items-center gap-8">
+            <a
+              href="#capabilities"
+              className="text-sm font-medium text-slate-300 hover:text-white transition-colors"
+            >
+              Capabilities
+            </a>
+            <a
+              href="#how-it-works"
+              className="text-sm font-medium text-slate-300 hover:text-white transition-colors"
+            >
+              How it works
+            </a>
+            <a
