@@ -1,0 +1,356 @@
+Great — and choosing **Cloudflare Security product pages** as the target vibe is a smart move for TealTiger:
+
+*   Cloudflare pages feel **security‑serious**, not “dev docs”
+*   they are **structured like product narratives**
+*   they stay **calm** while still being **persuasive**
+*   they avoid “founder pitch” energy by using **neutral, institutional language**
+
+Below is a **visual + structural audit of your current `app/page.tsx`** (the code you pasted), and then a **concrete refactor plan** to land on that Cloudflare style **without turning your landing page into documentation**.
+
+***
+
+# 1) What your current page is doing (and why it reads “startup/solo”)
+
+## 1.1 Too many “marketing tells” in the first 2 scrolls
+
+These cues make it feel like a solo product pitch rather than a mature security product site:
+
+*   **Heavy gradients everywhere** (brand name gradient, hero headline gradient, CTA gradient, icon blocks gradient, section gradients)
+*   **Animated pulse dot**
+*   **Emoji-driven UI** (📖 ⭐ ❌ ✅ 💸 🔓 ⏰ etc.)
+*   **Hard claims / hype phrases**:
+    *   “Complete Protection”
+    *   “Covers 70% of OWASP Top 10”
+    *   “The $50,000 Problem”
+    *   “bankruptcy”
+*   **Roadmap dates / “coming Q2 2026” in hero badge**
+*   **Before/After code blocks with “Vulnerable/Protected” labeling**
+
+Cloudflare’s product pages rarely do “❌ before / ✅ after” comparisons in the hero. They do “what it prevents” and “how it works” in a calmer, more objective way.
+
+***
+
+## 1.2 You’re mixing *product overview* and *documentation* in the hero
+
+The hero currently contains:
+
+*   product positioning
+*   install commands (npm/pip)
+*   CTA to GitHub README labeled “Documentation”
+*   roadmap/status banner
+
+That’s 4 different mental modes in the first screen.
+
+**Cloudflare-like pattern** is:
+
+*   Hero = **definition + value + trust cues**
+*   Code/install = later, in a “Get started” block, not at the top
+
+Because you already have docs, your landing page should **orient**, not teach.
+
+***
+
+## 1.3 “Complete Protection” is a trust liability
+
+Security audiences are allergic to absolutes.  
+Even if you mean “complete for the scope of your SDK,” the phrase reads like over-claiming.
+
+Cloudflare style is: **bounded, measurable, testable claims**.
+
+***
+
+# 2) What’s actually strong in your current page (keep these)
+
+You’ve got good bones:
+
+✅ Clean sticky nav  
+✅ Clear section breaks (Hero → Quickstart → Problem → Features → Engine → OWASP → Roadmap → CTA → Footer)  
+✅ Strong “drop‑in client replacement” narrative  
+✅ Footer already has multiple columns (this is a big “org feel” signal)
+
+So we’re not rebuilding from scratch — this is a **tone + hierarchy + visual discipline refactor**.
+
+***
+
+# 3) Cloudflare Security vibe: the exact changes you need
+
+## 3.1 Make the page more “product narrative”, less “landing-page template”
+
+Cloudflare pages usually follow this flow:
+
+1.  **What it is** (definition)
+2.  **What it stops** (threat outcomes)
+3.  **How it works** (high-level, diagrammatic)
+4.  **Capabilities** (scannable set)
+5.  **Integrates with your stack** (where it runs / exports logs)
+6.  **Get started** (docs + installation)
+
+### Your current ordering should change to:
+
+1.  **Hero (definition + scope + calm trust)**
+2.  **Threat outcomes (cost / data / abuse)** — calm wording, not fear
+3.  **How it works** — simple diagram, not code comparison
+4.  **Capabilities** (your Features grid)
+5.  **TealEngine** (but toned down; fewer gradients/emojis)
+6.  **Deployment surface** (SDK / containers / serverless / IaC) — currently missing as a clean section
+7.  **Get started** (your install commands and quickstart)
+8.  Footer
+
+***
+
+## 3.2 Reduce gradients to one “accent system”
+
+Right now gradients are used as decoration everywhere. That reads “SaaS landing template”.
+
+### Cloudflare-like rule:
+
+*   **One accent color** (teal)
+*   Gradients only in **one place**, max (hero underline or button)
+
+**Concrete Tailwind changes**
+
+*   Replace `bg-gradient-to-r ...` with solid colors in most places:
+    *   `bg-teal-600` or `bg-cyan-600`
+*   Replace repeated `shadow-2xl` / `shadow-xl` with subtle `shadow-sm` / `shadow-md`
+*   Replace heavy “glow” cards with `border + subtle hover`
+
+***
+
+## 3.3 Replace emoji UI with consistent iconography
+
+Emoji makes a product feel early-stage.  
+Cloudflare uses consistent icon sets.
+
+### Quick fix (no design team required)
+
+*   Use **Heroicons** or **Lucide** icons
+*   Use 1 style: outline or solid
+*   Keep icon color neutral (slate) + teal accent
+
+Replace:
+
+*   `💸 🔓 ⏰ ✅ ❌ ⭐ 📖` etc.
+
+With:
+
+*   simple `Shield`, `Wallet`, `Activity`, `Lock`, `Cpu`, `Cloud`, etc.
+
+This single change will dramatically shift perception.
+
+***
+
+## 3.4 Remove roadmap dates from the hero
+
+Your hero badge says:
+
+> “TypeScript v1.1.0 Live • TealEngine • 7 Providers • Python v1.1.0 Coming Q2 2026”
+
+This looks like a solo-maker status update.
+
+### Cloudflare approach:
+
+*   Put “release status” in a **small, dedicated section**, or keep it in docs.
+*   In hero, use **stable trust cues**:
+    *   “Open-source”
+    *   “TypeScript + Python”
+    *   “Works with OpenAI / Anthropic / Azure”
+
+If Python isn’t at parity yet, don’t advertise a quarter in the hero.
+
+***
+
+## 3.5 Rewrite “fear language” into calm, enterprise language
+
+These lines are the biggest “salesy” tells:
+
+*   “The $50,000 Problem”
+*   “bankruptcy”
+*   “Your AI is vulnerable”
+*   “Before (Vulnerable) / After (Protected)”
+
+### Cloudflare-style replacements
+
+**The Problem section**
+
+*   Title: `Runtime risk in AI systems`
+*   Body: “Autonomous workflows can create unbounded spend, data exposure, and inconsistent controls. TealTiger enforces guardrails and budgets at the point of execution.”
+
+**The three cards**
+
+*   Cost Disasters → `Unbounded spend`
+*   Security Risks → `Data exposure`
+*   Manual Work → `Control drift`
+
+Keep the same structure, change tone.
+
+***
+
+# 4) Content scope issues (important credibility corrections)
+
+## 4.1 “70% OWASP coverage” is risky unless you prove it
+
+If you claim “70% coverage”, security reviewers will ask:
+
+*   which OWASP list?
+*   mapping table?
+*   evidence?
+
+You do have a whole “OWASP coverage section” — that’s good.  
+But it currently contains:
+
+*   bold marketing claim in hero **and** again later
+*   “Coming Soon platform will address these 3 risks…”
+
+This creates expectation debt and procurement questions.
+
+### Recommendation
+
+*   Remove OWASP claim from hero.
+*   Keep OWASP mapping as a separate “Security coverage” section **but present it as**:
+    *   “Addresses the following risk categories”
+    *   “Coverage depends on configuration”
+    *   “See docs for mapping”
+
+That’s Cloudflare style: bounded + link to evidence.
+
+***
+
+## 4.2 Your “SDK Status & Roadmap” section reads too detailed for landing page
+
+“15 weeks development • Q2-Q3 2026 release” will make enterprise visitors think:
+
+*   “small team”
+*   “uncertain”
+
+### Better landing-page version
+
+Replace that entire section with:
+
+*   “Language support” (TS / Python)
+*   “Supported providers”
+*   “Release notes / changelog link”
+
+Keep the timeline in GitHub or docs.
+
+***
+
+# 5) Concrete refactor plan (what to do first)
+
+## Phase 1 (1–2 hours): biggest perception wins
+
+1.  **Hero cleanup**
+    *   remove animated pulse dot
+    *   remove roadmap timeline from badge
+    *   reduce gradients
+    *   remove emojis in hero CTAs
+2.  **Tone edits**
+    *   change “Complete Protection” → bounded claim
+    *   replace “$50,000 Problem” and “bankruptcy” language
+3.  **Move installation commands down**
+    *   keep “Docs” and “GitHub” as primary CTAs
+    *   put install commands into “Get started” section near bottom
+
+## Phase 2 (half day): Cloudflare structure upgrade
+
+4.  Replace “Before/After code comparison” with:
+    *   “How it works” diagram (simple)
+    *   a small code snippet (one) as secondary proof
+5.  Add a dedicated “Integrates with your stack” section:
+    *   SIEM/Splunk event emission
+    *   Containers / serverless / IaC (the deployment-native story)
+
+## Phase 3 (later): style system
+
+6.  Introduce a design token approach in Tailwind:
+    *   consistent spacing scale for sections
+    *   consistent shadows
+    *   consistent borders & radii
+
+***
+
+# 6) Example: Cloudflare-style hero copy (drop-in replacement)
+
+Here is a Cloudflare Security–style hero that stays calm and product-forward:
+
+```tsx
+<h1 className="text-5xl sm:text-6xl font-bold tracking-tight text-slate-900 dark:text-white">
+  Runtime security and cost controls for AI systems
+</h1>
+
+<p className="mt-6 text-xl leading-relaxed text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+  TealTiger enforces guardrails, budgets, and audit events at the point of execution —
+  across SDKs, containers, serverless functions, and infrastructure pipelines.
+</p>
+```
+
+Then CTAs (no emojis, no gradients everywhere):
+
+```tsx
+<div className="mt-10 flex flex-wrap justify-center gap-4">
+  https://docs.tealtiger.ai
+    View documentation
+  </a>
+  https://github.com/agentguard-ai/tealtiger
+    GitHub
+  </a>
+</div>
+```
+
+This reads like an established security org: calm, bounded, confident.
+
+***
+
+# 7) Specific feedback on your current sections (keep / modify / move)
+
+## Keep (with tone + style changes)
+
+*   Features grid (good structure)
+*   TealEngine section (but reduce gradients, remove “v1.1.0 feature” badge)
+*   Footer (already strong)
+
+## Modify heavily
+
+*   Hero badge (remove timelines)
+*   Quickstart “Before/After” (too pitchy; convert to “How it works” + one example)
+*   “The $50,000 Problem” (tone + naming)
+*   OWASP section (make it evidence-oriented, not marketing)
+
+## Move down
+
+*   Install commands (npm/pip) → into “Get started”
+*   Roadmap/timelines → docs or GitHub releases
+
+***
+
+# 8) One key fix: make “Documentation” point to your docs portal
+
+Right now your “📖 Documentation” button goes to GitHub README.
+
+Since you already have `docs.tealtiger.ai`, your landing page should send people there.
+
+That’s a strong “established org” cue:
+
+*   product site → docs portal → blog portal  
+    Clear separation of surfaces.
+
+***
+
+# 9) Next step: I can give you a patch-style rewrite (fast)
+
+If you want, I can take **your exact `Home()` file** and return a **drop-in edited version** that implements Phase 1 + Phase 2:
+
+*   calm Cloudflare-like hero
+*   remove roadmap badge + pulse
+*   reduce gradients
+*   remove emojis
+*   restructure sections
+*   keep your existing content but in a more institutional form
+
+Just tell me one thing:
+
+### Do you want to keep **dark mode** on the landing page?
+
+*   **Option A:** Cloudflare-like (mostly light, minimal dark accents)
+*   **Option B:** Keep full dark mode (but with calmer styling)
+
+Reply `A` or `B` and I’ll produce a clean updated `page.tsx` (single code block, ready to paste).
