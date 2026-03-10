@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import type { SVGProps } from 'react';
+import { useMemo, useState } from 'react';
 
 function IconShield(props: SVGProps<SVGSVGElement>) {
   return (
@@ -133,9 +134,113 @@ function Tooltip({ id, text }: { id: string; text: string }) {
   );
 }
 
+function HeroIllustration(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 640 420" fill="none" aria-hidden="true" {...props}>
+      <defs>
+        <radialGradient id="g1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(320 80) rotate(90) scale(280 420)">
+          <stop stopColor="#14b8a6" stopOpacity="0.28" />
+          <stop offset="1" stopColor="#020617" stopOpacity="0" />
+        </radialGradient>
+        <linearGradient id="g2" x1="120" y1="60" x2="520" y2="340" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#22c55e" stopOpacity="0.25" />
+          <stop offset="1" stopColor="#14b8a6" stopOpacity="0.08" />
+        </linearGradient>
+      </defs>
+
+      <rect x="0" y="0" width="640" height="420" rx="24" fill="url(#g1)" />
+      <rect x="0" y="0" width="640" height="420" rx="24" fill="url(#g2)" />
+
+      {/* Panels */}
+      <rect x="60" y="70" width="220" height="110" rx="18" stroke="#1f2937" fill="#020617" fillOpacity="0.55" />
+      <rect x="360" y="70" width="220" height="110" rx="18" stroke="#1f2937" fill="#020617" fillOpacity="0.55" />
+      <rect x="60" y="240" width="520" height="120" rx="18" stroke="#1f2937" fill="#020617" fillOpacity="0.55" />
+
+      {/* Labels */}
+      <text x="84" y="108" fontSize="14" fill="#e2e8f0" fontFamily="ui-sans-serif, system-ui">Application / Agent</text>
+      <text x="384" y="108" fontSize="14" fill="#e2e8f0" fontFamily="ui-sans-serif, system-ui">AI Provider</text>
+      <text x="84" y="276" fontSize="14" fill="#e2e8f0" fontFamily="ui-sans-serif, system-ui">TealTiger runtime boundary</text>
+
+      {/* Flow arrow */}
+      <path d="M280 125H350" stroke="#38bdf8" strokeOpacity="0.55" strokeWidth="2" />
+      <path d="M350 125l-10-6v12l10-6z" fill="#38bdf8" fillOpacity="0.55" />
+
+      {/* TealTiger nodes */}
+      <circle cx="130" cy="315" r="10" fill="#14b8a6" fillOpacity="0.9" />
+      <circle cx="260" cy="315" r="10" fill="#14b8a6" fillOpacity="0.9" />
+      <circle cx="390" cy="315" r="10" fill="#14b8a6" fillOpacity="0.9" />
+      <circle cx="520" cy="315" r="10" fill="#14b8a6" fillOpacity="0.9" />
+
+      <text x="150" y="320" fontSize="13" fill="#cbd5e1" fontFamily="ui-sans-serif, system-ui">Guardrails</text>
+      <text x="280" y="320" fontSize="13" fill="#cbd5e1" fontFamily="ui-sans-serif, system-ui">Budgets</text>
+      <text x="410" y="320" fontSize="13" fill="#cbd5e1" fontFamily="ui-sans-serif, system-ui">Evidence</text>
+      <text x="540" y="320" fontSize="13" fill="#cbd5e1" fontFamily="ui-sans-serif, system-ui">OTel</text>
+
+      <path d="M140 315H250" stroke="#14b8a6" strokeOpacity="0.55" strokeWidth="2" />
+      <path d="M270 315H380" stroke="#14b8a6" strokeOpacity="0.55" strokeWidth="2" />
+      <path d="M400 315H510" stroke="#14b8a6" strokeOpacity="0.55" strokeWidth="2" />
+
+      {/* Small caption */}
+      <text x="84" y="352" fontSize="12" fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">
+        Enforce controls at execution time • Emit metadata-only audit events
+      </text>
+    </svg>
+  );
+}
+
+function TestimonialCard({
+  quote,
+  name,
+  title,
+  note,
+}: {
+  quote: string;
+  name: string;
+  title: string;
+  note?: string;
+}) {
+  return (
+    <div className="rounded-2xl border border-slate-900 bg-slate-950/60 p-6 hover:bg-slate-950/80 transition-colors">
+      <p className="text-sm leading-relaxed text-slate-200">“{quote}”</p>
+      <div className="mt-5 flex items-center justify-between gap-3">
+        <div>
+          <div className="text-sm font-semibold text-white">{name}</div>
+          <div className="text-xs text-slate-400">{title}</div>
+        </div>
+        {note ? <div className="text-xs text-slate-500">{note}</div> : null}
+      </div>
+    </div>
+  );
+}
+
 export default function Home() {
   const legalTooltip =
     "Legal note: TealTiger is not a standalone EU AI Act compliance solution and does not provide legal advice. Full compliance depends on your organization’s risk management, documentation, oversight, and controls beyond this SDK.";
+
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'ok' | 'invalid'>('idle');
+
+  const mailtoHref = useMemo(() => {
+    const subject = encodeURIComponent('TealTiger newsletter signup');
+    const body = encodeURIComponent(
+      `Please add me to the TealTiger newsletter.
+
+Email: ${email}
+
+Topics: runtime governance, guardrails, budgets, audit evidence, deployments.`
+    );
+    return `mailto:support@tealtiger.co.in?subject=${subject}&body=${body}`;
+  }, [email]);
+
+  function onNewsletterSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+    setStatus(ok ? 'ok' : 'invalid');
+    if (ok) {
+      // Open a mailto to avoid requiring a backend for now.
+      window.location.href = mailtoHref;
+    }
+  }
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
@@ -143,22 +248,27 @@ export default function Home() {
       <nav className="sticky top-0 z-50 border-b border-slate-900 bg-slate-950/70 backdrop-blur">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Image src="/tealtiger-logo.png" alt="TealTiger" width={32} height={32} className="rounded" />
-            <span className="text-lg font-semibold tracking-tight text-white">TealTiger</span>
+            <a href="/" className="flex items-center gap-3">
+              <Image src="/tealtiger-logo.png" alt="TealTiger" width={32} height={32} className="rounded" />
+              <span className="text-lg font-semibold tracking-tight text-white">TealTiger</span>
+            </a>
           </div>
 
           <div className="hidden md:flex items-center gap-8 text-sm">
             <a href="/capabilities" className="text-slate-300 hover:text-white transition-colors">
               Capabilities
             </a>
-            <a href="#how-it-works" className="text-slate-300 hover:text-white transition-colors">
-              How it works
-            </a>
-            <a href="#eu-ai-act" className="text-slate-300 hover:text-white transition-colors">
-              EU AI Act
-            </a>
             <a href="/deployments" className="text-slate-300 hover:text-white transition-colors">
               Deployments
+            </a>
+            <a href="/architecture" className="text-slate-300 hover:text-white transition-colors">
+              Architecture
+            </a>
+            <a href="/integrations" className="text-slate-300 hover:text-white transition-colors">
+              Integrations
+            </a>
+            <a href="/trust" className="text-slate-300 hover:text-white transition-colors">
+              Trust
             </a>
             <a href="https://docs.tealtiger.ai" className="text-slate-300 hover:text-white transition-colors" rel="noreferrer">
               Docs
@@ -188,61 +298,72 @@ export default function Home() {
       <header className="relative">
         <div className="absolute inset-0 bg-[radial-gradient(75%_55%_at_50%_0%,rgba(20,184,166,0.22),rgba(2,6,23,0))]" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-14">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900/60 px-4 py-2 text-sm text-slate-200">
-              <span className="font-semibold">Security product posture</span>
-              <span className="text-slate-400">without a new platform</span>
+          <div className="grid lg:grid-cols-2 gap-10 items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900/60 px-4 py-2 text-sm text-slate-200">
+                <span className="font-semibold">Security product posture</span>
+                <span className="text-slate-400">without a new platform</span>
+              </div>
+
+              <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white">
+                Runtime governance for AI systems — <span className="text-teal-300">guardrails, budgets, evidence</span>
+              </h1>
+
+              <p className="mt-6 text-lg sm:text-xl leading-relaxed text-slate-300">
+                TealTiger applies enforceable controls at the point of execution. Protect model calls, contain spend, and emit
+                audit events for security workflows — across providers.
+              </p>
+
+              <p className="mt-3 text-sm text-slate-400 leading-relaxed">
+                Runs inside your application boundary. By default, TealTiger does not persist prompts or outputs — only structured
+                enforcement metadata is emitted for monitoring and audit workflows.
+              </p>
+
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a
+                  href="/capabilities"
+                  className="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/15 border border-slate-800 text-sm font-semibold"
+                >
+                  Explore capabilities →
+                </a>
+                <a
+                  href="/deployments"
+                  className="px-4 py-2 rounded-lg border border-slate-800 bg-slate-950 hover:bg-slate-900 text-sm font-semibold"
+                >
+                  Deployment options
+                </a>
+                <a
+                  href="#get-started"
+                  className="px-4 py-2 rounded-lg bg-teal-600 hover:bg-teal-500 text-sm font-semibold text-white"
+                >
+                  Get started
+                </a>
+              </div>
+
+              <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="rounded-xl border border-slate-900 bg-slate-950/60 p-4">
+                  <div className="text-sm font-semibold text-white">Guardrails</div>
+                  <div className="mt-1 text-sm text-slate-300">PII, injection, safety checks</div>
+                </div>
+                <div className="rounded-xl border border-slate-900 bg-slate-950/60 p-4">
+                  <div className="text-sm font-semibold text-white">Budgets</div>
+                  <div className="mt-1 text-sm text-slate-300">limits across time windows</div>
+                </div>
+                <div className="rounded-xl border border-slate-900 bg-slate-950/60 p-4">
+                  <div className="text-sm font-semibold text-white">Evidence</div>
+                  <div className="mt-1 text-sm text-slate-300">SIEM-ready audit events</div>
+                </div>
+              </div>
             </div>
 
-            <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white">
-              Runtime governance for AI systems — <span className="text-teal-300">guardrails, budgets, evidence</span>
-            </h1>
-
-            <p className="mt-6 text-lg sm:text-xl leading-relaxed text-slate-300">
-              TealTiger applies enforceable controls at the point of execution. Protect model calls, contain spend, and emit audit
-              events for security workflows — across providers.
-            </p>
-
-            {/* Enterprise boundary trust signal */}
-            <p className="mt-3 text-sm text-slate-400 leading-relaxed">
-              Runs inside your application boundary. By default, TealTiger does not persist prompts or outputs — only structured
-              enforcement metadata is emitted for monitoring and audit workflows.
-            </p>
-
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href="/capabilities"
-                className="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/15 border border-slate-800 text-sm font-semibold"
-              >
-                Explore capabilities →
-              </a>
-              <a
-                href="/deployments"
-                className="px-4 py-2 rounded-lg border border-slate-800 bg-slate-950 hover:bg-slate-900 text-sm font-semibold"
-              >
-                Deployment options
-              </a>
-              <a
-                href="#get-started"
-                className="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/15 border border-slate-800 text-sm font-semibold"
-              >
-                Get started
-              </a>
-            </div>
-
-            <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div className="rounded-xl border border-slate-900 bg-slate-950/60 p-4">
-                <div className="text-sm font-semibold text-white">Guardrails</div>
-                <div className="mt-1 text-sm text-slate-300">PII, injection, safety checks</div>
+            <div className="relative">
+              <div className="absolute -inset-4 rounded-[28px] bg-teal-500/10 blur-2xl" />
+              <div className="relative rounded-3xl border border-slate-900 bg-slate-950/60 p-3 shadow-2xl">
+                <HeroIllustration className="w-full h-auto" />
               </div>
-              <div className="rounded-xl border border-slate-900 bg-slate-950/60 p-4">
-                <div className="text-sm font-semibold text-white">Budgets</div>
-                <div className="mt-1 text-sm text-slate-300">limits across time windows</div>
-              </div>
-              <div className="rounded-xl border border-slate-900 bg-slate-950/60 p-4">
-                <div className="text-sm font-semibold text-white">Evidence</div>
-                <div className="mt-1 text-sm text-slate-300">SIEM-ready audit events</div>
-              </div>
+              <p className="mt-3 text-xs text-slate-500 text-center">
+                Illustration: request path + enforcement boundary (conceptual)
+              </p>
             </div>
           </div>
         </div>
@@ -315,6 +436,20 @@ export default function Home() {
                 <li>3) Provider request executes</li>
                 <li>4) Enforcement events emitted for audit/SIEM</li>
               </ol>
+              <div className="mt-5 flex flex-wrap gap-3">
+                <a
+                  href="/architecture"
+                  className="inline-flex items-center gap-2 rounded-lg border border-slate-800 bg-slate-950 px-4 py-2 text-sm font-semibold text-slate-200 hover:bg-slate-900"
+                >
+                  View architecture →
+                </a>
+                <a
+                  href="/integrations"
+                  className="inline-flex items-center gap-2 rounded-lg border border-slate-800 bg-slate-950 px-4 py-2 text-sm font-semibold text-slate-200 hover:bg-slate-900"
+                >
+                  Integrations →
+                </a>
+              </div>
             </div>
 
             <div className="rounded-2xl border border-slate-900 bg-slate-950/60 overflow-hidden">
@@ -339,7 +474,7 @@ const client = new TealOpenAI({
       </section>
 
       {/* Capabilities teaser */}
-      <section id="capabilities" className="border-t border-slate-900 bg-slate-950">
+      <section className="border-t border-slate-900 bg-slate-950">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
           <SectionTitle
             eyebrow="Capabilities"
@@ -348,7 +483,7 @@ const client = new TealOpenAI({
           />
 
           <p className="mt-6 text-sm text-slate-400 max-w-3xl mx-auto text-center">
-            Four core runtime capabilities designed for security, platform, and AI engineering teams operating production systems.
+            Four core runtime capability pillars: guardrails, budgets, evidence, and operations.
           </p>
 
           <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -373,10 +508,64 @@ const client = new TealOpenAI({
           <div className="mt-10 flex justify-center">
             <a
               href="/capabilities"
-              className="inline-flex items-center gap-2 rounded-lg border border-slate-800 bg-slate-950 px-4 py-2 text-sm font-semibold text-slate-200 hover:bg-slate-900"
+              className="inline-flex items-center gap-2 rounded-lg bg-teal-600 hover:bg-teal-500 px-4 py-2 text-sm font-semibold text-white"
             >
               View all capabilities →
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section id="testimonials" className="border-t border-slate-900 bg-slate-950">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+          <SectionTitle
+            eyebrow="Testimonials"
+            title="Built for security and platform teams"
+            subtitle="Early feedback from engineers evaluating runtime governance patterns. Names anonymized at request."
+          />
+
+          <div className="mt-12 grid md:grid-cols-3 gap-6">
+            <TestimonialCard
+              quote="The boundary-first approach is what we needed — decisions are explicit and the evidence is easy to route to our SOC."
+              name="Security Engineering"
+              title="Design partner"
+              note="Anonymized"
+            />
+            <TestimonialCard
+              quote="Budgets as a first-class control made the discussion with FinOps much simpler. It’s a practical guardrail, not a dashboard."
+              name="Platform Engineering"
+              title="Large enterprise"
+              note="Anonymized"
+            />
+            <TestimonialCard
+              quote="We liked that nothing is persisted by default. That single detail removes a lot of friction in security review."
+              name="AppSec"
+              title="Regulated environment"
+              note="Anonymized"
+            />
+          </div>
+
+          <div className="mt-8 rounded-2xl border border-slate-900 bg-slate-950/60 p-6">
+            <div className="text-sm font-semibold text-white">Note</div>
+            <p className="mt-2 text-sm text-slate-300 leading-relaxed">
+              Testimonials are early-stage feedback and may reflect pilot environments. For detailed evaluation guidance, use the
+              deployment and integration pages.
+            </p>
+            <div className="mt-4 flex flex-wrap gap-3">
+              <a
+                href="/deployments"
+                className="inline-flex items-center gap-2 rounded-lg bg-teal-600 hover:bg-teal-500 px-4 py-2 text-sm font-semibold text-white"
+              >
+                Deployments →
+              </a>
+              <a
+                href="/trust"
+                className="inline-flex items-center gap-2 rounded-lg border border-slate-800 bg-slate-950 px-4 py-2 text-sm font-semibold text-slate-200 hover:bg-slate-900"
+              >
+                Trust →
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -547,48 +736,61 @@ const client = new TealOpenAI({
         </div>
       </section>
 
-      {/* Deployments teaser */}
-      <section className="border-t border-slate-900 bg-slate-950">
+      {/* Newsletter */}
+      <section id="newsletter" className="border-t border-slate-900 bg-slate-950">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
           <SectionTitle
-            eyebrow="Deployments"
-            title="Governance that follows the workload"
-            subtitle="Adopt TealTiger where AI runs — in application code, containers, serverless, and IaC."
+            eyebrow="Newsletter"
+            title="Updates for security and platform teams"
+            subtitle="Short, technical updates on runtime governance patterns, deployments, and evidence workflows."
           />
 
-          <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { title: 'SDK', desc: 'Embed controls in your services.' },
-              { title: 'Containers', desc: 'Standardize rollout across teams.' },
-              { title: 'Serverless', desc: 'Patterns for ephemeral execution.' },
-              { title: 'IaC', desc: 'Terraform/Helm patterns to standardize rollout.' },
-            ].map((d) => (
-              <div
-                key={d.title}
-                className="rounded-2xl border border-slate-900 bg-slate-950/60 p-6 hover:bg-slate-950/80 transition-colors"
+          <div className="mt-10 max-w-3xl mx-auto rounded-2xl border border-slate-900 bg-slate-950/60 p-6">
+            <form onSubmit={onNewsletterSubmit} className="flex flex-col sm:flex-row gap-3">
+              <label className="sr-only" htmlFor="email">
+                Email
+              </label>
+              <input
+                id="email"
+                type="email"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  if (status !== 'idle') setStatus('idle');
+                }}
+                placeholder="you@company.com"
+                className="flex-1 rounded-lg border border-slate-800 bg-slate-950 px-4 py-3 text-sm text-slate-200 placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                autoComplete="email"
+              />
+              <button
+                type="submit"
+                className="rounded-lg bg-teal-600 hover:bg-teal-500 px-4 py-3 text-sm font-semibold text-white"
               >
-                <div className="text-white font-semibold">{d.title}</div>
-                <div className="mt-2 text-sm text-slate-300">{d.desc}</div>
-              </div>
-            ))}
-          </div>
+                Subscribe
+              </button>
+            </form>
 
-          <div className="mt-10 rounded-2xl border border-slate-900 bg-slate-950/60 p-6">
-            <div className="flex items-center gap-3">
-              <div className="rounded-xl border border-slate-900 bg-slate-950 p-2 text-teal-300">
-                <IconCloud className="h-6 w-6" />
-              </div>
-              <div className="text-sm font-semibold text-white">Deployment options</div>
-            </div>
-            <p className="mt-2 text-sm text-slate-300 leading-relaxed">
-              See all deployment patterns and environments — serverless, Kubernetes, containers, IaC and CI/CD.
-            </p>
-            <div className="mt-4">
+            {status === 'invalid' ? (
+              <p className="mt-3 text-sm text-rose-300">Please enter a valid email address.</p>
+            ) : status === 'ok' ? (
+              <p className="mt-3 text-sm text-teal-200">Opening your email client to confirm subscription…</p>
+            ) : (
+              <p className="mt-3 text-sm text-slate-400">
+                No backend required right now — subscription uses your email client (mailto). We will never ask for API keys or
+                sensitive data.
+              </p>
+            )}
+
+            <div className="mt-5 flex flex-wrap gap-3">
               <a
-                href="/deployments"
-                className="inline-flex items-center gap-2 rounded-lg bg-teal-600 hover:bg-teal-500 px-4 py-2 text-sm font-semibold text-white"
+                href="https://blogs.tealtiger.ai"
+                className="text-sm font-semibold text-teal-300 hover:text-teal-200"
+                rel="noreferrer"
               >
-                View deployments →
+                Read the blog →
+              </a>
+              <a href="/trust" className="text-sm font-semibold text-teal-300 hover:text-teal-200">
+                Trust notes →
               </a>
             </div>
           </div>
@@ -622,12 +824,11 @@ const client = new TealOpenAI({
                 <a href="https://docs.tealtiger.ai" className="text-sm text-teal-300 hover:text-teal-200" rel="noreferrer">
                   Docs
                 </a>
-                <a
-                  href="https://github.com/agentguard-ai/tealtiger"
-                  className="text-sm text-teal-300 hover:text-teal-200"
-                  rel="noreferrer"
-                >
-                  GitHub
+                <a href="/integrations" className="text-sm text-teal-300 hover:text-teal-200">
+                  Integrations
+                </a>
+                <a href="/deployments" className="text-sm text-teal-300 hover:text-teal-200">
+                  Deployments
                 </a>
               </div>
             </div>
@@ -663,23 +864,52 @@ const client = new TealOpenAI({
               <h4 className="text-sm font-semibold text-white mb-3">Product</h4>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <a href="#how-it-works" className="text-slate-300 hover:text-white transition-colors">
-                    How it works
-                  </a>
-                </li>
-                <li>
                   <a href="/capabilities" className="text-slate-300 hover:text-white transition-colors">
                     Capabilities
                   </a>
                 </li>
                 <li>
-                  <a href="#eu-ai-act" className="text-slate-300 hover:text-white transition-colors">
-                    EU AI Act
+                  <a href="/deployments" className="text-slate-300 hover:text-white transition-colors">
+                    Deployments
                   </a>
                 </li>
                 <li>
-                  <a href="/deployments" className="text-slate-300 hover:text-white transition-colors">
-                    Deployments
+                  <a href="/architecture" className="text-slate-300 hover:text-white transition-colors">
+                    Architecture
+                  </a>
+                </li>
+                <li>
+                  <a href="/integrations" className="text-slate-300 hover:text-white transition-colors">
+                    Integrations
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-sm font-semibold text-white mb-3">Trust</h4>
+              <ul className="space-y-2 text-sm">
+                <li>
+                  <a href="/trust" className="text-slate-300 hover:text-white transition-colors">
+                    Trust & data boundary
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://github.com/agentguard-ai/tealtiger/blob/main/SECURITY.md"
+                    className="text-slate-300 hover:text-white transition-colors"
+                    rel="noreferrer"
+                  >
+                    Security policy
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://github.com/agentguard-ai/tealtiger/blob/main/LICENSE"
+                    className="text-slate-300 hover:text-white transition-colors"
+                    rel="noreferrer"
+                  >
+                    License
                   </a>
                 </li>
               </ul>
@@ -705,39 +935,6 @@ const client = new TealOpenAI({
                     rel="noreferrer"
                   >
                     GitHub
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="text-sm font-semibold text-white mb-3">Trust</h4>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <a
-                    href="https://github.com/agentguard-ai/tealtiger/blob/main/SECURITY.md"
-                    className="text-slate-300 hover:text-white transition-colors"
-                    rel="noreferrer"
-                  >
-                    Security
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://github.com/agentguard-ai/tealtiger/blob/main/LICENSE"
-                    className="text-slate-300 hover:text-white transition-colors"
-                    rel="noreferrer"
-                  >
-                    License
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://github.com/agentguard-ai/tealtiger/blob/main/CONTRIBUTING.md"
-                    className="text-slate-300 hover:text-white transition-colors"
-                    rel="noreferrer"
-                  >
-                    Contributing
                   </a>
                 </li>
               </ul>
