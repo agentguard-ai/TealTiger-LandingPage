@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import type { SVGProps } from 'react';
+import type { ReactNode, SVGProps } from 'react';
 
 function IconCloud(props: SVGProps<SVGSVGElement>) {
   return (
@@ -100,7 +100,7 @@ function Group({
   subtitle,
   items,
 }: {
-  icon: React.ReactNode;
+  icon: ReactNode;
   title: string;
   subtitle: string;
   items: { name: string; desc: string }[];
@@ -130,7 +130,6 @@ function Group({
 export default function DeploymentsPage() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
-      {/* Nav */}
       <nav className="sticky top-0 z-50 border-b border-slate-900 bg-slate-950/70 backdrop-blur">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
           <a href="/" className="flex items-center gap-3">
@@ -144,6 +143,12 @@ export default function DeploymentsPage() {
             </a>
             <a href="/deployments" className="text-white font-semibold">
               Deployments
+            </a>
+            <a href="/integrations" className="text-slate-300 hover:text-white transition-colors">
+              Integrations
+            </a>
+            <a href="/trust" className="text-slate-300 hover:text-white transition-colors">
+              Trust
             </a>
             <a href="https://docs.tealtiger.ai" className="text-slate-300 hover:text-white transition-colors" rel="noreferrer">
               Docs
@@ -169,7 +174,6 @@ export default function DeploymentsPage() {
         </div>
       </nav>
 
-      {/* Hero */}
       <header className="relative border-b border-slate-900">
         <div className="absolute inset-0 bg-[radial-gradient(75%_55%_at_50%_0%,rgba(20,184,166,0.18),rgba(2,6,23,0))]" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
@@ -193,18 +197,16 @@ export default function DeploymentsPage() {
                 Capabilities →
               </a>
               <a
-                href="https://docs.tealtiger.ai"
+                href="/trust"
                 className="inline-flex items-center gap-2 rounded-lg bg-teal-600 hover:bg-teal-500 px-4 py-2 text-sm font-semibold text-white"
-                rel="noreferrer"
               >
-                Deployment docs →
+                Trust notes →
               </a>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Deployment groups */}
       <section className="bg-slate-950">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 space-y-6">
           <Group
@@ -224,9 +226,9 @@ export default function DeploymentsPage() {
             title="Serverless"
             subtitle="Patterns for ephemeral execution where startup time and package size matter."
             items={[
-              { name: 'AWS Lambda', desc: 'Integrate via wrapper + env/secrets patterns.' },
-              { name: 'Azure Functions', desc: 'Use managed identity + Key Vault patterns.' },
-              { name: 'Google Cloud Functions', desc: 'Use service accounts + Secret Manager patterns.' },
+              { name: 'AWS Lambda', desc: 'Wrapper + env/secrets patterns for AI calls.' },
+              { name: 'Azure Functions', desc: 'Managed identity + Key Vault patterns.' },
+              { name: 'Google Cloud Functions', desc: 'Service accounts + Secret Manager patterns.' },
               { name: 'Edge functions', desc: 'Lightweight runtimes for edge and near-user execution.' },
             ]}
           />
@@ -248,7 +250,7 @@ export default function DeploymentsPage() {
             title="Infrastructure as Code & CI/CD"
             subtitle="Provision and roll out controls with repeatable, reviewable change management."
             items={[
-              { name: 'Terraform / Pulumi', desc: 'Declare infra + guardrail configuration as code.' },
+              { name: 'Terraform / Pulumi', desc: 'Declare infra + configuration as code.' },
               { name: 'AWS CDK / CloudFormation', desc: 'Native AWS provisioning and repeatable stacks.' },
               { name: 'GitHub Actions / GitLab CI', desc: 'Build, test, and deploy with policy validation stages.' },
               { name: 'Jenkins / Azure Pipelines', desc: 'Enterprise CI pipelines with deployment gates.' },
@@ -275,24 +277,23 @@ export default function DeploymentsPage() {
             </p>
             <div className="mt-4 flex flex-wrap gap-3">
               <a
-                href="https://docs.tealtiger.ai"
+                href="/integrations"
                 className="inline-flex items-center gap-2 rounded-lg bg-teal-600 hover:bg-teal-500 px-4 py-2 text-sm font-semibold text-white"
+              >
+                Integrations →
+              </a>
+              <a
+                href="https://docs.tealtiger.ai"
+                className="inline-flex items-center gap-2 rounded-lg border border-slate-800 bg-slate-950 px-4 py-2 text-sm font-semibold text-slate-200 hover:bg-slate-900"
                 rel="noreferrer"
               >
                 Docs →
-              </a>
-              <a
-                href="/"
-                className="inline-flex items-center gap-2 rounded-lg border border-slate-800 bg-slate-950 px-4 py-2 text-sm font-semibold text-slate-200 hover:bg-slate-900"
-              >
-                Back to home
               </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="border-t border-slate-900 bg-slate-950">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
           <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
@@ -300,6 +301,7 @@ export default function DeploymentsPage() {
             <div className="flex items-center gap-4 text-xs text-slate-400">
               <a href="/" className="text-slate-300 hover:text-white">Home</a>
               <a href="/capabilities" className="text-slate-300 hover:text-white">Capabilities</a>
+              <a href="/trust" className="text-slate-300 hover:text-white">Trust</a>
               <a href="https://docs.tealtiger.ai" className="text-slate-300 hover:text-white" rel="noreferrer">Docs</a>
             </div>
           </div>
