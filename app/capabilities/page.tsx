@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import type { SVGProps } from 'react';
+import type { ReactNode, SVGProps } from 'react';
 
 function IconShield(props: SVGProps<SVGSVGElement>) {
   return (
@@ -111,7 +111,7 @@ function Pillar({
   desc,
   bullets,
 }: {
-  icon: React.ReactNode;
+  icon: ReactNode;
   title: string;
   desc: string;
   bullets: string[];
@@ -140,7 +140,6 @@ function Pillar({
 export default function CapabilitiesPage() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
-      {/* Nav */}
       <nav className="sticky top-0 z-50 border-b border-slate-900 bg-slate-950/70 backdrop-blur">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -156,6 +155,12 @@ export default function CapabilitiesPage() {
             </a>
             <a href="/deployments" className="text-slate-300 hover:text-white transition-colors">
               Deployments
+            </a>
+            <a href="/architecture" className="text-slate-300 hover:text-white transition-colors">
+              Architecture
+            </a>
+            <a href="/trust" className="text-slate-300 hover:text-white transition-colors">
+              Trust
             </a>
             <a href="https://docs.tealtiger.ai" className="text-slate-300 hover:text-white transition-colors" rel="noreferrer">
               Docs
@@ -181,7 +186,6 @@ export default function CapabilitiesPage() {
         </div>
       </nav>
 
-      {/* Hero */}
       <header className="relative border-b border-slate-900">
         <div className="absolute inset-0 bg-[radial-gradient(75%_55%_at_50%_0%,rgba(20,184,166,0.18),rgba(2,6,23,0))]" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
@@ -224,7 +228,6 @@ export default function CapabilitiesPage() {
         </div>
       </header>
 
-      {/* Pillars */}
       <section className="bg-slate-950">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
           <div className="max-w-3xl mx-auto text-center">
@@ -336,7 +339,6 @@ export default function CapabilitiesPage() {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="border-t border-slate-900 bg-slate-950">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
           <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
@@ -344,6 +346,7 @@ export default function CapabilitiesPage() {
             <div className="flex items-center gap-4 text-xs text-slate-400">
               <a href="/" className="text-slate-300 hover:text-white">Home</a>
               <a href="/deployments" className="text-slate-300 hover:text-white">Deployments</a>
+              <a href="/trust" className="text-slate-300 hover:text-white">Trust</a>
               <a href="https://docs.tealtiger.ai" className="text-slate-300 hover:text-white" rel="noreferrer">Docs</a>
             </div>
           </div>
