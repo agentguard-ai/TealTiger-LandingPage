@@ -1,3 +1,4 @@
+\
 'use client';
 
 import Image from 'next/image';
@@ -151,7 +152,7 @@ export default function Home() {
           </div>
 
           <div className="hidden md:flex items-center gap-8 text-sm">
-            <a href="#capabilities" className="text-slate-300 hover:text-white transition-colors">
+            <a href="/capabilities" className="text-slate-300 hover:text-white transition-colors">
               Capabilities
             </a>
             <a href="#how-it-works" className="text-slate-300 hover:text-white transition-colors">
@@ -207,7 +208,19 @@ export default function Home() {
               contain spend, and emit audit events for security workflows — across providers.
             </p>
 
+            {/* Enterprise boundary trust signal */}
+            <p className="mt-3 text-sm text-slate-400 leading-relaxed">
+              Runs inside your application boundary. By default, TealTiger does not persist prompts or outputs —
+              only structured enforcement metadata is emitted for monitoring and audit workflows.
+            </p>
+
             <div className="mt-8 flex flex-wrap gap-3">
+              <a
+                href="/capabilities"
+                className="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/15 border border-slate-800 text-sm font-semibold"
+              >
+                Explore capabilities →
+              </a>
               <a
                 href="https://docs.tealtiger.ai/why-tealtiger"
                 className="px-4 py-2 rounded-lg border border-slate-800 bg-slate-950 hover:bg-slate-900 text-sm font-semibold"
@@ -304,6 +317,7 @@ export default function Home() {
               <ol className="mt-4 space-y-3 text-sm text-slate-300">
                 <li>1) Application/agent calls the AI client</li>
                 <li>2) TealTiger applies guardrails + budget checks</li>
+                <li>2b) Decision metadata emitted (policy ID, outcome, reason codes)</li>
                 <li>3) Provider request executes</li>
                 <li>4) Enforcement events emitted for audit/SIEM</li>
               </ol>
@@ -330,7 +344,7 @@ const client = new TealOpenAI({
         </div>
       </section>
 
-      {/* Capabilities */}
+      {/* Capabilities teaser (kept on home, full details on /capabilities) */}
       <section id="capabilities" className="border-t border-slate-900 bg-slate-950">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
           <SectionTitle
@@ -338,6 +352,10 @@ const client = new TealOpenAI({
             title="Controls built for real deployments"
             subtitle="Security teams need enforceable boundaries and evidence. Developers need drop-in adoption."
           />
+
+          <p className="mt-6 text-sm text-slate-400 max-w-3xl mx-auto text-center">
+            Four core runtime capabilities designed for security, platform, and AI engineering teams operating production systems.
+          </p>
 
           <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
@@ -357,6 +375,15 @@ const client = new TealOpenAI({
               </div>
             ))}
           </div>
+
+          <div className="mt-10 flex justify-center">
+            <a
+              href="/capabilities"
+              className="inline-flex items-center gap-2 rounded-lg border border-slate-800 bg-slate-950 px-4 py-2 text-sm font-semibold text-slate-200 hover:bg-slate-900"
+            >
+              View all capabilities →
+            </a>
+          </div>
         </div>
       </section>
 
@@ -365,7 +392,7 @@ const client = new TealOpenAI({
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
           <SectionTitle
             eyebrow="Governance"
-            title="EU AI Act: compliance support (technical controls)"
+            title="EU AI Act: technical enablement (controls & evidence)"
             subtitle="TealTiger can be leveraged to support EU AI Act compliance efforts by providing runtime controls and audit evidence."
           />
 
@@ -538,7 +565,7 @@ const client = new TealOpenAI({
               { title: 'SDK', desc: 'Embed controls in your services.' },
               { title: 'Containers', desc: 'Standardize rollout across teams.' },
               { title: 'Serverless', desc: 'Patterns for ephemeral execution.' },
-              { title: 'IaC', desc: 'Declare budgets/controls via Terraform.' },
+              { title: 'IaC', desc: 'Terraform/Helm patterns to standardize rollout.' },
             ].map((d) => (
               <div
                 key={d.title}
@@ -558,7 +585,8 @@ const client = new TealOpenAI({
               <div className="text-sm font-semibold text-white">SIEM workflows</div>
             </div>
             <p className="mt-2 text-sm text-slate-300 leading-relaxed">
-              Emit structured enforcement events for monitoring and incident response (including Splunk pipelines).
+              Emit structured, OpenTelemetry-friendly enforcement events (policy decisions, budget checks, guardrail outcomes)
+              to your existing monitoring and SIEM pipelines, including Splunk.
             </p>
           </div>
         </div>
@@ -637,7 +665,7 @@ const client = new TealOpenAI({
                   </a>
                 </li>
                 <li>
-                  <a href="#capabilities" className="text-slate-300 hover:text-white transition-colors">
+                  <a href="/capabilities" className="text-slate-300 hover:text-white transition-colors">
                     Capabilities
                   </a>
                 </li>
