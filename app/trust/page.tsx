@@ -1,21 +1,12 @@
 import Image from 'next/image';
 import type { SVGProps } from 'react';
+import SecurityChecklist from '../_components/security-checklist';
 
 function IconLock(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-      <path
-        d="M7 10V8a5 5 0 0110 0v2"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinecap="round"
-      />
-      <path
-        d="M7 10h10a2 2 0 012 2v7a2 2 0 01-2 2H7a2 2 0 01-2-2v-7a2 2 0 012-2z"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinejoin="round"
-      />
+      <path d="M7 10V8a5 5 0 0110 0v2" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+      <path d="M7 10h10a2 2 0 012 2v7a2 2 0 01-2 2H7a2 2 0 01-2-2v-7a2 2 0 012-2z" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" />
       <path d="M12 14v3" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
     </svg>
   );
@@ -24,12 +15,7 @@ function IconLock(props: SVGProps<SVGSVGElement>) {
 function IconDoc(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-      <path
-        d="M8 3h7l4 4v14a2 2 0 01-2 2H8a2 2 0 01-2-2V5a2 2 0 012-2z"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinejoin="round"
-      />
+      <path d="M8 3h7l4 4v14a2 2 0 01-2 2H8a2 2 0 01-2-2V5a2 2 0 012-2z" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" />
       <path d="M15 3v5h5" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" />
       <path d="M9 12h6" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
       <path d="M9 15h6" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
@@ -56,19 +42,14 @@ export default function TrustPage() {
             <span className="text-lg font-semibold tracking-tight text-white">TealTiger</span>
           </a>
           <div className="hidden md:flex items-center gap-8 text-sm">
-            <a href="/capabilities" className="text-slate-300 hover:text-white transition-colors">Capabilities</a>
+            <a href="/enterprise" className="text-slate-300 hover:text-white transition-colors">Enterprise</a>
+            <a href="/trust" className="text-white font-semibold">Trust</a>
             <a href="/deployments" className="text-slate-300 hover:text-white transition-colors">Deployments</a>
             <a href="/integrations" className="text-slate-300 hover:text-white transition-colors">Integrations</a>
-            <a href="/trust" className="text-white font-semibold">Trust</a>
+            <a href="/support" className="text-slate-300 hover:text-white transition-colors">Support</a>
             <a href="https://docs.tealtiger.ai" className="text-slate-300 hover:text-white transition-colors" rel="noreferrer">Docs</a>
           </div>
-          <a
-            href="https://github.com/agentguard-ai/tealtiger/blob/main/SECURITY.md"
-            className="px-4 py-2 rounded-lg border border-slate-800 bg-slate-950 hover:bg-slate-900 text-sm font-semibold"
-            rel="noreferrer"
-          >
-            Security policy
-          </a>
+          <a href="mailto:reachout@tealtiger.ai" className="px-4 py-2 rounded-lg bg-teal-600 hover:bg-teal-500 text-sm font-semibold text-white">Reach out</a>
         </div>
       </nav>
 
@@ -110,23 +91,23 @@ export default function TrustPage() {
             <ul className="mt-4 space-y-2 text-sm text-slate-300">
               <li>• Policy outcomes + reason codes + correlation IDs.</li>
               <li>• No prompt/output persistence by default.</li>
-              <li>• Payload logging can be made explicit and scoped per your policy.</li>
+              <li>• Payload logging can be explicit and scoped per policy.</li>
             </ul>
           </div>
 
           <div className="rounded-2xl border border-slate-900 bg-slate-950/60 p-6">
             <div className="text-sm font-semibold text-white">Enterprise review shortcuts</div>
-            <p className="mt-2 text-sm text-slate-300 leading-relaxed">
-              Use these resources during security and procurement evaluation.
-            </p>
+            <p className="mt-2 text-sm text-slate-300 leading-relaxed">Use these resources during security and procurement evaluation.</p>
             <div className="mt-4 space-y-2 text-sm">
+              <a className="text-teal-300 hover:text-teal-200 font-semibold" href="/enterprise">Enterprise →</a>
               <a className="text-teal-300 hover:text-teal-200 font-semibold" href="/deployments">Deployment options →</a>
               <a className="text-teal-300 hover:text-teal-200 font-semibold" href="/integrations">Integrations →</a>
-              <a className="text-teal-300 hover:text-teal-200 font-semibold" href="/architecture">Architecture →</a>
-              <a className="text-teal-300 hover:text-teal-200 font-semibold" href="https://docs.tealtiger.ai" rel="noreferrer">Docs →</a>
+              <a className="text-teal-300 hover:text-teal-200 font-semibold" href="/support">Support →</a>
             </div>
           </div>
         </div>
+
+        <SecurityChecklist mode="trust" className="mt-10" />
 
         <div className="mt-10 rounded-2xl border border-slate-900 bg-slate-950/60 p-6">
           <div className="text-sm font-semibold text-white">Disclosure</div>
@@ -141,7 +122,7 @@ export default function TrustPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
           <div className="flex items-center justify-between text-xs text-slate-400">
             <span>© 2026 TealTiger. MIT licensed.</span>
-            <a href="/" className="text-slate-300 hover:text-white">Home</a>
+            <a href="mailto:reachout@tealtiger.ai" className="text-slate-300 hover:text-white">reachout@tealtiger.ai</a>
           </div>
         </div>
       </footer>
