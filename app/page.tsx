@@ -1,9 +1,9 @@
-\
 'use client';
 
 import Image from 'next/image';
+import type { SVGProps } from 'react';
 
-function IconShield(props: React.SVGProps<SVGSVGElement>) {
+function IconShield(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
       <path
@@ -23,7 +23,7 @@ function IconShield(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-function IconWallet(props: React.SVGProps<SVGSVGElement>) {
+function IconWallet(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
       <path
@@ -41,7 +41,7 @@ function IconWallet(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-function IconActivity(props: React.SVGProps<SVGSVGElement>) {
+function IconActivity(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
       <path
@@ -55,7 +55,7 @@ function IconActivity(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-function IconCloud(props: React.SVGProps<SVGSVGElement>) {
+function IconCloud(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
       <path
@@ -68,7 +68,7 @@ function IconCloud(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-function IconFlagEU(props: React.SVGProps<SVGSVGElement>) {
+function IconFlagEU(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
       <path d="M6 3v18" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
@@ -87,14 +87,10 @@ function IconFlagEU(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-function IconInfo(props: React.SVGProps<SVGSVGElement>) {
+function IconInfo(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-      <path
-        d="M12 22a10 10 0 110-20 10 10 0 010 20z"
-        stroke="currentColor"
-        strokeWidth="1.7"
-      />
+      <path d="M12 22a10 10 0 110-20 10 10 0 010 20z" stroke="currentColor" strokeWidth="1.7" />
       <path d="M12 10.5v6" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
       <circle cx="12" cy="7.6" r="1" fill="currentColor" />
     </svg>
@@ -199,19 +195,17 @@ export default function Home() {
             </div>
 
             <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white">
-              Runtime governance for AI systems —
-              <span className="text-teal-300"> guardrails, budgets, evidence</span>
+              Runtime governance for AI systems — <span className="text-teal-300">guardrails, budgets, evidence</span>
             </h1>
 
             <p className="mt-6 text-lg sm:text-xl leading-relaxed text-slate-300">
-              TealTiger applies enforceable controls at the point of execution. Protect model calls,
-              contain spend, and emit audit events for security workflows — across providers.
+              TealTiger applies enforceable controls at the point of execution. Protect model calls, contain spend, and emit audit
+              events for security workflows — across providers.
             </p>
 
-            {/* Enterprise boundary trust signal */}
             <p className="mt-3 text-sm text-slate-400 leading-relaxed">
-              Runs inside your application boundary. By default, TealTiger does not persist prompts or outputs —
-              only structured enforcement metadata is emitted for monitoring and audit workflows.
+              Runs inside your application boundary. By default, TealTiger does not persist prompts or outputs — only structured
+              enforcement metadata is emitted for monitoring and audit workflows.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -344,7 +338,7 @@ const client = new TealOpenAI({
         </div>
       </section>
 
-      {/* Capabilities teaser (kept on home, full details on /capabilities) */}
+      {/* Capabilities */}
       <section id="capabilities" className="border-t border-slate-900 bg-slate-950">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
           <SectionTitle
@@ -415,8 +409,8 @@ const client = new TealOpenAI({
                 <div>
                   <div className="text-sm font-semibold text-white">What TealTiger contributes</div>
                   <p className="mt-2 text-sm text-slate-300 leading-relaxed">
-                    TealTiger helps operationalize selected technical obligations by enforcing runtime guardrails, controlling consumption,
-                    and producing audit-ready evidence (events/logs) for monitoring and incident workflows.
+                    TealTiger helps operationalize selected technical obligations by enforcing runtime guardrails, controlling
+                    consumption, and producing audit-ready evidence (events/logs) for monitoring and incident workflows.
                   </p>
 
                   <div className="mt-4 grid sm:grid-cols-2 gap-3">
@@ -458,13 +452,15 @@ const client = new TealOpenAI({
               </div>
 
               <p className="mt-3 text-sm text-slate-300 leading-relaxed">
-                TealTiger is not a standalone EU AI Act compliance solution and does not provide legal advice.
-                Full compliance depends on your organizational processes, risk management, documentation, and controls beyond the SDK.
+                TealTiger is not a standalone EU AI Act compliance solution and does not provide legal advice. Full compliance depends
+                on your organizational processes, risk management, documentation, and controls beyond the SDK.
               </p>
 
               <div className="mt-4 rounded-xl border border-slate-900 bg-slate-950 p-4">
                 <div className="text-xs text-slate-400">Recommended</div>
-                <div className="mt-1 text-sm text-slate-300">Use TealTiger as a technical control layer alongside your compliance program.</div>
+                <div className="mt-1 text-sm text-slate-300">
+                  Use TealTiger as a technical control layer alongside your compliance program.
+                </div>
               </div>
             </div>
           </div>
@@ -477,7 +473,9 @@ const client = new TealOpenAI({
               </div>
               <div>
                 <div className="text-sm font-semibold text-white">EU AI Act compliance FAQ</div>
-                <div className="text-sm text-slate-300">Common questions about how TealTiger supports compliance workstreams.</div>
+                <div className="text-sm text-slate-300">
+                  Common questions about how TealTiger supports compliance workstreams.
+                </div>
               </div>
             </div>
 
@@ -488,8 +486,8 @@ const client = new TealOpenAI({
                   <span className="text-slate-400 group-open:rotate-180 transition-transform">▾</span>
                 </summary>
                 <div className="mt-2 text-sm text-slate-300 leading-relaxed">
-                  No. TealTiger provides technical controls and evidence that can support compliance efforts.
-                  Compliance requires organizational processes (risk management, documentation, governance, oversight) beyond the SDK.
+                  No. TealTiger provides technical controls and evidence that can support compliance efforts. Compliance requires
+                  organizational processes (risk management, documentation, governance, oversight) beyond the SDK.
                 </div>
               </details>
 
@@ -510,8 +508,8 @@ const client = new TealOpenAI({
                   <span className="text-slate-400 group-open:rotate-180 transition-transform">▾</span>
                 </summary>
                 <div className="mt-2 text-sm text-slate-300 leading-relaxed">
-                  TealTiger can emit structured enforcement events (e.g., guardrail decisions, budget checks) that support traceability and oversight.
-                  Evidence formats and destinations are implementation-specific.
+                  TealTiger can emit structured enforcement events (e.g., guardrail decisions, budget checks) that support traceability
+                  and oversight. Evidence formats and destinations are implementation-specific.
                 </div>
               </details>
 
@@ -521,8 +519,8 @@ const client = new TealOpenAI({
                   <span className="text-slate-400 group-open:rotate-180 transition-transform">▾</span>
                 </summary>
                 <div className="mt-2 text-sm text-slate-300 leading-relaxed">
-                  See the detailed mapping and notes in the documentation page linked above.
-                  Treat mappings as guidance and validate against your specific obligations.
+                  See the detailed mapping and notes in the documentation page linked above. Treat mappings as guidance and validate
+                  against your specific obligations.
                 </div>
               </details>
 
@@ -532,8 +530,8 @@ const client = new TealOpenAI({
                   <span className="text-slate-400 group-open:rotate-180 transition-transform">▾</span>
                 </summary>
                 <div className="mt-2 text-sm text-slate-300 leading-relaxed">
-                  Use TealTiger as a technical control layer: enforce runtime boundaries, route evidence to your monitoring/SIEM, and integrate with
-                  your risk assessment, documentation, and oversight processes.
+                  Use TealTiger as a technical control layer: enforce runtime boundaries, route evidence to your monitoring/SIEM, and
+                  integrate with your risk assessment, documentation, and oversight processes.
                 </div>
               </details>
             </div>
@@ -585,8 +583,8 @@ const client = new TealOpenAI({
               <div className="text-sm font-semibold text-white">SIEM workflows</div>
             </div>
             <p className="mt-2 text-sm text-slate-300 leading-relaxed">
-              Emit structured, OpenTelemetry-friendly enforcement events (policy decisions, budget checks, guardrail outcomes)
-              to your existing monitoring and SIEM pipelines, including Splunk.
+              Emit structured, OpenTelemetry-friendly enforcement events (policy decisions, budget checks, guardrail outcomes) to your
+              existing monitoring and SIEM pipelines, including Splunk.
             </p>
           </div>
         </div>
@@ -691,11 +689,7 @@ const client = new TealOpenAI({
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="https://blogs.tealtiger.ai"
-                    className="text-slate-300 hover:text-white transition-colors"
-                    rel="noreferrer"
-                  >
+                  <a href="https://blogs.tealtiger.ai" className="text-slate-300 hover:text-white transition-colors" rel="noreferrer">
                     Blog
                   </a>
                 </li>
