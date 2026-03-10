@@ -157,7 +157,7 @@ export default function Home() {
             <a href="#eu-ai-act" className="text-slate-300 hover:text-white transition-colors">
               EU AI Act
             </a>
-            <a href="#deployments" className="text-slate-300 hover:text-white transition-colors">
+            <a href="/deployments" className="text-slate-300 hover:text-white transition-colors">
               Deployments
             </a>
             <a href="https://docs.tealtiger.ai" className="text-slate-300 hover:text-white transition-colors" rel="noreferrer">
@@ -203,6 +203,7 @@ export default function Home() {
               events for security workflows — across providers.
             </p>
 
+            {/* Enterprise boundary trust signal */}
             <p className="mt-3 text-sm text-slate-400 leading-relaxed">
               Runs inside your application boundary. By default, TealTiger does not persist prompts or outputs — only structured
               enforcement metadata is emitted for monitoring and audit workflows.
@@ -216,11 +217,10 @@ export default function Home() {
                 Explore capabilities →
               </a>
               <a
-                href="https://docs.tealtiger.ai/why-tealtiger"
+                href="/deployments"
                 className="px-4 py-2 rounded-lg border border-slate-800 bg-slate-950 hover:bg-slate-900 text-sm font-semibold"
-                rel="noreferrer"
               >
-                Product overview
+                Deployment options
               </a>
               <a
                 href="#get-started"
@@ -338,7 +338,7 @@ const client = new TealOpenAI({
         </div>
       </section>
 
-      {/* Capabilities */}
+      {/* Capabilities teaser */}
       <section id="capabilities" className="border-t border-slate-900 bg-slate-950">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
           <SectionTitle
@@ -473,9 +473,7 @@ const client = new TealOpenAI({
               </div>
               <div>
                 <div className="text-sm font-semibold text-white">EU AI Act compliance FAQ</div>
-                <div className="text-sm text-slate-300">
-                  Common questions about how TealTiger supports compliance workstreams.
-                </div>
+                <div className="text-sm text-slate-300">Common questions about how TealTiger supports compliance workstreams.</div>
               </div>
             </div>
 
@@ -549,8 +547,8 @@ const client = new TealOpenAI({
         </div>
       </section>
 
-      {/* Deployments */}
-      <section id="deployments" className="border-t border-slate-900 bg-slate-950">
+      {/* Deployments teaser */}
+      <section className="border-t border-slate-900 bg-slate-950">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
           <SectionTitle
             eyebrow="Deployments"
@@ -580,12 +578,19 @@ const client = new TealOpenAI({
               <div className="rounded-xl border border-slate-900 bg-slate-950 p-2 text-teal-300">
                 <IconCloud className="h-6 w-6" />
               </div>
-              <div className="text-sm font-semibold text-white">SIEM workflows</div>
+              <div className="text-sm font-semibold text-white">Deployment options</div>
             </div>
             <p className="mt-2 text-sm text-slate-300 leading-relaxed">
-              Emit structured, OpenTelemetry-friendly enforcement events (policy decisions, budget checks, guardrail outcomes) to your
-              existing monitoring and SIEM pipelines, including Splunk.
+              See all deployment patterns and environments — serverless, Kubernetes, containers, IaC and CI/CD.
             </p>
+            <div className="mt-4">
+              <a
+                href="/deployments"
+                className="inline-flex items-center gap-2 rounded-lg bg-teal-600 hover:bg-teal-500 px-4 py-2 text-sm font-semibold text-white"
+              >
+                View deployments →
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -673,7 +678,7 @@ const client = new TealOpenAI({
                   </a>
                 </li>
                 <li>
-                  <a href="#deployments" className="text-slate-300 hover:text-white transition-colors">
+                  <a href="/deployments" className="text-slate-300 hover:text-white transition-colors">
                     Deployments
                   </a>
                 </li>
