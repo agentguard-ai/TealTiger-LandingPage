@@ -420,8 +420,8 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-10 items-center">
             <div>
               <div className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm ${styles.chip}`}>
-                <span className="font-semibold">Security product posture</span>
-                <span className={isDark ? 'text-slate-400' : 'text-slate-500'}>without a new platform</span>
+                <span className="font-semibold">v1.1.0 launching April 2026</span>
+                <span className={isDark ? 'text-slate-400' : 'text-slate-500'}>— TealEngine, 7 providers, full SDK parity</span>
               </div>
 
               <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
