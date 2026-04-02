@@ -425,11 +425,11 @@ export default function Home() {
               </div>
 
               <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
-                Deterministic governance for AI systems — <span className={isDark ? 'text-teal-300' : 'text-teal-700'}>guardrails, budgets, evidence</span>
+                Runtime AI governance — <span className={isDark ? 'text-teal-300' : 'text-teal-700'}>security, cost, reliability, evidence</span>
               </h1>
 
               <p className="mt-4 text-base sm:text-lg leading-relaxed opacity-90">
-                Policy-driven, repeatable enforcement with predictable outcomes — not probabilistic heuristics.
+                A governance framework that grows with your AI system. Deterministic enforcement across six dimensions — not just guardrails.
                 <span className="relative ml-2 inline-flex group">
                   <button
                     type="button"
@@ -448,7 +448,7 @@ export default function Home() {
               </p>
 
               <p className="mt-5 text-lg sm:text-xl leading-relaxed opacity-90">
-                TealTiger enforces controls at the point of execution. Protect model calls, contain spend, and emit audit events for security workflows — across providers.
+                TealTiger enforces governance at runtime decision boundaries — security, cost, authority, reliability, compliance, and evidence — across providers. One SDK, expanding dimensions.
               </p>
 
               <p className={`mt-3 text-sm leading-relaxed ${styles.heroNote}`}>
@@ -486,16 +486,16 @@ export default function Home() {
 
               <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-5">
                 <div className={`${styles.cardSm} tt-appear`} style={{ animationDelay: '60ms' }}>
-                  <div className="text-sm font-semibold">Deterministic guardrails</div>
-                  <div className={`mt-1 text-sm ${styles.heroNote}`}>PII, injection, safety checks</div>
+                  <div className="text-sm font-semibold">6 Governance Dimensions</div>
+                  <div className={`mt-1 text-sm ${styles.heroNote}`}>Security · Cost · Authority · Reliability · Evidence · Compliance</div>
                 </div>
                 <div className={`${styles.cardSm} tt-appear`} style={{ animationDelay: '120ms' }}>
-                  <div className="text-sm font-semibold">Deterministic budgets</div>
-                  <div className={`mt-1 text-sm ${styles.heroNote}`}>limits across time windows</div>
+                  <div className="text-sm font-semibold">Deterministic Decisions</div>
+                  <div className={`mt-1 text-sm ${styles.heroNote}`}>Same input + same policy = same outcome</div>
                 </div>
                 <div className={`${styles.cardSm} tt-appear`} style={{ animationDelay: '180ms' }}>
-                  <div className="text-sm font-semibold">Deterministic evidence</div>
-                  <div className={`mt-1 text-sm ${styles.heroNote}`}>SIEM-ready audit events</div>
+                  <div className="text-sm font-semibold">Audit-Grade Evidence</div>
+                  <div className={`mt-1 text-sm ${styles.heroNote}`}>Versioned events · Redaction · Correlation IDs</div>
                 </div>
               </div>
             </div>
