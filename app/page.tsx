@@ -135,7 +135,7 @@ function Tooltip({ id, text }: { id: string; text: string }) {
     <span
       id={id}
       role="tooltip"
-      className="pointer-events-none absolute left-1/2 top-full z-50 mt-2 w-[22rem] -translate-x-1/2 rounded-xl border border-slate-800 bg-slate-950 p-3 text-xs leading-relaxed text-slate-200 shadow-xl opacity-0 translate-y-1 transition-all duration-150 group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:translate-y-0"
+      className="pointer-events-none absolute left-1/2 bottom-full z-[100] mb-2 w-[22rem] -translate-x-1/2 rounded-xl border border-slate-800 bg-slate-950 p-3 text-xs leading-relaxed text-slate-200 shadow-2xl opacity-0 -translate-y-1 transition-all duration-150 group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:translate-y-0"
     >
       {text}
     </span>
@@ -402,16 +402,10 @@ export default function Home() {
             </a>
           </div>
 
-          <div className="hidden md:flex items-center gap-6 text-sm">
+          <div className="hidden lg:flex items-center gap-5 text-sm">
             <a href="/capabilities" className={`${styles.navLink} transition-colors`}>Capabilities</a>
-            <a href="/deployments" className={`${styles.navLink} transition-colors`}>Deployments</a>
             <a href="/enterprise" className={`${styles.navLink} transition-colors`}>Enterprise</a>
             <a href="/compliance" className={`${styles.navLink} transition-colors`}>Compliance</a>
-            <a href="/case-studies" className={`${styles.navLink} transition-colors`}>Case studies</a>
-            <a href="/roadmap" className={`${styles.navLink} transition-colors`}>Roadmap</a>
-            <a href="/support" className={`${styles.navLink} transition-colors`}>Support</a>
-            <a href="/integrations" className={`${styles.navLink} transition-colors`}>Integrations</a>
-            <a href="/trust" className={`${styles.navLink} transition-colors`}>Trust</a>
             <a href="https://docs.tealtiger.ai" className={`${styles.navLink} transition-colors`} rel="noreferrer">Docs</a>
             <a href="https://playground.tealtiger.ai" className={`${styles.navLink} transition-colors`} rel="noreferrer">Playground</a>
             <a href="https://blogs.tealtiger.ai" className={`${styles.navLink} transition-colors`} rel="noreferrer">Blog</a>
