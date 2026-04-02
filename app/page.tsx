@@ -144,54 +144,101 @@ function Tooltip({ id, text }: { id: string; text: string }) {
 
 function HeroIllustration(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg viewBox="0 0 640 420" fill="none" aria-hidden="true" {...props}>
+    <svg viewBox="0 0 640 380" fill="none" aria-hidden="true" {...props}>
       <defs>
-        <radialGradient
-          id="g1"
-          cx="0"
-          cy="0"
-          r="1"
-          gradientUnits="userSpaceOnUse"
-          gradientTransform="translate(320 80) rotate(90) scale(280 420)"
-        >
-          <stop stopColor="#14b8a6" stopOpacity="0.28" />
+        <radialGradient id="g1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(320 60) rotate(90) scale(240 400)">
+          <stop stopColor="#14b8a6" stopOpacity="0.2" />
           <stop offset="1" stopColor="#020617" stopOpacity="0" />
         </radialGradient>
-        <linearGradient id="g2" x1="120" y1="60" x2="520" y2="340" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#22c55e" stopOpacity="0.25" />
-          <stop offset="1" stopColor="#14b8a6" stopOpacity="0.08" />
-        </linearGradient>
       </defs>
+      <rect width="640" height="380" rx="20" fill="url(#g1)" />
 
-      <rect x="0" y="0" width="640" height="420" rx="24" fill="url(#g1)" />
-      <rect x="0" y="0" width="640" height="420" rx="24" fill="url(#g2)" />
+      {/* Title */}
+      <rect x="20" y="14" width="600" height="36" rx="8" fill="#0f172a" />
+      <text x="320" y="38" textAnchor="middle" fill="#fff" fontSize="13" fontWeight="700" fontFamily="ui-sans-serif,system-ui">AI Governance Umbrella</text>
 
-      <rect x="60" y="70" width="220" height="110" rx="18" stroke="#1f2937" fill="#020617" fillOpacity="0.55" />
-      <rect x="360" y="70" width="220" height="110" rx="18" stroke="#1f2937" fill="#020617" fillOpacity="0.55" />
-      <rect x="60" y="240" width="520" height="120" rx="18" stroke="#1f2937" fill="#020617" fillOpacity="0.55" />
+      {/* Runtime label */}
+      <rect x="20" y="60" width="295" height="22" rx="5" fill="#1e3a5f" />
+      <text x="167" y="75" textAnchor="middle" fill="#93c5fd" fontSize="9" fontWeight="600" fontFamily="ui-sans-serif,system-ui">RUNTIME GOVERNANCE</text>
 
-      <text x="84" y="108" fontSize="14" fill="#e2e8f0" fontFamily="ui-sans-serif, system-ui">Application / Agent</text>
-      <text x="384" y="108" fontSize="14" fill="#e2e8f0" fontFamily="ui-sans-serif, system-ui">AI Provider</text>
-      <text x="84" y="276" fontSize="14" fill="#e2e8f0" fontFamily="ui-sans-serif, system-ui">TealTiger deterministic boundary</text>
+      {/* Enterprise label */}
+      <rect x="325" y="60" width="295" height="22" rx="5" fill="#1e3a5f" />
+      <text x="472" y="75" textAnchor="middle" fill="#93c5fd" fontSize="9" fontWeight="600" fontFamily="ui-sans-serif,system-ui">ENTERPRISE GOVERNANCE</text>
 
-      <path d="M280 125H350" stroke="#38bdf8" strokeOpacity="0.55" strokeWidth="2" />
-      <path d="M350 125l-10-6v12l10-6z" fill="#38bdf8" fillOpacity="0.55" />
+      {/* Runtime shipped */}
+      <rect x="20" y="90" width="92" height="42" rx="5" fill="#0d9488" stroke="#14b8a6" strokeWidth="1" />
+      <text x="66" y="109" textAnchor="middle" fill="#fff" fontSize="10" fontWeight="700" fontFamily="ui-sans-serif,system-ui">Security</text>
+      <text x="66" y="122" textAnchor="middle" fill="#ccfbf1" fontSize="7" fontFamily="ui-sans-serif,system-ui">Injection · PII</text>
 
-      <circle cx="130" cy="315" r="10" fill="#14b8a6" fillOpacity="0.9" />
-      <circle cx="260" cy="315" r="10" fill="#14b8a6" fillOpacity="0.9" />
-      <circle cx="390" cy="315" r="10" fill="#14b8a6" fillOpacity="0.9" />
-      <circle cx="520" cy="315" r="10" fill="#14b8a6" fillOpacity="0.9" />
+      <rect x="122" y="90" width="92" height="42" rx="5" fill="#0d9488" stroke="#14b8a6" strokeWidth="1" />
+      <text x="168" y="109" textAnchor="middle" fill="#fff" fontSize="10" fontWeight="700" fontFamily="ui-sans-serif,system-ui">Authority</text>
+      <text x="168" y="122" textAnchor="middle" fill="#ccfbf1" fontSize="7" fontFamily="ui-sans-serif,system-ui">Tool · RBAC</text>
 
-      <text x="150" y="320" fontSize="13" fill="#cbd5e1" fontFamily="ui-sans-serif, system-ui">Guardrails</text>
-      <text x="280" y="320" fontSize="13" fill="#cbd5e1" fontFamily="ui-sans-serif, system-ui">Budgets</text>
-      <text x="410" y="320" fontSize="13" fill="#cbd5e1" fontFamily="ui-sans-serif, system-ui">Evidence</text>
-      <text x="540" y="320" fontSize="13" fill="#cbd5e1" fontFamily="ui-sans-serif, system-ui">OTel</text>
+      <rect x="224" y="90" width="92" height="42" rx="5" fill="#0d9488" stroke="#14b8a6" strokeWidth="1" />
+      <text x="270" y="109" textAnchor="middle" fill="#fff" fontSize="10" fontWeight="700" fontFamily="ui-sans-serif,system-ui">Reliability</text>
+      <text x="270" y="122" textAnchor="middle" fill="#ccfbf1" fontSize="7" fontFamily="ui-sans-serif,system-ui">Circuit breaker</text>
 
-      <path d="M140 315H250" stroke="#14b8a6" strokeOpacity="0.55" strokeWidth="2" />
-      <path d="M270 315H380" stroke="#14b8a6" strokeOpacity="0.55" strokeWidth="2" />
-      <path d="M400 315H510" stroke="#14b8a6" strokeOpacity="0.55" strokeWidth="2" />
+      {/* Runtime planned */}
+      <rect x="20" y="140" width="92" height="42" rx="5" fill="#1e293b" stroke="#334155" strokeWidth="1" strokeDasharray="4 2" />
+      <text x="66" y="159" textAnchor="middle" fill="#94a3b8" fontSize="10" fontWeight="600" fontFamily="ui-sans-serif,system-ui">Trajectory</text>
+      <text x="66" y="172" textAnchor="middle" fill="#64748b" fontSize="7" fontFamily="ui-sans-serif,system-ui">v1.2</text>
 
-      <text x="84" y="352" fontSize="12" fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">Deterministic enforcement decisions • Metadata-only audit events</text>
+      <rect x="122" y="140" width="92" height="42" rx="5" fill="#1e293b" stroke="#334155" strokeWidth="1" strokeDasharray="4 2" />
+      <text x="168" y="159" textAnchor="middle" fill="#94a3b8" fontSize="10" fontWeight="600" fontFamily="ui-sans-serif,system-ui">Signal</text>
+      <text x="168" y="172" textAnchor="middle" fill="#64748b" fontSize="7" fontFamily="ui-sans-serif,system-ui">v1.2</text>
+
+      <rect x="224" y="140" width="92" height="42" rx="5" fill="#1e293b" stroke="#334155" strokeWidth="1" strokeDasharray="4 2" />
+      <text x="270" y="159" textAnchor="middle" fill="#94a3b8" fontSize="10" fontWeight="600" fontFamily="ui-sans-serif,system-ui">Memory</text>
+      <text x="270" y="172" textAnchor="middle" fill="#64748b" fontSize="7" fontFamily="ui-sans-serif,system-ui">v1.2</text>
+
+      {/* Enterprise shipped */}
+      <rect x="325" y="90" width="92" height="42" rx="5" fill="#0d9488" stroke="#14b8a6" strokeWidth="1" />
+      <text x="371" y="109" textAnchor="middle" fill="#fff" fontSize="10" fontWeight="700" fontFamily="ui-sans-serif,system-ui">Cost</text>
+      <text x="371" y="122" textAnchor="middle" fill="#ccfbf1" fontSize="7" fontFamily="ui-sans-serif,system-ui">Budgets · Rates</text>
+
+      <rect x="427" y="90" width="92" height="42" rx="5" fill="#0d9488" stroke="#14b8a6" strokeWidth="1" />
+      <text x="473" y="109" textAnchor="middle" fill="#fff" fontSize="10" fontWeight="700" fontFamily="ui-sans-serif,system-ui">Evidence</text>
+      <text x="473" y="122" textAnchor="middle" fill="#ccfbf1" fontSize="7" fontFamily="ui-sans-serif,system-ui">Audit · Redaction</text>
+
+      <rect x="529" y="90" width="92" height="42" rx="5" fill="#0d9488" stroke="#14b8a6" strokeWidth="1" />
+      <text x="575" y="109" textAnchor="middle" fill="#fff" fontSize="10" fontWeight="700" fontFamily="ui-sans-serif,system-ui">Compliance</text>
+      <text x="575" y="122" textAnchor="middle" fill="#ccfbf1" fontSize="7" fontFamily="ui-sans-serif,system-ui">Modes · Decision</text>
+
+      {/* Enterprise planned */}
+      <rect x="325" y="140" width="92" height="42" rx="5" fill="#1e293b" stroke="#334155" strokeWidth="1" strokeDasharray="4 2" />
+      <text x="371" y="159" textAnchor="middle" fill="#94a3b8" fontSize="10" fontWeight="600" fontFamily="ui-sans-serif,system-ui">Model</text>
+      <text x="371" y="172" textAnchor="middle" fill="#64748b" fontSize="7" fontFamily="ui-sans-serif,system-ui">v1.2</text>
+
+      <rect x="427" y="140" width="92" height="42" rx="5" fill="#1e293b" stroke="#334155" strokeWidth="1" strokeDasharray="4 2" />
+      <text x="473" y="159" textAnchor="middle" fill="#94a3b8" fontSize="10" fontWeight="600" fontFamily="ui-sans-serif,system-ui">Data</text>
+      <text x="473" y="172" textAnchor="middle" fill="#64748b" fontSize="7" fontFamily="ui-sans-serif,system-ui">v1.2</text>
+
+      <rect x="529" y="140" width="92" height="42" rx="5" fill="#1e293b" stroke="#334155" strokeWidth="1" strokeDasharray="4 2" />
+      <text x="575" y="159" textAnchor="middle" fill="#94a3b8" fontSize="10" fontWeight="600" fontFamily="ui-sans-serif,system-ui">Risk</text>
+      <text x="575" y="172" textAnchor="middle" fill="#64748b" fontSize="7" fontFamily="ui-sans-serif,system-ui">v1.3</text>
+
+      {/* Arrows */}
+      <path d="M167,186 L167,204" stroke="#475569" strokeWidth="1.5" />
+      <path d="M163,200 L167,208 L171,200" fill="#475569" />
+      <path d="M472,186 L472,204" stroke="#475569" strokeWidth="1.5" />
+      <path d="M468,200 L472,208 L476,200" fill="#475569" />
+
+      {/* Module layer */}
+      <rect x="20" y="212" width="600" height="72" rx="8" fill="#0f172a" stroke="#1e293b" strokeWidth="1" />
+      <text x="320" y="232" textAnchor="middle" fill="#94a3b8" fontSize="9" fontWeight="600" fontFamily="ui-sans-serif,system-ui">MODULE LAYER</text>
+      <rect x="32" y="240" width="270" height="34" rx="5" fill="#1e293b" stroke="#0d9488" strokeWidth="1" />
+      <text x="167" y="260" textAnchor="middle" fill="#5eead4" fontSize="8" fontWeight="700" fontFamily="ui-sans-serif,system-ui">CORE: Event → Policy → Enforce → Evidence</text>
+      <rect x="312" y="240" width="296" height="34" rx="5" fill="#1e293b" stroke="#334155" strokeWidth="1" strokeDasharray="4 2" />
+      <text x="460" y="260" textAnchor="middle" fill="#64748b" fontSize="8" fontWeight="600" fontFamily="ui-sans-serif,system-ui">OPTIONAL: Trajectory · Signal · Temporal · Budget</text>
+
+      {/* Arrow to evidence */}
+      <path d="M320,288 L320,306" stroke="#475569" strokeWidth="1.5" />
+      <path d="M316,302 L320,310 L324,302" fill="#475569" />
+
+      {/* Evidence layer */}
+      <rect x="20" y="314" width="600" height="44" rx="8" fill="#0f172a" stroke="#1e293b" strokeWidth="1" />
+      <text x="320" y="334" textAnchor="middle" fill="#94a3b8" fontSize="9" fontWeight="600" fontFamily="ui-sans-serif,system-ui">EVIDENCE &amp; ASSURANCE</text>
+      <text x="320" y="348" textAnchor="middle" fill="#64748b" fontSize="8" fontFamily="ui-sans-serif,system-ui">Decision · Reason Codes · Risk Score · Correlation ID · Audit Pack</text>
     </svg>
   );
 }
@@ -365,15 +412,21 @@ export default function Home() {
             <a href="/support" className={`${styles.navLink} transition-colors`}>Support</a>
             <a href="/integrations" className={`${styles.navLink} transition-colors`}>Integrations</a>
             <a href="/trust" className={`${styles.navLink} transition-colors`}>Trust</a>
-            <a href="https://docs.tealtiger.ai" className={`${styles.navLink} transition-colors`} rel="noreferrer">
-              Docs
-            </a>
+            <a href="https://docs.tealtiger.ai" className={`${styles.navLink} transition-colors`} rel="noreferrer">Docs</a>
+            <a href="https://playground.tealtiger.ai" className={`${styles.navLink} transition-colors`} rel="noreferrer">Playground</a>
+            <a href="https://blogs.tealtiger.ai" className={`${styles.navLink} transition-colors`} rel="noreferrer">Blog</a>
           </div>
 
           <div className="flex items-center gap-2">
             <a
               href={`mailto:${emailTo}`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-4 py-2 rounded-lg bg-teal-600 hover:bg-teal-500 text-sm font-semibold text-white transition-colors"
+              onClick={(e) => {
+                window.location.href = `mailto:${emailTo}`;
+                e.preventDefault();
+              }}
             >
               Reach out
             </a>
