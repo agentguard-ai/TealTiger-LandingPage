@@ -418,14 +418,7 @@ export default function Home() {
           </div>
 
           <div className="flex items-center gap-2">
-            <a
-              href="https://mail.google.com/mail/?view=cm&to=reachout@tealtiger.ai&su=TealTiger%20Inquiry"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 rounded-lg bg-teal-600 hover:bg-teal-500 text-sm font-semibold text-white transition-colors"
-            >
-              Reach out
-            </a>
+            <span className="px-4 py-2 text-sm font-medium text-teal-400">reachout@tealtiger.ai</span>
           </div>
         </div>
       </nav>
