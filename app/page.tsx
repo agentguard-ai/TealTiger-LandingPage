@@ -419,14 +419,10 @@ export default function Home() {
 
           <div className="flex items-center gap-2">
             <a
-              href={`mailto:${emailTo}`}
+              href="https://mail.google.com/mail/?view=cm&to=reachout@tealtiger.ai&su=TealTiger%20Inquiry"
               target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-2 rounded-lg bg-teal-600 hover:bg-teal-500 text-sm font-semibold text-white transition-colors"
-              onClick={(e) => {
-                window.location.href = `mailto:${emailTo}`;
-                e.preventDefault();
-              }}
             >
               Reach out
             </a>
