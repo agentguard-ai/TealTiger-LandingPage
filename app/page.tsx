@@ -522,8 +522,21 @@ export default function Home() {
 
               {/* Product Hunt Badge */}
               <div className="mt-6">
-                <a href="https://www.producthunt.com/posts/tealtiger?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-tealtiger" target="_blank" rel="noopener noreferrer">
-                  <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=tealtiger&theme=dark" alt="TealTiger - Open-source AI agent security SDK — zero infrastructure | Product Hunt" style={{ width: 250, height: 54 }} />
+                <a
+                  href="https://www.producthunt.com/products/tealtiger?embed=true&utm_source=embed&utm_medium=post_embed"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 rounded-xl border border-slate-200 dark:border-slate-800/70 bg-white dark:bg-slate-900/50 px-5 py-3 shadow-sm hover:shadow-md transition-shadow"
+                >
+                  <img
+                    alt="TealTiger"
+                    src="https://ph-files.imgix.net/e4bd6ccc-6085-4349-84c8-6dba6adfdad1.png?auto=format&fit=crop&w=80&h=80"
+                    className="w-10 h-10 rounded-lg object-cover flex-shrink-0"
+                  />
+                  <div className="min-w-0">
+                    <div className="text-sm font-semibold">TealTiger on Product Hunt</div>
+                    <div className={`text-xs ${styles.heroNote}`}>Check it out →</div>
+                  </div>
                 </a>
               </div>
 
