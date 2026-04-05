@@ -520,6 +520,13 @@ export default function Home() {
                 </a>
               </div>
 
+              {/* Product Hunt Badge */}
+              <div className="mt-6">
+                <a href="https://www.producthunt.com/posts/tealtiger?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-tealtiger" target="_blank" rel="noopener noreferrer">
+                  <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=tealtiger&theme=dark" alt="TealTiger - Open-source AI agent security SDK — zero infrastructure | Product Hunt" style={{ width: 250, height: 54 }} />
+                </a>
+              </div>
+
               <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-5">
                 <div className={`${styles.cardSm} tt-appear`} style={{ animationDelay: '60ms' }}>
                   <div className="text-sm font-semibold">6 Governance Dimensions</div>
