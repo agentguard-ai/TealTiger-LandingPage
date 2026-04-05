@@ -526,7 +526,11 @@ export default function Home() {
                   href="https://www.producthunt.com/products/tealtiger?embed=true&utm_source=embed&utm_medium=post_embed"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 rounded-xl border border-slate-200 dark:border-slate-800/70 bg-white dark:bg-slate-900/50 px-5 py-3 shadow-sm hover:shadow-md transition-shadow"
+                  className={`inline-flex items-center gap-3 rounded-xl border px-5 py-3 shadow-sm hover:shadow-md transition-all ${
+                    isDark
+                      ? 'border-slate-700 bg-slate-800/80 hover:bg-slate-800'
+                      : 'border-slate-200 bg-white hover:bg-slate-50'
+                  }`}
                 >
                   <img
                     alt="TealTiger"
@@ -534,8 +538,8 @@ export default function Home() {
                     className="w-10 h-10 rounded-lg object-cover flex-shrink-0"
                   />
                   <div className="min-w-0">
-                    <div className="text-sm font-semibold">TealTiger on Product Hunt</div>
-                    <div className={`text-xs ${styles.heroNote}`}>Check it out →</div>
+                    <div className={`text-sm font-semibold ${isDark ? 'text-white' : 'text-slate-900'}`}>TealTiger on Product Hunt</div>
+                    <div className={`text-xs ${isDark ? 'text-teal-400' : 'text-teal-600'}`}>Check it out →</div>
                   </div>
                 </a>
               </div>
