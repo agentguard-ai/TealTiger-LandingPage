@@ -58,39 +58,6 @@ function IconActivity(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-function IconFlagEU(props: SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-      <path d="M6 3v18" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
-      <path
-        d="M6 4h11l-1.4 3L17 10H6"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M12.5 6.3l.3.7.7.1-.6.5.2.7-.6-.4-.6.4.2-.7-.6-.5.7-.1.3-.7z"
-        fill="currentColor"
-        opacity="0.9"
-      />
-    </svg>
-  );
-}
-
-function IconInfo(props: SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-      <path
-        d="M12 22a10 10 0 110-20 10 10 0 010 20z"
-        stroke="currentColor"
-        strokeWidth="1.7"
-      />
-      <path d="M12 10.5v6" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
-      <circle cx="12" cy="7.6" r="1" fill="currentColor" />
-    </svg>
-  );
-}
-
 function IconSun(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
@@ -106,23 +73,50 @@ function IconSun(props: SVGProps<SVGSVGElement>) {
 }
 
 /* =========================
-   Page Component
+   Page
    ========================= */
 
 export default function Page() {
   return (
-    <main style={{ padding: '2rem', fontFamily: 'system-ui, sans-serif' }}>
-      <h1>TealTiger</h1>
-      <p>Runtime AI governance for security, cost, and evidence.</p>
+    <main className="mx-auto max-w-7xl px-6 py-20">
+      <section className="text-center">
+        <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
+          TealTiger
+        </h1>
+        <p className="mt-4 text-lg text-slate-600">
+          Runtime AI governance for security, cost, and evidence
+        </p>
 
-      <div style={{ display: 'flex', gap: '1rem', marginTop: '2rem' }}>
-        <IconShield width={24} height={24} />
-        <IconWallet width={24} height={24} />
-        <IconActivity width={24} height={24} />
-        <IconFlagEU width={24} height={24} />
-        <IconInfo width={24} height={24} />
-        <IconSun width={24} height={24} />
-      </div>
+        <div className="mt-10 flex justify-center gap-8 text-slate-700">
+          <IconShield className="h-6 w-6" />
+          <IconWallet className="h-6 w-6" />
+          <IconActivity className="h-6 w-6" />
+          <IconSun className="h-6 w-6" />
+        </div>
+      </section>
+
+      <section className="mt-24 grid gap-12 sm:grid-cols-3">
+        <div>
+          <h3 className="font-semibold">Security</h3>
+          <p className="mt-2 text-sm text-slate-600">
+            Deterministic, policy-driven runtime enforcement for AI systems.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="font-semibold">Cost</h3>
+          <p className="mt-2 text-sm text-slate-600">
+            Track, constrain, and justify AI spend at execution time.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="font-semibold">Evidence</h3>
+          <p className="mt-2 text-sm text-slate-600">
+            Produce verifiable decision evidence for audit and compliance.
+          </p>
+        </div>
+      </section>
     </main>
   );
 }
