@@ -18,7 +18,7 @@ export default function HomePage() {
       <header className="sticky top-0 z-50 border-b bg-white/80 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2">
+          #
             <span className="inline-flex h-9 w-9 items-center justify-center rounded-2xl bg-teal-600 shadow-sm">
               {/* Simple TealTiger Mark (inline SVG) */}
               <svg
@@ -55,45 +55,35 @@ export default function HomePage() {
 
           {/* Nav */}
           <nav className="hidden items-center gap-6 text-sm md:flex">
-            <a href="#overview" className="text-slate-700 hover:text-slate-900">
+            #overview
               Overview
             </a>
-            <a href="#umbrella" className="text-slate-700 hover:text-slate-900">
+            #umbrella
               Umbrella
             </a>
-            <a href="#releases" className="text-slate-700 hover:text-slate-900">
+            #releases
               Releases
             </a>
-            <a href={docsUrl} target="_blank" rel="noopener noreferrer" className="text-slate-700 hover:text-slate-900">
+            {docsUrl}
               Docs
             </a>
-            <a href={playgroundUrl} target="_blank" rel="noopener noreferrer" className="text-slate-700 hover:text-slate-900">
+            {playgroundUrl}
               Playground
             </a>
-            <a href={dockerHubOrgUrl} target="_blank" rel="noopener noreferrer" className="text-slate-700 hover:text-slate-900">
+            {dockerHubOrgUrl}
               Docker Hub
             </a>
-            <a href={`mailto:${contactEmail}`} className="text-slate-700 hover:text-slate-900">
+            {`mailto:${contactEmail}`}
               Contact
             </a>
           </nav>
 
           {/* Actions */}
           <div className="flex items-center gap-2">
-            <a
-              href={githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full border px-3 py-2 text-sm hover:bg-slate-50"
-            >
+            {githubUrl}
               GitHub
             </a>
-            <a
-              href={docsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full bg-teal-600 px-3 py-2 text-sm font-semibold text-white hover:bg-teal-700"
-            >
+            {docsUrl}
               Get Started
             </a>
           </div>
@@ -122,34 +112,16 @@ export default function HomePage() {
             </p>
 
             <div className="mt-7 flex flex-wrap gap-3">
-              <a
-                href={docsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-full bg-teal-600 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-700"
-              >
+              {docsUrl}
                 Open Docs
               </a>
-              <a
-                href={playgroundUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-full border px-4 py-2 text-sm hover:bg-slate-50"
-              >
+              {playgroundUrl}
                 Try Playground
               </a>
-              <a
-                href={dockerHubOrgUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-full border px-4 py-2 text-sm hover:bg-slate-50"
-              >
+              {dockerHubOrgUrl}
                 Docker Hub
               </a>
-              <a
-                href={`mailto:${contactEmail}`}
-                className="rounded-full border px-4 py-2 text-sm hover:bg-slate-50"
-              >
+              {`mailto:${contactEmail}`}
                 Contact
               </a>
             </div>
@@ -164,22 +136,22 @@ export default function HomePage() {
 
             <div className="mt-4 text-xs text-slate-500">
               <span className="font-medium text-slate-600">Docs:</span>{" "}
-              <a href={docsUrl} target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">
+              {docsUrl}
                 docs.tealtiger.ai
               </a>
               <span className="mx-2 text-slate-300">•</span>
               <span className="font-medium text-slate-600">Playground:</span>{" "}
-              <a href={playgroundUrl} target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">
+              {playgroundUrl}
                 playground.tealtiger.ai
               </a>
               <span className="mx-2 text-slate-300">•</span>
               <span className="font-medium text-slate-600">Docker:</span>{" "}
-              <a href={dockerHubOrgUrl} target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">
+              {dockerHubOrgUrl}
                 hub.docker.com/u/tealtigeradmin
               </a>
               <span className="mx-2 text-slate-300">•</span>
               <span className="font-medium text-slate-600">Contact:</span>{" "}
-              <a href={`mailto:${contactEmail}`} className="underline hover:no-underline">
+              {`mailto:${contactEmail}`}
                 {contactEmail}
               </a>
             </div>
@@ -210,38 +182,42 @@ export default function HomePage() {
               </li>
             </ul>
 
+            {/* ✅ Docker block + pull snippets */}
             <div className="mt-6 rounded-2xl border bg-white p-4">
               <p className="text-sm font-semibold">Docker Images</p>
               <p className="mt-1 text-xs text-slate-600">
-                Direct links to the images shown on Docker Hub.
+                Direct links and quick pull commands.
               </p>
+
               <div className="mt-3 flex flex-col gap-2 text-sm">
-                <a href={dockerHubDockerUrl} target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">
+                {dockerHubDockerUrl}
                   tealtigeradmin/tealtiger-docker
                 </a>
-                <a href={dockerHubPythonUrl} target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">
+                {dockerHubPythonUrl}
                   tealtigeradmin/tealtiger-python
                 </a>
-                <a href={dockerHubTypescriptUrl} target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">
+                {dockerHubTypescriptUrl}
                   tealtigeradmin/tealtiger-typescript
                 </a>
               </div>
 
+              {/* ✅ Docker pull snippet */}
+              <div className="mt-4 rounded-xl border bg-slate-50 p-3">
+                <p className="text-xs font-semibold text-slate-700">
+                  Quick pull
+                </p>
+                <pre className="mt-2 overflow-x-auto text-xs leading-5 text-slate-800">
+{`docker pull tealtigeradmin/tealtiger-docker
+docker pull tealtigeradmin/tealtiger-python
+docker pull tealtigeradmin/tealtiger-typescript`}
+                </pre>
+              </div>
+
               <div className="mt-4 flex flex-wrap gap-2">
-                <a
-                  href={dockerHubOrgUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-full border px-3 py-1 text-xs hover:bg-slate-50"
-                >
+                {dockerHubOrgUrl}
                   Docker Hub Org
                 </a>
-                <a
-                  href={githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-full border px-3 py-1 text-xs hover:bg-slate-50"
-                >
+                {githubUrl}
                   GitHub Repo
                 </a>
               </div>
@@ -255,20 +231,22 @@ export default function HomePage() {
         <div className="mx-auto max-w-6xl px-4 py-14">
           <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
-              <h2 className="text-2xl font-semibold tracking-tight">The TealTiger Umbrella</h2>
+              <h2 className="text-2xl font-semibold tracking-tight">
+                The TealTiger Umbrella
+              </h2>
               <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
                 TealTiger provides an umbrella of deterministic controls across security, cost, governance,
                 and evidence — designed to be composable and verifiable.
               </p>
             </div>
             <div className="flex flex-wrap gap-2">
-              <a href={docsUrl} target="_blank" rel="noopener noreferrer" className="rounded-full bg-teal-600 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-700">
+              {docsUrl}
                 Read the Specs
               </a>
-              <a href={dockerHubOrgUrl} target="_blank" rel="noopener noreferrer" className="rounded-full border px-4 py-2 text-sm hover:bg-slate-50">
+              {dockerHubOrgUrl}
                 Docker Hub
               </a>
-              <a href={githubUrl} target="_blank" rel="noopener noreferrer" className="rounded-full border px-4 py-2 text-sm hover:bg-slate-50">
+              {githubUrl}
                 GitHub
               </a>
             </div>
@@ -372,6 +350,39 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Overview */}
+      <section id="overview" className="border-t bg-slate-50/60">
+        <div className="mx-auto max-w-6xl px-4 py-14">
+          <h2 className="text-2xl font-semibold tracking-tight">Overview</h2>
+          <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-600">
+            TealTiger is built for teams who want AI controls that behave like software —
+            versioned, testable, composable. Use it to implement secure and cost-aware
+            execution across prompts, tools, policies, and runtime pathways.
+          </p>
+
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            <div className="rounded-3xl border bg-white p-6 shadow-sm">
+              <h3 className="text-base font-semibold">Security</h3>
+              <p className="mt-2 text-sm text-slate-600">
+                Policy hooks for safer AI usage patterns with consistent enforcement.
+              </p>
+            </div>
+            <div className="rounded-3xl border bg-white p-6 shadow-sm">
+              <h3 className="text-base font-semibold">Cost Controls</h3>
+              <p className="mt-2 text-sm text-slate-600">
+                Budget and usage-aware patterns to prevent runaway spend.
+              </p>
+            </div>
+            <div className="rounded-3xl border bg-white p-6 shadow-sm">
+              <h3 className="text-base font-semibold">Governance</h3>
+              <p className="mt-2 text-sm text-slate-600">
+                Dimensions + controls that map cleanly to enterprise needs.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Releases */}
       <section id="releases" className="border-t bg-white">
         <div className="mx-auto max-w-6xl px-4 py-14">
@@ -423,11 +434,11 @@ export default function HomePage() {
             </p>
 
             <div className="flex flex-wrap gap-4 text-sm">
-              <a href={docsUrl} target="_blank" rel="noopener noreferrer" className="hover:underline">Docs</a>
-              <a href={playgroundUrl} target="_blank" rel="noopener noreferrer" className="hover:underline">Playground</a>
-              <a href={dockerHubOrgUrl} target="_blank" rel="noopener noreferrer" className="hover:underline">Docker Hub</a>
-              <a href={`mailto:${contactEmail}`} className="hover:underline">Contact</a>
-              <a href={githubUrl} target="_blank" rel="noopener noreferrer" className="hover:underline">GitHub</a>
+              {docsUrl}Docs</a>
+              {playgroundUrl}Playground</a>
+              {dockerHubOrgUrl}Docker Hub</a>
+              {`mailto:${contactEmail}`}Contact</a>
+              {githubUrl}GitHub</a>
             </div>
           </div>
         </div>
