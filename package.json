@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "TealTiger Landing Page - AI Security & Cost Control Platform",
   "private": true,
+  "packageManager": "pnpm@10.0.0",
+  "engines": {
+    "node": ">=18 <21"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
