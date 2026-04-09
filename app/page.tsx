@@ -1,8 +1,10 @@
 'use client';
 
-import Image from 'next/image';
 import type { SVGProps } from 'react';
-import { useEffect, useMemo, useState, type FormEvent } from 'react';
+
+/* =========================
+   Icons
+   ========================= */
 
 function IconShield(props: SVGProps<SVGSVGElement>) {
   return (
@@ -37,7 +39,7 @@ function IconWallet(props: SVGProps<SVGSVGElement>) {
         stroke="currentColor"
         strokeWidth="1.7"
       />
-      <circle cx="16.6" cy="12.0" r="0.9" fill="currentColor" />
+      <circle cx="16.6" cy="12" r="0.9" fill="currentColor" />
     </svg>
   );
 }
@@ -78,7 +80,11 @@ function IconFlagEU(props: SVGProps<SVGSVGElement>) {
 function IconInfo(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-      <path d="M12 22a10 10 0 110-20 10 10 0 010 20z" stroke="currentColor" strokeWidth="1.7" />
+      <path
+        d="M12 22a10 10 0 110-20 10 10 0 010 20z"
+        stroke="currentColor"
+        strokeWidth="1.7"
+      />
       <path d="M12 10.5v6" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
       <circle cx="12" cy="7.6" r="1" fill="currentColor" />
     </svg>
@@ -88,6 +94,35 @@ function IconInfo(props: SVGProps<SVGSVGElement>) {
 function IconSun(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-      <path d="M12 18a6 6 0 100-12 6 6 0 000 12z" stroke="currentColor" strokeWidth="1.7" />
+      <path
+        d="M12 18a6 6 0 100-12 6 6 0 000 12z"
+        stroke="currentColor"
+        strokeWidth="1.7"
+      />
       <path d="M12 2v2" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
       <path d="M12 20v2" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+/* =========================
+   Page Component
+   ========================= */
+
+export default function Page() {
+  return (
+    <main style={{ padding: '2rem', fontFamily: 'system-ui, sans-serif' }}>
+      <h1>TealTiger</h1>
+      <p>Runtime AI governance for security, cost, and evidence.</p>
+
+      <div style={{ display: 'flex', gap: '1rem', marginTop: '2rem' }}>
+        <IconShield width={24} height={24} />
+        <IconWallet width={24} height={24} />
+        <IconActivity width={24} height={24} />
+        <IconFlagEU width={24} height={24} />
+        <IconInfo width={24} height={24} />
+        <IconSun width={24} height={24} />
+      </div>
+    </main>
+  );
+}
