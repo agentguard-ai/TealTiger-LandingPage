@@ -1,491 +1,166 @@
 export default function HomePage() {
   const docsUrl = "https://docs.tealtiger.ai";
   const playgroundUrl = "https://playground.tealtiger.ai";
-  const contactEmail = "reachout@tealtiger.ai";
-
+  const dockerHubUrl = "https://hub.docker.com/u/tealtigeradmin";
   const githubUrl = "https://github.com/agentguard-ai/tealtiger";
-
-  const dockerHubOrgUrl = "https://hub.docker.com/u/tealtigeradmin";
-  const dockerHubPythonUrl =
-    "https://hub.docker.com/r/tealtigeradmin/tealtiger-python";
-  const dockerHubDockerUrl =
-    "https://hub.docker.com/r/tealtigeradmin/tealtiger-docker";
-  const dockerHubTypescriptUrl =
-    "https://hub.docker.com/r/tealtigeradmin/tealtiger-typescript";
-
-  const ext = { target: "_blank", rel: "noopener noreferrer" } as const;
+  const contactEmail = "reachout@tealtiger.ai";
 
   return (
     <main className="min-h-screen bg-white text-slate-900">
-      {/* Top Bar */}
-      <header className="sticky top-0 z-50 border-b bg-white/80 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-          {/* Logo */}
-          <a href="#" className="flex items-center gap-2">
-            <span className="inline-flex h-9 w-9 items-center justify-center rounded-2xl bg-teal-600 shadow-sm">
-              <svg
-                width="22"
-                height="22"
-                viewBox="0 0 24 24"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path
-                  d="M5.5 16.5c1.4 1.9 3.7 3.2 6.5 3.2 2.8 0 5.1-1.3 6.5-3.2"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                />
-                <path
-                  d="M7 9.5c.9-2 2.7-3.6 5-3.6s4.1 1.6 5 3.6"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                />
-                <path
-                  d="M9 12.4c.5-.9 1.5-1.6 3-1.6s2.5.7 3 1.6"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </span>
-            <span className="text-base font-semibold tracking-tight">
-              TealTiger
-            </span>
-          </a>
-
-          {/* Nav */}
-          <nav className="hidden items-center gap-6 text-sm md:flex">
-            <a href="#overview" className="text-slate-700 hover:text-slate-900">
-              Overview
-            </a>
-            <a href="#umbrella" className="text-slate-700 hover:text-slate-900">
-              Umbrella
-            </a>
-            <a href="#releases" className="text-slate-700 hover:text-slate-900">
-              Releases
-            </a>
-            <a href={docsUrl} {...ext} className="text-slate-700 hover:text-slate-900">
-              Docs
-            </a>
-            <a
-              href={playgroundUrl}
-              {...ext}
-              className="text-slate-700 hover:text-slate-900"
-            >
-              Playground
-            </a>
-            <a
-              href={dockerHubOrgUrl}
-              {...ext}
-              className="text-slate-700 hover:text-slate-900"
-            >
-              Docker Hub
-            </a>
-            <a
-              href={`mailto:${contactEmail}`}
-              className="text-slate-700 hover:text-slate-900"
-            >
-              Contact
-            </a>
-          </nav>
-
-          {/* Actions */}
-          <div className="flex items-center gap-2">
-            <a
-              href={githubUrl}
-              {...ext}
-              className="rounded-full border px-4 py-2 text-sm hover:bg-slate-50"
-            >
-              GitHub
-            </a>
-            <a
-              href={docsUrl}
-              {...ext}
-              className="rounded-full bg-teal-600 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-700"
-            >
-              Get Started
-            </a>
+      {/* Header */}
+      <header className="border-b">
+        <div className="mx-auto max-w-6xl px-4 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="h-9 w-9 rounded-xl bg-teal-600" />
+            <span className="text-lg font-semibold">TealTiger</span>
           </div>
+
+          <nav className="flex gap-6 text-sm text-slate-600">
+            <a href={docsUrl} target="_blank">Docs</a>
+            <a href={playgroundUrl} target="_blank">Playground</a>
+            <a href={dockerHubUrl} target="_blank">Docker</a>
+            <a href={githubUrl} target="_blank">GitHub</a>
+            <a href={`mailto:${contactEmail}`}>Contact</a>
+          </nav>
         </div>
       </header>
 
       {/* Hero */}
-      <section className="mx-auto max-w-6xl px-4 pb-14 pt-12">
-        <div className="grid gap-10 md:grid-cols-2 md:items-center">
-          <div>
-            <div className="inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm">
-              <span className="font-semibold">v1.1.1</span>
-              <span className="text-slate-600">launched</span>
-              <span className="text-slate-400">•</span>
-              <span className="text-slate-600">SDK + Docker images</span>
-            </div>
+      <section className="mx-auto max-w-6xl px-4 py-14">
+        <h1 className="text-4xl font-semibold tracking-tight">
+          Deterministic AI Governance &amp; Security SDK
+        </h1>
 
-            <h1 className="mt-5 text-4xl font-semibold tracking-tight md:text-5xl">
-              Deterministic AI Governance &amp; Security SDK
-            </h1>
+        <p className="mt-4 max-w-3xl text-base text-slate-600">
+          TealTiger enables deterministic security, cost, and governance controls
+          for AI applications and agents — designed for enterprise adoption.
+        </p>
 
-            <p className="mt-4 text-base leading-7 text-slate-600">
-              TealTiger helps teams enforce security, cost controls, and governance
-              for modern AI apps and agents — with versioned specifications,
-              predictable behavior, and evidence-ready outputs.
-            </p>
+        {/* Capability chips */}
+        <div className="mt-6 flex flex-wrap gap-2 text-sm text-slate-600">
+          <span className="rounded-full border px-3 py-1">TypeScript</span>
+          <span className="rounded-full border px-3 py-1">Java</span>
+          <span className="rounded-full border px-3 py-1">Docker</span>
+          <span className="rounded-full border px-3 py-1">Policy‑ready</span>
+          <span className="rounded-full border px-3 py-1">Enterprise‑first</span>
+        </div>
 
-            <div className="mt-7 flex flex-wrap gap-3">
-              <a
-                href={docsUrl}
-                {...ext}
-                className="rounded-full bg-teal-600 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-700"
-              >
-                Open Docs
-              </a>
-              <a
-                href={playgroundUrl}
-                {...ext}
-                className="rounded-full border px-4 py-2 text-sm hover:bg-slate-50"
-              >
-                Try Playground
-              </a>
-              <a
-                href={dockerHubOrgUrl}
-                {...ext}
-                className="rounded-full border px-4 py-2 text-sm hover:bg-slate-50"
-              >
-                Docker Hub
-              </a>
-              <a
-                href={`mailto:${contactEmail}`}
-                className="rounded-full border px-4 py-2 text-sm hover:bg-slate-50"
-              >
-                Contact
-              </a>
-            </div>
+        {/* Flat links row (matches your screenshot style) */}
+        <div className="mt-5 text-sm text-slate-600">
+          <span className="font-medium">Docs:</span>{" "}
+          <a className="underline" href={docsUrl} target="_blank">
+            docs.tealtiger.ai
+          </a>
+          <span className="mx-2">·</span>
 
-            <div className="mt-8 flex flex-wrap items-center gap-2 text-xs text-slate-500">
-              <span className="rounded-full border px-3 py-1">TypeScript</span>
-              <span className="rounded-full border px-3 py-1">Java</span>
-              <span className="rounded-full border px-3 py-1">Docker</span>
-              <span className="rounded-full border px-3 py-1">Policy-ready</span>
-              <span className="rounded-full border px-3 py-1">Enterprise-first</span>
-            </div>
+          <span className="font-medium">Playground:</span>{" "}
+          <a className="underline" href={playgroundUrl} target="_blank">
+            playground.tealtiger.ai
+          </a>
+          <span className="mx-2">·</span>
 
-            <div className="mt-4 text-xs text-slate-500">
-              <span className="font-medium text-slate-600">Docs:</span>{" "}
-              <a href={docsUrl} {...ext} className="underline underline-offset-2">
-                docs.tealtiger.ai
-              </a>
-              <span className="mx-2 text-slate-300">•</span>
-              <span className="font-medium text-slate-600">Playground:</span>{" "}
-              <a
-                href={playgroundUrl}
-                {...ext}
-                className="underline underline-offset-2"
-              >
-                playground.tealtiger.ai
-              </a>
-              <span className="mx-2 text-slate-300">•</span>
-              <span className="font-medium text-slate-600">Docker:</span>{" "}
-              <a
-                href={dockerHubOrgUrl}
-                {...ext}
-                className="underline underline-offset-2"
-              >
-                tealtigeradmin
-              </a>
-              <span className="mx-2 text-slate-300">•</span>
-              <span className="font-medium text-slate-600">Contact:</span>{" "}
-              <a
-                href={`mailto:${contactEmail}`}
-                className="underline underline-offset-2"
-              >
-                {contactEmail}
-              </a>
-            </div>
-          </div>
+          <span className="font-medium">Docker:</span>{" "}
+          <a className="underline" href={dockerHubUrl} target="_blank">
+            tealtigeradmin
+          </a>
+          <span className="mx-2">·</span>
 
-          {/* Right Card */}
-          <div className="rounded-3xl border bg-gradient-to-br from-teal-50 to-white p-6 shadow-sm">
-            <h2 className="text-lg font-semibold">What you get</h2>
-
-            <ul className="mt-4 space-y-3 text-sm text-slate-700">
-              <li className="flex gap-3">
-                <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-teal-600" />
-                <span>
-                  <span className="font-semibold">Deterministic guardrails</span> —
-                  predictable outcomes with versioned contracts.
-                </span>
-              </li>
-              <li className="flex gap-3">
-                <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-teal-600" />
-                <span>
-                  <span className="font-semibold">Governance dimensions</span> —
-                  modular controls you can adopt incrementally.
-                </span>
-              </li>
-              <li className="flex gap-3">
-                <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-teal-600" />
-                <span>
-                  <span className="font-semibold">Evidence direction (v1.2.x)</span> —
-                  TEEC direction + verification patterns.
-                </span>
-              </li>
-            </ul>
-
-            {/* Docker block + pull snippets */}
-            <div className="mt-6 rounded-2xl border bg-white p-4">
-              <p className="text-sm font-semibold">Docker Images</p>
-              <p className="mt-1 text-xs text-slate-600">
-                Direct links and quick pull commands.
-              </p>
-
-              <div className="mt-3 flex flex-col gap-2 text-sm">
-                <a href={dockerHubDockerUrl} {...ext} className="underline underline-offset-2">
-                  tealtigeradmin/tealtiger-docker
-                </a>
-                <a href={dockerHubPythonUrl} {...ext} className="underline underline-offset-2">
-                  tealtigeradmin/tealtiger-python
-                </a>
-                <a
-                  href={dockerHubTypescriptUrl}
-                  {...ext}
-                  className="underline underline-offset-2"
-                >
-                  tealtigeradmin/tealtiger-typescript
-                </a>
-              </div>
-
-              <div className="mt-4 rounded-xl border bg-slate-50 p-3">
-                <p className="text-xs font-semibold text-slate-700">Quick pull</p>
-                <pre className="mt-2 overflow-x-auto text-xs leading-5 text-slate-800">
-{`docker pull tealtigeradmin/tealtiger-docker
-docker pull tealtigeradmin/tealtiger-python
-docker pull tealtigeradmin/tealtiger-typescript`}
-                </pre>
-              </div>
-
-              <div className="mt-4 flex flex-wrap gap-2">
-                <a
-                  href={dockerHubOrgUrl}
-                  {...ext}
-                  className="rounded-full border px-3 py-1 text-xs hover:bg-slate-50"
-                >
-                  Docker Hub Org
-                </a>
-                <a
-                  href={githubUrl}
-                  {...ext}
-                  className="rounded-full border px-3 py-1 text-xs hover:bg-slate-50"
-                >
-                  GitHub Repo
-                </a>
-              </div>
-            </div>
-          </div>
+          <span className="font-medium">Contact:</span>{" "}
+          <a className="underline" href={`mailto:${contactEmail}`}>
+            {contactEmail}
+          </a>
         </div>
       </section>
 
-      {/* Umbrella Diagram */}
-      <section id="umbrella" className="border-t bg-white">
-        <div className="mx-auto max-w-6xl px-4 py-14">
-          <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-            <div>
-              <h2 className="text-2xl font-semibold tracking-tight">
-                The TealTiger Umbrella
-              </h2>
-              <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
-                TealTiger provides an umbrella of deterministic controls across
-                security, cost, governance, and evidence — designed to be composable
-                and verifiable.
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              <a
-                href={docsUrl}
-                {...ext}
-                className="rounded-full bg-teal-600 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-700"
-              >
-                Read the Specs
-              </a>
-              <a
-                href={dockerHubOrgUrl}
-                {...ext}
-                className="rounded-full border px-4 py-2 text-sm hover:bg-slate-50"
-              >
-                Docker Hub
-              </a>
-              <a
-                href={githubUrl}
-                {...ext}
-                className="rounded-full border px-4 py-2 text-sm hover:bg-slate-50"
-              >
-                GitHub
-              </a>
-            </div>
-          </div>
+      {/* Umbrella Diagram (clean + centered) */}
+      <section className="mx-auto max-w-6xl px-4 pb-20">
+        <div className="rounded-3xl border bg-gradient-to-br from-teal-50 to-white p-10">
+          <svg viewBox="0 0 900 420" className="w-full h-auto">
+            <defs>
+              <linearGradient id="canopy" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stopColor="#0f766e" />
+                <stop offset="100%" stopColor="#14b8a6" />
+              </linearGradient>
+            </defs>
 
-          <div className="mt-8 rounded-3xl border bg-gradient-to-br from-teal-50 to-white p-6 shadow-sm">
-            <svg
-              viewBox="0 0 960 420"
-              role="img"
-              aria-label="TealTiger umbrella diagram showing security, cost, governance, and evidence covering apps and agents"
-              className="h-auto w-full"
+            {/* Canopy */}
+            <path
+              d="
+                M120 200
+                C200 80, 350 40, 450 40
+                C550 40, 700 80, 780 200
+                C700 210, 650 210, 600 200
+                C550 210, 500 210, 450 200
+                C400 210, 350 210, 300 200
+                C250 210, 200 210, 150 200
+                Z
+              "
+              fill="url(#canopy)"
+            />
+
+            {/* Labels */}
+            <g fill="white" fontSize="18" fontWeight="600" textAnchor="middle">
+              <text x="240" y="125">Security</text>
+              <text x="380" y="105">Governance</text>
+              <text x="520" y="105">Cost</text>
+              <text x="660" y="125">Evidence</text>
+            </g>
+
+            {/* Stem */}
+            <path
+              d="M450 200 L450 290"
+              stroke="#0f766e"
+              strokeWidth="10"
+              strokeLinecap="round"
+            />
+
+            {/* SDK box */}
+            <rect x="300" y="260" rx="18" ry="18" width="300" height="70" fill="white" />
+            <text
+              x="450"
+              y="300"
+              textAnchor="middle"
+              fontSize="20"
+              fontWeight="700"
+              fill="#0f172a"
             >
-              <defs>
-                <linearGradient id="tealGrad" x1="0" x2="1" y1="0" y2="1">
-                  <stop offset="0" stopColor="#0f766e" stopOpacity="1" />
-                  <stop offset="1" stopColor="#14b8a6" stopOpacity="1" />
-                </linearGradient>
-                <linearGradient id="tealSoft" x1="0" x2="1" y1="0" y2="0">
-                  <stop offset="0" stopColor="#0f766e" stopOpacity="0.12" />
-                  <stop offset="1" stopColor="#14b8a6" stopOpacity="0.10" />
-                </linearGradient>
-              </defs>
+              TealTiger SDK
+            </text>
+            <text
+              x="450"
+              y="322"
+              textAnchor="middle"
+              fontSize="12"
+              fill="#475569"
+            >
+              deterministic enforcement • composable modules • enterprise‑ready
+            </text>
 
-              <rect x="12" y="12" width="936" height="396" rx="28" fill="white" />
-              <rect x="12" y="12" width="936" height="396" rx="28" fill="url(#tealSoft)" />
-
-              <path
-                d="M160 200 C 240 90, 360 45, 480 45 C 600 45, 720 90, 800 200
-                   C 760 220, 720 220, 680 200
-                   C 640 220, 600 220, 560 200
-                   C 520 220, 480 220, 440 200
-                   C 400 220, 360 220, 320 200
-                   C 280 220, 240 220, 200 200
-                   C 188 206, 176 206, 160 200 Z"
-                fill="url(#tealGrad)"
-              />
-
-              <g fontFamily="ui-sans-serif, system-ui" fontWeight="700" fill="white" fontSize="18">
-                <text x="235" y="130">Security</text>
-                <text x="400" y="110">Governance</text>
-                <text x="545" y="110">Cost</text>
-                <text x="690" y="130">Evidence</text>
-              </g>
-
-              <path
-                d="M480 200 C480 230, 480 260, 480 290 C480 330, 505 350, 530 350"
-                stroke="#0f766e"
-                strokeWidth="10"
-                strokeLinecap="round"
-                fill="none"
-              />
-              <path
-                d="M530 350 C540 350, 548 360, 548 370 C548 390, 520 402, 500 388"
-                stroke="#0f766e"
-                strokeWidth="10"
-                strokeLinecap="round"
-                fill="none"
-              />
-
-              <rect x="355" y="250" width="250" height="70" rx="18" fill="white" />
-              <rect x="355" y="250" width="250" height="70" rx="18" fill="rgba(20,184,166,0.10)" />
-              <g fontFamily="ui-sans-serif, system-ui" fill="#0f172a">
-                <text x="480" y="280" textAnchor="middle" fontSize="18" fontWeight="800">
-                  TealTiger SDK
-                </text>
-                <text x="480" y="302" textAnchor="middle" fontSize="12" fill="#334155" fontWeight="600">
-                  deterministic enforcement • composable modules • enterprise-ready
-                </text>
-              </g>
-
-              <rect x="170" y="340" width="620" height="52" rx="16" fill="white" stroke="rgba(15,23,42,0.12)" />
-              <g fontFamily="ui-sans-serif, system-ui" fill="#0f172a" fontWeight="700">
-                <text x="480" y="372" textAnchor="middle" fontSize="14">
-                  AI Apps • Agents • Tools • Pipelines
-                </text>
-              </g>
-            </svg>
-          </div>
-        </div>
-      </section>
-
-      {/* Releases */}
-      <section id="releases" className="border-t bg-white">
-        <div className="mx-auto max-w-6xl px-4 py-14">
-          <h2 className="text-2xl font-semibold tracking-tight">Releases</h2>
-          <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-600">
-            Current status and what’s next — kept high-level on purpose, with detailed
-            specs living in docs and PRDs.
-          </p>
-
-          <div className="mt-8 grid gap-4 md:grid-cols-2">
-            <div className="rounded-3xl border bg-slate-50 p-6">
-              <div className="inline-flex items-center gap-2 rounded-full border bg-white px-3 py-1 text-xs">
-                <span className="font-semibold">v1.1.1</span>
-                <span className="text-slate-500">launched</span>
-              </div>
-              <h3 className="mt-3 text-base font-semibold">
-                Security + Cost foundations
-              </h3>
-              <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-slate-700">
-                <li>SDK packages (TypeScript + Java)</li>
-                <li>Docker images published</li>
-                <li>Core patterns for deterministic enforcement</li>
-              </ul>
-            </div>
-
-            <div className="rounded-3xl border bg-white p-6 shadow-sm">
-              <div className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs">
-                <span className="font-semibold">v1.2.x</span>
-                <span className="text-slate-500">upcoming</span>
-              </div>
-              <h3 className="mt-3 text-base font-semibold">
-                Evidence + Verification direction
-              </h3>
-              <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-slate-700">
-                <li>High-level TEEC direction (event/evidence contract)</li>
-                <li>Verification harness module patterns</li>
-                <li>Enterprise reporting hooks (ex: SARIF direction)</li>
-              </ul>
-              <p className="mt-3 text-xs text-slate-500">
-                Note: TEEC is not fully built yet — this section intentionally describes direction.
-              </p>
-            </div>
-          </div>
+            {/* Bottom strip */}
+            <rect x="220" y="350" rx="16" ry="16" width="460" height="42" fill="white" />
+            <text
+              x="450"
+              y="378"
+              textAnchor="middle"
+              fontSize="14"
+              fontWeight="600"
+              fill="#0f172a"
+            >
+              AI Apps • Agents • Tools • Pipelines
+            </text>
+          </svg>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t bg-white">
-        <div className="mx-auto max-w-6xl px-4 py-10">
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <p className="text-sm text-slate-600">
-              © {new Date().getFullYear()} TealTiger. Built for deterministic AI governance.
-            </p>
-
-            <div className="flex flex-wrap gap-4 text-sm">
-              <a href={docsUrl} {...ext} className="text-slate-700 hover:text-slate-900">
-                Docs
-              </a>
-              <a
-                href={playgroundUrl}
-                {...ext}
-                className="text-slate-700 hover:text-slate-900"
-              >
-                Playground
-              </a>
-              <a
-                href={dockerHubOrgUrl}
-                {...ext}
-                className="text-slate-700 hover:text-slate-900"
-              >
-                Docker Hub
-              </a>
-              <a
-                href={`mailto:${contactEmail}`}
-                className="text-slate-700 hover:text-slate-900"
-              >
-                Contact
-              </a>
-              <a
-                href={githubUrl}
-                {...ext}
-                className="text-slate-700 hover:text-slate-900"
-              >
-                GitHub
-              </a>
-            </div>
+      <footer className="border-t">
+        <div className="mx-auto max-w-6xl px-4 py-8 text-sm text-slate-600 flex justify-between">
+          <span>© {new Date().getFullYear()} TealTiger</span>
+          <div className="flex gap-4">
+            <a href={docsUrl} target="_blank">Docs</a>
+            <a href={githubUrl} target="_blank">GitHub</a>
+            <a href={dockerHubUrl} target="_blank">Docker</a>
+            <a href={`mailto:${contactEmail}`}>Contact</a>
           </div>
         </div>
       </footer>
