@@ -3,6 +3,7 @@ export default function HomePage() {
   const playgroundUrl = "https://playground.tealtiger.ai";
   const githubUrl = "https://github.com/agentguard-ai/tealtiger";
 
+  // Docker Hub publisher
   const dockerHubOrgUrl = "https://hub.docker.com/u/tealtigeradmin";
   const dockerHubDockerUrl =
     "https://hub.docker.com/r/tealtigeradmin/tealtiger-docker";
@@ -11,8 +12,8 @@ export default function HomePage() {
   const dockerHubTypescriptUrl =
     "https://hub.docker.com/r/tealtigeradmin/tealtiger-typescript";
 
-  const contactEmail = "reachout@tealtiger.ai";
-  const contactMailto = `mailto:${contactEmail}`;
+  // Per request: show contact as plain text (no link)
+  const contactEmailText = "reachout@tealtiger.ai";
 
   const ext = { target: "_blank", rel: "noopener noreferrer" } as const;
 
@@ -23,7 +24,13 @@ export default function HomePage() {
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
           <a href="#" className="flex items-center gap-2">
             <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-teal-700 shadow-sm">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
                 <path
                   d="M6 16.8c1.6 1.7 3.7 2.7 6 2.7s4.4-1 6-2.7"
                   stroke="white"
@@ -38,25 +45,42 @@ export default function HomePage() {
                 />
               </svg>
             </span>
-            <span className="text-base font-semibold tracking-tight">TealTiger</span>
+            <span className="text-base font-semibold tracking-tight">
+              TealTiger
+            </span>
           </a>
 
           <nav className="hidden items-center gap-6 text-sm text-slate-700 md:flex">
-            <a href="#releases" className="hover:text-slate-900">Releases</a>
-            <a href="#capabilities" className="hover:text-slate-900">Capabilities</a>
-            <a href="#docker" className="hover:text-slate-900">Docker</a>
-            <a href={docsUrl} {...ext} className="hover:text-slate-900">Docs</a>
-            <a href={playgroundUrl} {...ext} className="hover:text-slate-900">Playground</a>
-            <a href={githubUrl} {...ext} className="hover:text-slate-900">GitHub</a>
-            {/* mailto should NOT open in a new tab */}
-            <a href={contactMailto} className="hover:text-slate-900">Contact</a>
+            <a href="#releases" className="hover:text-slate-900">
+              Releases
+            </a>
+            <a href="#capabilities" className="hover:text-slate-900">
+              Capabilities
+            </a>
+            <a href="#docker" className="hover:text-slate-900">
+              Docker
+            </a>
+            <a href={docsUrl} {...ext} className="hover:text-slate-900">
+              Docs
+            </a>
+            <a href={playgroundUrl} {...ext} className="hover:text-slate-900">
+              Playground
+            </a>
+            <a href={dockerHubOrgUrl} {...ext} className="hover:text-slate-900">
+              Docker Hub
+            </a>
+            <a href={githubUrl} {...ext} className="hover:text-slate-900">
+              GitHub
+            </a>
+            {/* Per request: Contact as plain text in header */}
+            <span className="text-slate-500">{contactEmailText}</span>
           </nav>
 
           <div className="flex items-center gap-2">
             <a
               href={docsUrl}
               {...ext}
-              className="inline-flex items-center rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800"
+              className="inline-flex items-center rounded-xl bg-teal-700 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-teal-800"
             >
               Get Started
             </a>
@@ -81,117 +105,136 @@ export default function HomePage() {
             </h1>
 
             <p className="mt-4 max-w-xl text-base leading-7 text-slate-600">
-              Deterministic controls for AI apps and agents — built for predictable enforcement,
-              modular adoption, and enterprise integration (docs, CI, reporting).
+              Deterministic controls for AI apps and agents — built for predictable
+              enforcement, modular adoption, and enterprise integration (docs, CI,
+              reporting).
             </p>
 
-            {/* Enterprise chips */}
+            {/* Chips */}
             <div className="mt-6 flex flex-wrap gap-2">
-              <span className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-700">TypeScript</span>
-              <span className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-700">Java</span>
-              <span className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-700">Docker</span>
-              <span className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-700">Policy-ready</span>
-              <span className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-700">Enterprise-first</span>
+              <span className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-700">
+                TypeScript
+              </span>
+              <span className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-700">
+                Java
+              </span>
+              <span className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-700">
+                Docker
+              </span>
+              <span className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-700">
+                Policy-ready
+              </span>
+              <span className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-700">
+                Enterprise-first
+              </span>
             </div>
 
-            {/* Single clean link row (like your reference) */}
-            <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-slate-600">
-              <span>Docs:</span>
-              <a href={docsUrl} {...ext} className="underline decoration-slate-300 underline-offset-2 hover:text-slate-900">
+            {/* Links row (docker stays inline like your screenshot) */}
+            <div className="mt-4 text-sm text-slate-600">
+              <span>Docs:</span>{" "}
+              <a href={docsUrl} {...ext} className="underline underline-offset-4">
                 docs.tealtiger.ai
-              </a>
-
-              <span className="text-slate-300">•</span>
-
-              <span>Playground:</span>
-              <a href={playgroundUrl} {...ext} className="underline decoration-slate-300 underline-offset-2 hover:text-slate-900">
+              </a>{" "}
+              <span className="mx-2 text-slate-300">•</span>
+              <span>Playground:</span>{" "}
+              <a
+                href={playgroundUrl}
+                {...ext}
+                className="underline underline-offset-4"
+              >
                 playground.tealtiger.ai
-              </a>
-
-              <span className="text-slate-300">•</span>
-
-              <span>Docker:</span>
-              <a href={dockerHubOrgUrl} {...ext} className="underline decoration-slate-300 underline-offset-2 hover:text-slate-900">
-                tealtigeradmin
-              </a>
-
-              <span className="text-slate-300">•</span>
-
-              <span>Contact:</span>
-              <a href={contactMailto} className="underline decoration-slate-300 underline-offset-2 hover:text-slate-900">
-                {contactEmail}
-              </a>
+              </a>{" "}
+              <span className="mx-2 text-slate-300">•</span>
+              <span className="inline-flex items-baseline gap-1">
+                <span>Docker:</span>
+                <a
+                  href={dockerHubOrgUrl}
+                  {...ext}
+                  className="underline underline-offset-4"
+                >
+                  tealtigeradmin
+                </a>
+              </span>{" "}
+              <span className="mx-2 text-slate-300">•</span>
+              <span>Contact:</span>{" "}
+              <span className="font-medium text-slate-700">
+                {contactEmailText}
+              </span>
             </div>
 
             <div className="mt-7 flex flex-wrap gap-3">
               <a
                 href={docsUrl}
                 {...ext}
-                className="inline-flex items-center rounded-full bg-teal-700 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-800"
+                className="inline-flex items-center rounded-xl bg-teal-700 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-teal-800"
               >
                 Open Docs
               </a>
               <a
                 href={playgroundUrl}
                 {...ext}
-                className="inline-flex items-center rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-50"
+                className="inline-flex items-center rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-900 shadow-sm hover:bg-slate-50"
               >
                 Try Playground
               </a>
               <a
                 href={githubUrl}
                 {...ext}
-                className="inline-flex items-center rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-50"
+                className="inline-flex items-center rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-900 shadow-sm hover:bg-slate-50"
               >
                 View GitHub
               </a>
             </div>
           </div>
 
-          {/* Right: Enterprise summary card */}
+          {/* Right card */}
           <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-            <h2 className="text-lg font-semibold">Operational-ready by design</h2>
-            <p className="mt-2 text-sm leading-6 text-slate-600">
-              TealTiger is designed to fit enterprise workflows: modular controls, predictable outcomes,
-              and clear integration surfaces for CI and reporting.
+            <h2 className="text-lg font-semibold">Quick Docker Pull</h2>
+            <p className="mt-2 text-sm text-slate-600">
+              Pull the images directly from Docker Hub.
             </p>
 
-            <div className="mt-5 grid gap-3">
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                <p className="text-sm font-semibold text-slate-900">Deterministic enforcement</p>
-                <p className="mt-1 text-sm text-slate-600">
-                  Controls behave like software — consistent, testable, version-aware.
-                </p>
-              </div>
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                <p className="text-sm font-semibold text-slate-900">Incremental adoption</p>
-                <p className="mt-1 text-sm text-slate-600">
-                  Adopt only the modules you need and expand as governance maturity grows.
-                </p>
-              </div>
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                <p className="text-sm font-semibold text-slate-900">Enterprise reporting direction</p>
-                <p className="mt-1 text-sm text-slate-600">
-                  v1.2.x expands evidence and reporting hooks (e.g., SARIF direction).
-                </p>
-              </div>
+            <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-4">
+              <pre className="overflow-x-auto text-xs leading-5 text-slate-800">
+{`docker pull tealtigeradmin/tealtiger-docker
+docker pull tealtigeradmin/tealtiger-python
+docker pull tealtigeradmin/tealtiger-typescript`}
+              </pre>
+            </div>
+
+            <div className="mt-4 grid gap-2 text-sm">
+              <a href={dockerHubDockerUrl} {...ext} className="underline underline-offset-4">
+                tealtigeradmin/tealtiger-docker
+              </a>
+              <a href={dockerHubPythonUrl} {...ext} className="underline underline-offset-4">
+                tealtigeradmin/tealtiger-python
+              </a>
+              <a href={dockerHubTypescriptUrl} {...ext} className="underline underline-offset-4">
+                tealtigeradmin/tealtiger-typescript
+              </a>
+            </div>
+
+            <div className="mt-5 flex flex-wrap gap-2">
+              <a href={dockerHubOrgUrl} {...ext} className="inline-flex items-center rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-900 shadow-sm hover:bg-slate-50">
+                Docker Hub
+              </a>
+              <a href={githubUrl} {...ext} className="inline-flex items-center rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-900 shadow-sm hover:bg-slate-50">
+                GitHub
+              </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Releases: v1.1.1 released + v1.2.x upcoming */}
+      {/* Releases */}
       <section id="releases" className="border-t border-slate-200 bg-slate-50/40">
         <div className="mx-auto max-w-6xl px-4 py-12">
-          <div className="flex flex-col gap-2">
-            <h2 className="text-2xl font-semibold tracking-tight">Releases</h2>
-            <p className="text-sm text-slate-600">
-              Clear status for procurement and engineering planning.
-            </p>
-          </div>
+          <h2 className="text-2xl font-semibold tracking-tight">Releases</h2>
+          <p className="mt-2 text-sm text-slate-600">
+            Clear status for enterprise planning.
+          </p>
 
           <div className="mt-6 grid gap-4 md:grid-cols-2">
-            {/* v1.1.1 Released */}
             <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
               <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold text-slate-700">
                 <span className="text-slate-900">v1.1.1</span>
@@ -200,10 +243,6 @@ export default function HomePage() {
               </div>
 
               <h3 className="mt-3 text-base font-semibold">Security + cost foundations</h3>
-              <p className="mt-2 text-sm text-slate-600">
-                Stable baseline for SDK usage patterns and containerized deployment.
-              </p>
-
               <ul className="mt-4 space-y-2 text-sm text-slate-700">
                 <li className="flex gap-2">
                   <span className="mt-2 h-1.5 w-1.5 rounded-full bg-teal-700" />
@@ -218,26 +257,8 @@ export default function HomePage() {
                   Core deterministic enforcement patterns
                 </li>
               </ul>
-
-              <div className="mt-5 flex flex-wrap gap-2">
-                <a
-                  href={githubUrl}
-                  {...ext}
-                  className="inline-flex items-center rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-50"
-                >
-                  GitHub
-                </a>
-                <a
-                  href={dockerHubOrgUrl}
-                  {...ext}
-                  className="inline-flex items-center rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-50"
-                >
-                  Docker Hub
-                </a>
-              </div>
             </div>
 
-            {/* v1.2.x Upcoming */}
             <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
               <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold text-slate-700">
                 <span className="text-slate-900">v1.2.x</span>
@@ -245,11 +266,9 @@ export default function HomePage() {
                 <span className="text-indigo-700">Upcoming</span>
               </div>
 
-              <h3 className="mt-3 text-base font-semibold">Governance expansion + evidence direction</h3>
-              <p className="mt-2 text-sm text-slate-600">
-                Focused on enterprise adoption: evidence primitives, verification patterns, and reporting integration.
-              </p>
-
+              <h3 className="mt-3 text-base font-semibold">
+                Governance expansion + evidence direction
+              </h3>
               <ul className="mt-4 space-y-2 text-sm text-slate-700">
                 <li className="flex gap-2">
                   <span className="mt-2 h-1.5 w-1.5 rounded-full bg-indigo-700" />
@@ -265,23 +284,14 @@ export default function HomePage() {
                 </li>
                 <li className="flex gap-2">
                   <span className="mt-2 h-1.5 w-1.5 rounded-full bg-indigo-700" />
-                  Reliability &amp; integration hardening (enterprise readiness)
+                  Reliability &amp; integration hardening
                 </li>
               </ul>
 
+              {/* Per request: NO button linking to v1.2.x docs */}
               <p className="mt-4 text-xs text-slate-500">
-                Note: TEEC is intentionally described as direction until fully shipped in v1.2.x.
+                Documentation for v1.2.x will be published when the features ship.
               </p>
-
-              <div className="mt-5">
-                <a
-                  href={docsUrl}
-                  {...ext}
-                  className="inline-flex items-center rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800"
-                >
-                  Read v1.2.x Direction
-                </a>
-              </div>
             </div>
           </div>
         </div>
@@ -334,62 +344,9 @@ export default function HomePage() {
                 Pull official TealTiger images from Docker Hub.
               </p>
             </div>
-            <a
-              href={dockerHubOrgUrl}
-              {...ext}
-              className="inline-flex items-center rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-50"
-            >
+            <a href={dockerHubOrgUrl} {...ext} className="text-sm font-semibold text-teal-800 underline underline-offset-4">
               View Docker Hub Publisher
             </a>
-          </div>
-
-          <div className="mt-6 grid gap-4 md:grid-cols-2">
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-              <p className="text-sm font-semibold">Quick pull</p>
-              <p className="mt-2 text-sm text-slate-600">
-                Use the commands below to pull images.
-              </p>
-
-              <div className="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                <pre className="overflow-x-auto text-xs leading-5 text-slate-800">
-{`docker pull tealtigeradmin/tealtiger-docker
-docker pull tealtigeradmin/tealtiger-python
-docker pull tealtigeradmin/tealtiger-typescript`}
-                </pre>
-              </div>
-            </div>
-
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-              <p className="text-sm font-semibold">Image links</p>
-              <div className="mt-4 grid gap-2 text-sm">
-                <a href={dockerHubDockerUrl} {...ext} className="underline decoration-slate-300 underline-offset-2 hover:text-slate-900">
-                  tealtigeradmin/tealtiger-docker
-                </a>
-                <a href={dockerHubPythonUrl} {...ext} className="underline decoration-slate-300 underline-offset-2 hover:text-slate-900">
-                  tealtigeradmin/tealtiger-python
-                </a>
-                <a href={dockerHubTypescriptUrl} {...ext} className="underline decoration-slate-300 underline-offset-2 hover:text-slate-900">
-                  tealtigeradmin/tealtiger-typescript
-                </a>
-              </div>
-
-              <div className="mt-5 flex flex-wrap gap-2">
-                <a
-                  href={githubUrl}
-                  {...ext}
-                  className="inline-flex items-center rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-50"
-                >
-                  GitHub
-                </a>
-                <a
-                  href={docsUrl}
-                  {...ext}
-                  className="inline-flex items-center rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-50"
-                >
-                  Docs
-                </a>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -397,16 +354,15 @@ docker pull tealtigeradmin/tealtiger-typescript`}
       {/* Footer */}
       <footer className="border-t border-slate-200 bg-white">
         <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-8 md:flex-row md:items-center md:justify-between">
-          <p className="text-sm text-slate-600">
-            © {new Date().getFullYear()} TealTiger
-          </p>
+          <p className="text-sm text-slate-600">© {new Date().getFullYear()} TealTiger</p>
 
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-slate-700">
             <a href={docsUrl} {...ext} className="hover:text-slate-900">Docs</a>
             <a href={playgroundUrl} {...ext} className="hover:text-slate-900">Playground</a>
             <a href={dockerHubOrgUrl} {...ext} className="hover:text-slate-900">Docker Hub</a>
             <a href={githubUrl} {...ext} className="hover:text-slate-900">GitHub</a>
-            <a href={contactMailto} className="hover:text-slate-900">Contact</a>
+            {/* Per request: plain text */}
+            <span className="text-slate-500">{contactEmailText}</span>
           </div>
         </div>
       </footer>
