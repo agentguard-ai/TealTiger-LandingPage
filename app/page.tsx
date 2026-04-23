@@ -57,12 +57,7 @@ export default function HomePage() {
       <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/85 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
           <a href="#" className="flex items-center gap-2">
-            <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-teal-700 shadow-sm">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M6 16.8c1.6 1.7 3.7 2.7 6 2.7s4.4-1 6-2.7" stroke="white" strokeWidth="2" strokeLinecap="round" />
-                <path d="M7.2 9.6c1-2 2.8-3.4 4.8-3.4s3.8 1.4 4.8 3.4" stroke="white" strokeWidth="2" strokeLinecap="round" />
-              </svg>
-            </span>
+            <img src="/tealtiger-logo.png" alt="TealTiger" width={36} height={36} className="rounded-xl" />
             <span className="text-base font-semibold tracking-tight">TealTiger</span>
           </a>
 
