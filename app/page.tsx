@@ -76,8 +76,8 @@ export default function HomePage() {
             <PrimaryButton href={docsUrl}>Get Started</PrimaryButton>
           </div>
           <div className="mt-3">
-            <a href="https://www.producthunt.com/products/tealtiger" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-lg border border-orange-200 bg-orange-50 px-4 py-2 text-sm font-semibold text-orange-700 hover:bg-orange-100 transition-colors">
-              <span>🏆</span> Featured on Product Hunt
+            <a href="https://www.producthunt.com/products/tealtiger/reviews/new?utm_source=badge-product_review&utm_medium=badge&utm_source=badge-tealtiger" target="_blank" rel="noopener noreferrer">
+              <img src="https://api.producthunt.com/widgets/embed-image/v1/product_review.svg?product_id=1198099&theme=light" alt="TealTiger - Open source AI agent security SDK — zero infrastructure | Product Hunt" width="250" height="54" />
             </a>
           </div>
         </div>
