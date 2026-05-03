@@ -76,8 +76,8 @@ export default function HomePage() {
             <PrimaryButton href={docsUrl}>Get Started</PrimaryButton>
           </div>
           <div className="mt-3">
-            <a href="https://www.producthunt.com/posts/product-hunt-launch-tealtiger-v1-2?embed=true&utm_source=badge-featured&utm_medium=badge" target="_blank" rel="noopener noreferrer">
-              <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=956498&theme=light" alt="TealTiger on Product Hunt" width="250" height="54" style={{ display: 'inline-block' }} />
+            <a href="https://www.producthunt.com/products/tealtiger" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-lg border border-orange-200 bg-orange-50 px-4 py-2 text-sm font-semibold text-orange-700 hover:bg-orange-100 transition-colors">
+              <span>🏆</span> Featured on Product Hunt
             </a>
           </div>
         </div>
