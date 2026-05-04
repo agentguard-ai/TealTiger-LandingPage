@@ -88,11 +88,11 @@ export default function HomePage() {
         <div className="grid gap-10 md:grid-cols-2 md:items-start">
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm">
-              <span className="font-semibold text-slate-900">v1.1.1</span>
+              <span className="font-semibold text-slate-900">v1.2.0</span>
               <span className="text-slate-300">•</span>
               <span className="font-medium text-teal-800">Released</span>
               <span className="text-slate-300">•</span>
-              <span>SDK + packages + containers</span>
+              <span>Governance Bundle — 7 modules + Docker sidecar</span>
             </div>
 
             <h1 className="mt-5 text-4xl font-semibold tracking-tight md:text-5xl">
@@ -292,17 +292,24 @@ export default function HomePage() {
               <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold text-slate-700">
                 <span className="text-slate-900">v1.2.0</span>
                 <span className="text-slate-300">•</span>
-                <span className="text-indigo-700">Coming Soon</span>
+                <span className="text-teal-800">Released</span>
               </div>
               <h3 className="mt-3 text-base font-semibold">Governance Bundle</h3>
               <ul className="mt-4 space-y-2 text-sm text-slate-700">
-                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-indigo-700" />7 governance modules across 6 dimensions</li>
-                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-indigo-700" />Formal evidence contract — named reason codes, decision actions</li>
-                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-indigo-700" />Secret detection (500+ patterns, confidence scoring)</li>
-                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-indigo-700" />Memory governance, registry allowlisting, provenance verification</li>
-                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-indigo-700" />SARIF export, golden tests, red-team harness</li>
+                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-teal-700" />7 governance modules across 6 dimensions</li>
+                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-teal-700" />Formal evidence contract — named reason codes, decision actions</li>
+                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-teal-700" />Secret detection (500+ patterns, confidence scoring)</li>
+                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-teal-700" />Memory governance, registry allowlisting, provenance verification</li>
+                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-teal-700" />SARIF export, golden tests, red-team harness</li>
+                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-teal-700" />Docker governance sidecar (language-agnostic HTTP API)</li>
               </ul>
-              <p className="mt-4 text-xs text-slate-500">Documentation will be published when v1.2 ships.</p>
+              <div className="mt-5 flex flex-wrap gap-3 text-sm">
+                <Link href={npmUrl}>npm</Link>
+                <Link href={pypiUrl}>PyPI</Link>
+                <Link href={dockerHubOrgUrl}>Docker</Link>
+                <Link href={githubUrl}>GitHub</Link>
+                <Link href="https://docs.tealtiger.ai/versions/v1.2.0">Release Notes</Link>
+              </div>
             </div>
           </div>
         </div>
