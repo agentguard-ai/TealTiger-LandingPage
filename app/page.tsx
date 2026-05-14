@@ -66,10 +66,10 @@ export default function HomePage() {
             <a href="#governance" className="hover:text-slate-900">Governance</a>
             <a href="#install" className="hover:text-slate-900">Install</a>
             <a href="#releases" className="hover:text-slate-900">Releases</a>
+            <a href="#use-cases" className="hover:text-slate-900">Use Cases</a>
             <a href="#contribute" className="hover:text-slate-900">Contribute</a>
             <a href={docsUrl} {...ext} className="hover:text-slate-900">Docs</a>
             <a href={playgroundUrl} {...ext} className="hover:text-slate-900">Playground</a>
-            <a href={blogsUrl} {...ext} className="hover:text-slate-900">Blog</a>
           </nav>
 
           <div className="flex items-center gap-2">
@@ -92,7 +92,7 @@ export default function HomePage() {
               <span className="text-slate-300">•</span>
               <span className="font-medium text-teal-800">Released</span>
               <span className="text-slate-300">•</span>
-              <span>Governance Bundle — 7 modules + Docker sidecar</span>
+              <span>v1.3 in development</span>
             </div>
 
             <h1 className="mt-5 text-4xl font-semibold tracking-tight md:text-5xl">
@@ -107,7 +107,7 @@ export default function HomePage() {
               <Chip text="TypeScript" />
               <Chip text="Python" />
               <Chip text="Docker" />
-              <Chip text="7 LLM Providers" />
+              <Chip text="12 LLM Providers" />
               <Chip text="OWASP ASI Coverage" />
               <Chip text="Apache 2.0" />
             </div>
@@ -174,27 +174,27 @@ export default function HomePage() {
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
               <p className="text-sm font-semibold">🛡️ Security Guardrails</p>
-              <p className="mt-2 text-sm text-slate-600">PII detection, prompt injection prevention, content moderation, secret detection (500+ patterns). Deterministic enforcement — not probabilistic filtering.</p>
+              <p className="mt-2 text-sm text-slate-600">PII detection, prompt injection (regex + ML classifier), content moderation, secret detection (500+ patterns), Unicode attack detection, encoded output detection.</p>
             </div>
             <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
               <p className="text-sm font-semibold">💰 Cost Governance</p>
-              <p className="mt-2 text-sm text-slate-600">Budget enforcement per request, session, and day. Circuit breakers prevent runaway loops. Cost velocity anomaly detection across all 7 providers.</p>
+              <p className="mt-2 text-sm text-slate-600">Budget enforcement per request, session, agent, and day. Cost anomaly detection, reasoning-token budgets, and governance-owned limits that application code cannot override.</p>
             </div>
             <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-              <p className="text-sm font-semibold">🔌 7 LLM Providers</p>
-              <p className="mt-2 text-sm text-slate-600">OpenAI, Anthropic, Google Gemini, AWS Bedrock, Azure OpenAI, Cohere, Mistral AI. 95%+ market coverage. Drop-in client wrappers.</p>
+              <p className="text-sm font-semibold">🔌 12 LLM Providers</p>
+              <p className="mt-2 text-sm text-slate-600">OpenAI, Anthropic, Gemini, Bedrock, Azure OpenAI, Cohere, Mistral, plus 5 new providers. Platform adapters for AWS AgentCore, Bedrock Agents, and Azure AI Agent Service.</p>
             </div>
             <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-              <p className="text-sm font-semibold">📋 Audit Evidence</p>
-              <p className="mt-2 text-sm text-slate-600">Every decision produces a structured record with correlation IDs, policy version, and named reason codes. SARIF, JUnit XML, and JSON export.</p>
+              <p className="text-sm font-semibold">📋 Cryptographic Evidence</p>
+              <p className="mt-2 text-sm text-slate-600">Merkle-tree governance receipts with RFC 3161 timestamping. SIEM export, OpenTelemetry spans, SARIF/JUnit/JSON export. Standalone Verification SDK.</p>
             </div>
             <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-              <p className="text-sm font-semibold">⚡ Reliability Controls</p>
-              <p className="mt-2 text-sm text-slate-600">Bounded retry with budget, fallback chains, deterministic degradation, circuit breaker (CLOSED → OPEN → HALF_OPEN → CLOSED).</p>
+              <p className="text-sm font-semibold">🤖 Agent Identity (NHI)</p>
+              <p className="mt-2 text-sm text-slate-600">Non-human identity governance with lifecycle management, scope enforcement, Zero Standing Privilege, and agent attestation. Agents as first-class principals.</p>
             </div>
             <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
               <p className="text-sm font-semibold">🏗️ Deterministic Engine</p>
-              <p className="mt-2 text-sm text-slate-600">No LLM in the governance path. Policy evaluation is deterministic and reconstructable. Every verdict traceable to the human policy author.</p>
+              <p className="mt-2 text-sm text-slate-600">No LLM in the governance path. FREEZE rules, PLAN_ONLY mode, hot-swap policy bundles, anti-tamper controls. Every verdict traceable to the human policy author.</p>
             </div>
           </div>
         </div>
@@ -203,7 +203,7 @@ export default function HomePage() {
       {/* Governance Dimensions */}
       <section id="governance" className="border-t border-slate-200 bg-white">
         <div className="mx-auto max-w-6xl px-4 py-14">
-          <h2 className="text-2xl font-semibold tracking-tight">6 Governance Dimensions</h2>
+          <h2 className="text-2xl font-semibold tracking-tight">10 Governance Dimensions</h2>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
             Governance organized by concern — not by tool. Each dimension maps to specific controls, modules, and OWASP ASI coverage.
           </p>
@@ -219,12 +219,16 @@ export default function HomePage() {
                 </tr>
               </thead>
               <tbody className="text-slate-700">
-                <tr className="border-b border-slate-100"><td className="py-3 pr-6 font-medium">Security</td><td className="py-3 pr-6">SEC</td><td className="py-3 pr-6">Secret detection, PII, prompt injection, content moderation</td><td className="py-3"><span className="rounded-full bg-teal-50 px-2.5 py-1 text-xs font-medium text-teal-800">v1.1</span></td></tr>
-                <tr className="border-b border-slate-100"><td className="py-3 pr-6 font-medium">Cost</td><td className="py-3 pr-6">COST</td><td className="py-3 pr-6">Budget enforcement, cost tracking, velocity anomaly detection</td><td className="py-3"><span className="rounded-full bg-teal-50 px-2.5 py-1 text-xs font-medium text-teal-800">v1.1</span></td></tr>
+                <tr className="border-b border-slate-100"><td className="py-3 pr-6 font-medium">Security</td><td className="py-3 pr-6">SEC</td><td className="py-3 pr-6">Secret detection, PII, prompt injection (regex + ML), content moderation, Unicode attacks</td><td className="py-3"><span className="rounded-full bg-teal-50 px-2.5 py-1 text-xs font-medium text-teal-800">v1.1</span></td></tr>
+                <tr className="border-b border-slate-100"><td className="py-3 pr-6 font-medium">Cost</td><td className="py-3 pr-6">COST</td><td className="py-3 pr-6">Budget enforcement, cost tracking, anomaly detection, reasoning-token budgets</td><td className="py-3"><span className="rounded-full bg-teal-50 px-2.5 py-1 text-xs font-medium text-teal-800">v1.1</span></td></tr>
                 <tr className="border-b border-slate-100"><td className="py-3 pr-6 font-medium">Reliability</td><td className="py-3 pr-6">REL</td><td className="py-3 pr-6">Retry budgets, fallback chains, circuit breakers, degradation</td><td className="py-3"><span className="rounded-full bg-teal-50 px-2.5 py-1 text-xs font-medium text-teal-800">v1.1</span></td></tr>
-                <tr className="border-b border-slate-100"><td className="py-3 pr-6 font-medium">Memory</td><td className="py-3 pr-6">MEM</td><td className="py-3 pr-6">Agentic memory governance — scopes, classifications, TTL, redaction</td><td className="py-3"><span className="rounded-full bg-indigo-50 px-2.5 py-1 text-xs font-medium text-indigo-800">v1.2</span></td></tr>
-                <tr className="border-b border-slate-100"><td className="py-3 pr-6 font-medium">Registry</td><td className="py-3 pr-6">REG</td><td className="py-3 pr-6">Model/tool allowlisting, provenance verification, supply chain scoring</td><td className="py-3"><span className="rounded-full bg-indigo-50 px-2.5 py-1 text-xs font-medium text-indigo-800">v1.2</span></td></tr>
-                <tr><td className="py-3 pr-6 font-medium">Evidence</td><td className="py-3 pr-6">EVID</td><td className="py-3 pr-6">SARIF export, golden tests, red-team harness, formal evidence contract</td><td className="py-3"><span className="rounded-full bg-indigo-50 px-2.5 py-1 text-xs font-medium text-indigo-800">v1.2</span></td></tr>
+                <tr className="border-b border-slate-100"><td className="py-3 pr-6 font-medium">Memory</td><td className="py-3 pr-6">MEM</td><td className="py-3 pr-6">Provenance tagging, injection detection, exfiltration prevention, 5-tier trust</td><td className="py-3"><span className="rounded-full bg-indigo-50 px-2.5 py-1 text-xs font-medium text-indigo-800">v1.2</span></td></tr>
+                <tr className="border-b border-slate-100"><td className="py-3 pr-6 font-medium">Registry</td><td className="py-3 pr-6">REG</td><td className="py-3 pr-6">Model/tool allowlisting, MCP drift detection, adapter composition governance</td><td className="py-3"><span className="rounded-full bg-indigo-50 px-2.5 py-1 text-xs font-medium text-indigo-800">v1.2</span></td></tr>
+                <tr className="border-b border-slate-100"><td className="py-3 pr-6 font-medium">Evidence</td><td className="py-3 pr-6">EVID</td><td className="py-3 pr-6">Cryptographic receipts, Merkle proofs, RFC 3161 anchoring, Verification SDK</td><td className="py-3"><span className="rounded-full bg-indigo-50 px-2.5 py-1 text-xs font-medium text-indigo-800">v1.2</span></td></tr>
+                <tr className="border-b border-slate-100"><td className="py-3 pr-6 font-medium">Identity</td><td className="py-3 pr-6">NHI</td><td className="py-3 pr-6">Non-human identity lifecycle, scope enforcement, Zero Standing Privilege, attestation</td><td className="py-3"><span className="rounded-full bg-violet-50 px-2.5 py-1 text-xs font-medium text-violet-800">v1.3</span></td></tr>
+                <tr className="border-b border-slate-100"><td className="py-3 pr-6 font-medium">Workflow</td><td className="py-3 pr-6">FLOW</td><td className="py-3 pr-6">Declarative YAML governance pipelines, org-level inheritance, floor enforcement</td><td className="py-3"><span className="rounded-full bg-violet-50 px-2.5 py-1 text-xs font-medium text-violet-800">v1.3</span></td></tr>
+                <tr className="border-b border-slate-100"><td className="py-3 pr-6 font-medium">Temporal</td><td className="py-3 pr-6">TEMP</td><td className="py-3 pr-6">Session TTL, cooldown periods, time-of-day restrictions, context size governance</td><td className="py-3"><span className="rounded-full bg-violet-50 px-2.5 py-1 text-xs font-medium text-violet-800">v1.3</span></td></tr>
+                <tr><td className="py-3 pr-6 font-medium">Drift</td><td className="py-3 pr-6">DRIFT</td><td className="py-3 pr-6">Behavioral drift detection, statistical baselines, MCP definition-drift monitoring</td><td className="py-3"><span className="rounded-full bg-violet-50 px-2.5 py-1 text-xs font-medium text-violet-800">v1.3</span></td></tr>
               </tbody>
             </table>
           </div>
@@ -265,7 +269,7 @@ export default function HomePage() {
           <h2 className="text-2xl font-semibold tracking-tight">Releases</h2>
           <p className="mt-2 text-sm text-slate-600">Clear status for enterprise planning.</p>
 
-          <div className="mt-6 grid gap-4 md:grid-cols-2">
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
             <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
               <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold text-slate-700">
                 <span className="text-slate-900">v1.1.1</span>
@@ -280,12 +284,6 @@ export default function HomePage() {
                 <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-teal-700" />Cost governance (budgets, tracking, alerts)</li>
                 <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-teal-700" />npm + PyPI + Docker images published</li>
               </ul>
-              <div className="mt-5 flex flex-wrap gap-3 text-sm">
-                <Link href={npmUrl}>npm</Link>
-                <Link href={pypiUrl}>PyPI</Link>
-                <Link href={dockerHubOrgUrl}>Docker</Link>
-                <Link href={githubUrl}>GitHub</Link>
-              </div>
             </div>
 
             <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
@@ -297,19 +295,34 @@ export default function HomePage() {
               <h3 className="mt-3 text-base font-semibold">Governance Bundle</h3>
               <ul className="mt-4 space-y-2 text-sm text-slate-700">
                 <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-teal-700" />7 governance modules across 6 dimensions</li>
-                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-teal-700" />Formal evidence contract — named reason codes, decision actions</li>
+                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-teal-700" />Formal evidence contract (TEEC v1.0)</li>
                 <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-teal-700" />Secret detection (500+ patterns, confidence scoring)</li>
-                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-teal-700" />Memory governance, registry allowlisting, provenance verification</li>
-                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-teal-700" />SARIF export, golden tests, red-team harness</li>
+                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-teal-700" />Memory governance, registry allowlisting</li>
                 <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-teal-700" />Docker governance sidecar (language-agnostic HTTP API)</li>
               </ul>
               <div className="mt-5 flex flex-wrap gap-3 text-sm">
-                <Link href={npmUrl}>npm</Link>
-                <Link href={pypiUrl}>PyPI</Link>
-                <Link href={dockerHubOrgUrl}>Docker</Link>
-                <Link href={githubUrl}>GitHub</Link>
                 <Link href="https://docs.tealtiger.ai/versions/v1.2.0">Release Notes</Link>
               </div>
+            </div>
+
+            <div className="rounded-3xl border border-violet-200 bg-violet-50/30 p-6 shadow-sm">
+              <div className="inline-flex items-center gap-2 rounded-full border border-violet-200 bg-white px-3 py-1 text-xs font-semibold text-slate-700">
+                <span className="text-slate-900">v1.3.0</span>
+                <span className="text-slate-300">•</span>
+                <span className="text-violet-700">Coming Soon</span>
+              </div>
+              <h3 className="mt-3 text-base font-semibold">Autonomous Agent Governance</h3>
+              <ul className="mt-4 space-y-2 text-sm text-slate-700">
+                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-violet-700" />FREEZE rules — immutable, non-overridable safety controls</li>
+                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-violet-700" />Non-human identity (NHI) governance with Zero Standing Privilege</li>
+                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-violet-700" />TealProof — cryptographic governance receipts (Merkle + RFC 3161)</li>
+                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-violet-700" />TealFlow — declarative YAML governance workflows</li>
+                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-violet-700" />TealClassifier — local ML inference (ONNX, ≤20ms)</li>
+                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-violet-700" />12 providers + platform adapters (AgentCore, Bedrock, Azure AI)</li>
+                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-violet-700" />OWASP Agentic Top 10 policy pack (zero-config)</li>
+                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-violet-700" />SOC/IR pipeline — SIEM export, OTel spans, response hooks</li>
+              </ul>
+              <p className="mt-4 text-xs text-slate-500">TypeScript + Python parity. Full bundle manifest on release.</p>
             </div>
           </div>
         </div>
@@ -342,33 +355,69 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Build With Us — Contributor Section */}
-      <section id="contribute" className="border-t border-slate-200 bg-white">
+      {/* Bring Your Use Case */}
+      <section id="use-cases" className="border-t border-slate-200 bg-white">
         <div className="mx-auto max-w-6xl px-4 py-14">
-          <h2 className="text-2xl font-semibold tracking-tight">Build With Us</h2>
+          <h2 className="text-2xl font-semibold tracking-tight">Bring Your Use Case</h2>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
-            TealTiger is open source (Apache 2.0) and we&apos;re looking for early contributors to shape the future of AI agent governance.
+            We build governance for real problems — not theoretical ones. If your team is deploying AI agents and hitting governance gaps, we want to hear about it.
           </p>
 
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-              <p className="text-sm font-semibold">🔍 Secret Detection Patterns</p>
-              <p className="mt-2 text-sm text-slate-600">Add new detection patterns for API keys, tokens, and credentials. 500+ patterns and growing.</p>
+              <p className="text-sm font-semibold">🏦 Financial Services</p>
+              <p className="mt-2 text-sm text-slate-600">Model risk management, audit trails for regulatory review, cost attribution across trading desks, separation of duties for agent actions.</p>
+            </div>
+            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+              <p className="text-sm font-semibold">🏥 Healthcare &amp; Life Sciences</p>
+              <p className="mt-2 text-sm text-slate-600">PHI governance in agent memory, consent-aware data handling, deterministic audit for compliance reviews, session-scoped access controls.</p>
+            </div>
+            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+              <p className="text-sm font-semibold">🔧 Platform Engineering</p>
+              <p className="mt-2 text-sm text-slate-600">Multi-agent orchestration governance, MCP tool drift detection, cost runaway prevention, policy-as-code for AI infrastructure teams.</p>
+            </div>
+          </div>
+
+          <div className="mt-6 rounded-3xl border border-violet-200 bg-violet-50/30 p-6">
+            <p className="text-sm font-semibold">💬 Tell us what&apos;s broken</p>
+            <p className="mt-2 text-sm text-slate-600">
+              Deploying agents without governance controls? Struggling with audit requirements for AI systems? Need deterministic enforcement that your compliance team can verify? Open a discussion — we prioritize features based on real deployment problems.
+            </p>
+            <div className="mt-5 flex flex-wrap gap-3">
+              <PrimaryButton href="https://github.com/agentguard-ai/tealtiger/discussions">Start a Discussion</PrimaryButton>
+              <SecondaryButton href={`mailto:${contactEmailText}`}>Email Us</SecondaryButton>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Build With Us — Contributor Section */}
+      <section id="contribute" className="border-t border-slate-200 bg-slate-50/40">
+        <div className="mx-auto max-w-6xl px-4 py-14">
+          <h2 className="text-2xl font-semibold tracking-tight">Build With Us</h2>
+          <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
+            TealTiger is open source (Apache 2.0). We&apos;re building the governance layer for autonomous AI — and we need contributors who understand both the engineering and the compliance side.
+          </p>
+
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+              <p className="text-sm font-semibold">🔍 Detection Patterns</p>
+              <p className="mt-2 text-sm text-slate-600">Secret detection (500+ patterns), prompt injection signatures, Unicode attack vectors. Contribute patterns from real-world incidents.</p>
               <p className="mt-3"><span className="rounded-full bg-green-50 px-2.5 py-1 text-xs font-medium text-green-800">Beginner</span></p>
             </div>
             <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
               <p className="text-sm font-semibold">🔌 Framework Integrations</p>
-              <p className="mt-2 text-sm text-slate-600">Build governance middleware for LangChain, CrewAI, AutoGen, and LlamaIndex.</p>
+              <p className="mt-2 text-sm text-slate-600">Governance middleware for LangChain, CrewAI, AutoGen, LlamaIndex. Platform adapters for enterprise agent frameworks.</p>
               <p className="mt-3"><span className="rounded-full bg-yellow-50 px-2.5 py-1 text-xs font-medium text-yellow-800">Intermediate</span></p>
             </div>
             <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-              <p className="text-sm font-semibold">📝 Documentation &amp; Examples</p>
-              <p className="mt-2 text-sm text-slate-600">Write guides, code examples, and API docs. Both TypeScript and Python.</p>
-              <p className="mt-3"><span className="rounded-full bg-green-50 px-2.5 py-1 text-xs font-medium text-green-800">Beginner</span></p>
+              <p className="text-sm font-semibold">📋 Policy Packs &amp; Compliance Mappings</p>
+              <p className="mt-2 text-sm text-slate-600">OWASP ASI mappings, industry-specific policy templates, control framework crosswalks (NIST AI RMF, ISO 42001, EU AI Act).</p>
+              <p className="mt-3"><span className="rounded-full bg-yellow-50 px-2.5 py-1 text-xs font-medium text-yellow-800">Intermediate</span></p>
             </div>
           </div>
 
-          <div className="mt-6 rounded-3xl border border-slate-200 bg-slate-50/40 p-6">
+          <div className="mt-6 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
             <p className="text-sm font-semibold">🎖️ Founding Contributor Program</p>
             <p className="mt-2 text-sm text-slate-600">
               The first 25 contributors with merged PRs get permanent recognition in CONTRIBUTORS.md, shoutouts on our social channels, and early access to upcoming governance features.
@@ -422,7 +471,7 @@ export default function HomePage() {
           </div>
           <div className="mt-8 border-t border-slate-200 pt-6 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
             <p className="text-sm text-slate-500">© {new Date().getFullYear()} TealTiger. Apache License 2.0.</p>
-            <p className="text-sm text-slate-500">AI agents need governance, not just guardrails.</p>
+            <p className="text-sm text-slate-500">Runtime governance for autonomous AI. Built for engineers. Trusted by compliance.</p>
           </div>
         </div>
       </footer>
