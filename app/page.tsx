@@ -8,6 +8,8 @@ export default function HomePage() {
   const goodFirstIssuesUrl = "https://github.com/agentguard-ai/tealtiger/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22";
   const contributingUrl = "https://github.com/agentguard-ai/tealtiger/blob/main/CONTRIBUTING.md";
   const linkedinUrl = "https://www.linkedin.com/company/tealtiger";
+  const discordUrl = "https://discord.gg/X2ePf8QAj";
+  const xUrl = "https://x.com/TealtigerAI";
 
   const dockerHubOrgUrl = "https://hub.docker.com/u/tealtigeradmin";
   const dockerHubDockerUrl = "https://hub.docker.com/r/tealtigeradmin/tealtiger-docker";
@@ -88,11 +90,11 @@ export default function HomePage() {
         <div className="grid gap-10 md:grid-cols-2 md:items-start">
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm">
-              <span className="font-semibold text-slate-900">v1.2.0</span>
+              <span className="font-semibold text-slate-900">v1.3.0</span>
               <span className="text-slate-300">•</span>
               <span className="font-medium text-teal-800">Released</span>
               <span className="text-slate-300">•</span>
-              <span>v1.3 in development</span>
+              <span>Autonomous Agent Governance</span>
             </div>
 
             <h1 className="mt-5 text-4xl font-semibold tracking-tight md:text-5xl">
@@ -127,6 +129,8 @@ export default function HomePage() {
                 <Link href={dockerHubOrgUrl}>Docker</Link>
                 <span className="text-slate-300">•</span>
                 <Link href={githubUrl}>GitHub</Link>
+                <span className="text-slate-300">•</span>
+                <Link href={discordUrl}>Discord</Link>
                 <span className="text-slate-300">•</span>
                 <span className="inline-flex items-center gap-1 whitespace-nowrap">
                   <span className="font-medium text-slate-700">{contactEmailText}</span>
@@ -309,7 +313,7 @@ export default function HomePage() {
               <div className="inline-flex items-center gap-2 rounded-full border border-violet-200 bg-white px-3 py-1 text-xs font-semibold text-slate-700">
                 <span className="text-slate-900">v1.3.0</span>
                 <span className="text-slate-300">•</span>
-                <span className="text-violet-700">Coming Soon</span>
+                <span className="text-teal-800">Released</span>
               </div>
               <h3 className="mt-3 text-base font-semibold">Autonomous Agent Governance</h3>
               <ul className="mt-4 space-y-2 text-sm text-slate-700">
@@ -463,9 +467,11 @@ export default function HomePage() {
             <div>
               <p className="text-sm font-semibold text-slate-900 mb-3">Community</p>
               <div className="grid gap-2 text-sm">
-                <a href={linkedinUrl} {...ext} className="text-slate-600 hover:text-slate-900">LinkedIn</a>
-                <a href={blogsUrl} {...ext} className="text-slate-600 hover:text-slate-900">Dev.to Blog</a>
-                <a href={dockerHubOrgUrl} {...ext} className="text-slate-600 hover:text-slate-900">Docker Hub</a>
+                <a href={discordUrl} {...ext} className="text-slate-600 hover:text-slate-900">💬 Discord</a>
+                <a href={linkedinUrl} {...ext} className="text-slate-600 hover:text-slate-900">💼 LinkedIn</a>
+                <a href={xUrl} {...ext} className="text-slate-600 hover:text-slate-900">🐦 X (Twitter)</a>
+                <a href={blogsUrl} {...ext} className="text-slate-600 hover:text-slate-900">📝 Dev.to Blog</a>
+                <a href={dockerHubOrgUrl} {...ext} className="text-slate-600 hover:text-slate-900">🐳 Docker Hub</a>
               </div>
             </div>
           </div>
