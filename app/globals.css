@@ -3,19 +3,48 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --foreground-rgb: 15, 23, 42;
+  --background-rgb: 255, 255, 255;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+  text-rendering: geometricPrecision;
+}
+
+::selection {
+  background: rgb(20 184 166 / 0.18);
+  color: rgb(15 23 42);
+}
+
+.tealtiger-particle {
+  animation: tealtiger-particle-pulse 3.4s ease-in-out infinite;
+}
+
+@keyframes tealtiger-particle-pulse {
+  0%,
+  100% {
+    opacity: 0.22;
+    transform: scale(0.85);
+  }
+
+  50% {
+    opacity: 0.9;
+    transform: scale(1.25);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .tealtiger-particle {
+    animation: none;
+  }
 }
