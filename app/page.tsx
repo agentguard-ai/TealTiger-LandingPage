@@ -171,6 +171,20 @@ const trustedContributors = [
       "Policy hot-reload, OpenTelemetry tracing, SARIF export, and streaming evaluator work",
     ],
   },
+  {
+    handle: "CleanDev-Fix",
+    name: "Chad Nelson",
+    role: "Trusted Contributor",
+    avatarUrl: "https://github.com/CleanDev-Fix.png",
+    profileUrl: "https://github.com/CleanDev-Fix",
+    bio: "Open-source contributor focused on practical AI agent tooling, repo readiness, workflow reliability, SDK examples, tests, and contributor documentation.",
+    highlights: [
+      "Provider quickstart examples across TealTiger SDK workflows",
+      "Policy examples and contributor-facing documentation",
+      "Focused SDK tests and metadata/link cleanup",
+      "Narrow, review-ready changes aligned with maintainer guidance",
+    ],
+  },
 ];
 
 const particlePoints = Array.from({ length: 150 }, (_, index) => {
