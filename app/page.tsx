@@ -175,7 +175,7 @@ const trustedContributors = [
     handle: "CleanDev-Fix",
     name: "Chad Nelson",
     role: "Trusted Contributor",
-    avatarUrl: "https://github.com/CleanDev-Fix.png",
+    avatarUrl: "/chad-nelson-profile.jpg",
     profileUrl: "https://github.com/CleanDev-Fix",
     bio: "Open-source contributor focused on practical AI agent tooling, repo readiness, workflow reliability, SDK examples, tests, and contributor documentation.",
     highlights: [
