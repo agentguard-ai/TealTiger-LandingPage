@@ -144,20 +144,20 @@ const installs = [
 ];
 
 const integrations = [
-  { name: "LangChain", pkg: "tealtiger-langchain", url: "https://python.langchain.com/docs/integrations/" },
-  { name: "CrewAI", pkg: "tealtiger-crewai", url: "https://www.crewai.com/" },
+  { name: "LangChain", pkg: "tealtiger-langchain", url: "https://github.com/agentguard-ai/tealtiger/tree/main/packages/tealtiger-langchain" },
+  { name: "CrewAI", pkg: "tealtiger-crewai", url: "https://github.com/agentguard-ai/tealtiger/tree/main/packages/tealtiger-crewai" },
   { name: "AG2 (AutoGen)", pkg: "tealtiger-ag2", url: "https://docs.ag2.ai/latest/docs/ecosystem/tealtiger/" },
   { name: "Haystack", pkg: "tealtiger-haystack", url: "https://haystack.deepset.ai/integrations/tealtiger" },
-  { name: "Google ADK", pkg: "tealtiger-google-adk", url: "https://google.github.io/adk-docs/" },
-  { name: "Composio", pkg: "tealtiger-composio", url: "https://composio.dev/" },
-  { name: "Strands", pkg: "tealtiger-strands", url: "https://strandsagents.com/" },
-  { name: "PydanticAI", pkg: "tealtiger-pydanticai", url: "https://ai.pydantic.dev/" },
-  { name: "Phoenix (Arize)", pkg: "tealtiger-phoenix", url: "https://phoenix.arize.com/" },
-  { name: "Langfuse", pkg: "tealtiger-langfuse", url: "https://langfuse.com/" },
-  { name: "AgentOps", pkg: "tealtiger-agentops", url: "https://www.agentops.ai/" },
-  { name: "Opik (Comet)", pkg: "tealtiger-opik", url: "https://www.comet.com/site/products/opik/" },
+  { name: "Google ADK", pkg: "tealtiger-google-adk", url: "https://github.com/agentguard-ai/tealtiger/tree/main/packages/tealtiger-google-adk" },
+  { name: "Composio", pkg: "tealtiger-composio", url: "https://github.com/agentguard-ai/tealtiger/tree/main/packages/tealtiger-composio" },
+  { name: "Strands", pkg: "tealtiger-strands", url: "https://github.com/agentguard-ai/tealtiger/tree/main/packages/tealtiger-strands" },
+  { name: "PydanticAI", pkg: "tealtiger-pydanticai", url: "https://github.com/agentguard-ai/tealtiger/tree/main/packages/tealtiger-pydanticai" },
+  { name: "Phoenix (Arize)", pkg: "tealtiger-phoenix", url: "https://github.com/agentguard-ai/tealtiger/tree/main/packages/tealtiger-phoenix" },
+  { name: "Langfuse", pkg: "tealtiger-langfuse", url: "https://github.com/agentguard-ai/tealtiger/tree/main/packages/tealtiger-langfuse" },
+  { name: "AgentOps", pkg: "tealtiger-agentops", url: "https://github.com/agentguard-ai/tealtiger/tree/main/packages/tealtiger-agentops" },
+  { name: "Opik (Comet)", pkg: "tealtiger-opik", url: "https://github.com/agentguard-ai/tealtiger/tree/main/packages/tealtiger-opik" },
   { name: "Hindsight (Vectorize)", pkg: "tealtiger-hindsight", url: "https://hindsight.vectorize.io/integrations" },
-  { name: "CopilotKit", pkg: "tealtiger-copilotkit", url: "https://www.copilotkit.ai/" },
+  { name: "CopilotKit", pkg: "tealtiger-copilotkit", url: "https://github.com/agentguard-ai/tealtiger/tree/main/packages/tealtiger-copilotkit" },
 ];
 
 const useCases = [
