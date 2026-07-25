@@ -1,666 +1,831 @@
-export default function HomePage() {
-  const docsUrl = "https://docs.tealtiger.ai";
-  const playgroundUrl = "https://playground.tealtiger.ai";
-  const blogsUrl = "https://blogs.tealtiger.ai";
-  const githubUrl = "https://github.com/agentguard-ai/tealtiger";
-  const githubTsUrl = "https://github.com/agentguard-ai/tealtiger-typescript-prod";
-  const githubPyUrl = "https://github.com/agentguard-ai/tealtiger-python-prod";
-  const goodFirstIssuesUrl = "https://github.com/agentguard-ai/tealtiger/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22";
-  const contributingUrl = "https://github.com/agentguard-ai/tealtiger/blob/main/CONTRIBUTING.md";
-  const linkedinUrl = "https://www.linkedin.com/company/tealtiger";
-  const discordUrl = "https://discord.gg/X2ePf8QAj";
-  const xUrl = "https://x.com/TealtigerAI";
+"use client";
 
-  const dockerHubOrgUrl = "https://hub.docker.com/u/tealtigeradmin";
-  const dockerHubDockerUrl = "https://hub.docker.com/r/tealtigeradmin/tealtiger-docker";
-  const dockerHubPythonUrl = "https://hub.docker.com/r/tealtigeradmin/tealtiger-python";
-  const dockerHubTypescriptUrl = "https://hub.docker.com/r/tealtigeradmin/tealtiger-typescript";
+import {
+  ArrowRightIcon,
+  ArrowTopRightOnSquareIcon,
+  BoltIcon,
+  ChartBarSquareIcon,
+  CheckCircleIcon,
+  CircleStackIcon,
+  CodeBracketIcon,
+  CommandLineIcon,
+  CubeIcon,
+  DocumentCheckIcon,
+  FingerPrintIcon,
+  LockClosedIcon,
+  ShieldCheckIcon,
+  UserGroupIcon,
+} from "@heroicons/react/24/outline";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
+import type { ComponentType, ReactNode, SVGProps } from "react";
 
-  const npmUrl = "https://www.npmjs.com/package/tealtiger";
-  const pypiUrl = "https://pypi.org/project/tealtiger/";
+type IconType = ComponentType<SVGProps<SVGSVGElement>>;
 
-  const hindsightUrl = "https://www.vectorize.io/integrations/tealtiger";
-  const haystackUrl = "https://haystack.deepset.ai/integrations/tealtiger";
-  const ag2Url = "https://docs.ag2.ai/latest/docs/ecosystem/tealtiger/";
-  const copilotKitUrl = "https://github.com/agentguard-ai/tealtiger/tree/main/packages/tealtiger-copilotkit";
+const docsUrl = "https://docs.tealtiger.ai";
+const playgroundUrl = "https://playground.tealtiger.ai";
+const blogsUrl = "https://blogs.tealtiger.ai";
+const githubUrl = "https://github.com/agentguard-ai/tealtiger";
+const githubTsUrl = "https://github.com/agentguard-ai/tealtiger-typescript-prod";
+const githubPyUrl = "https://github.com/agentguard-ai/tealtiger-python-prod";
+const goodFirstIssuesUrl =
+  "https://github.com/agentguard-ai/tealtiger/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22";
+const contributingUrl = "https://github.com/agentguard-ai/tealtiger/blob/main/CONTRIBUTING.md";
+const discussionsUrl = "https://github.com/agentguard-ai/tealtiger/discussions";
+const linkedinUrl = "https://www.linkedin.com/company/tealtiger";
+const discordUrl = "https://discord.gg/X2ePf8QAj";
+const xUrl = "https://x.com/TealtigerAI";
 
-  const contactEmailText = "reachout@tealtiger.ai";
+const dockerHubOrgUrl = "https://hub.docker.com/u/tealtigeradmin";
+const dockerHubDockerUrl = "https://hub.docker.com/r/tealtigeradmin/tealtiger-docker";
+const dockerHubPythonUrl = "https://hub.docker.com/r/tealtigeradmin/tealtiger-python";
 
-  const ext = { target: "_blank", rel: "noopener noreferrer" } as const;
+const npmUrl = "https://www.npmjs.com/package/tealtiger";
+const pypiUrl = "https://pypi.org/project/tealtiger/";
+const contactEmailText = "reachout@tealtiger.ai";
+const ext = { target: "_blank", rel: "noopener noreferrer" } as const;
 
-  const Chip = ({ text }: { text: string }) => (
-    <span className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-700">
-      {text}
-    </span>
-  );
+const navItems = [
+  { label: "Features", href: "#features" },
+  { label: "Governance", href: "#governance" },
+  { label: "Install", href: "#install" },
+  { label: "Contributors", href: "#contributors" },
+  { label: "Open source", href: "#contribute" },
+];
 
-  const Link = ({ href, children, className = "" }: { href: string; children: React.ReactNode; className?: string }) => (
-    <a href={href} {...ext} className={`text-slate-700 underline decoration-slate-300 underline-offset-4 hover:decoration-slate-500 ${className}`}>
-      {children}
-    </a>
-  );
+const productFacts = [
+  ["10", "Governance domains"],
+  ["12", "LLM providers"],
+  ["3", "Distribution channels"],
+  ["0", "External governance services"],
+];
 
-  const PrimaryButton = ({ href, children }: { href: string; children: React.ReactNode }) => (
-    <a href={href} {...ext} className="inline-flex items-center justify-center rounded-xl bg-teal-700 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-teal-800">
-      {children}
-    </a>
-  );
+const bentoItems: Array<{
+  icon: IconType;
+  title: string;
+  text: string;
+  className: string;
+}> = [
+  {
+    icon: ShieldCheckIcon,
+    title: "Policy engine before execution",
+    text: "FREEZE rules, PLAN_ONLY mode, hot-swap policy bundles, anti-tamper detection, and deterministic decisions without an LLM in the governance path.",
+    className: "md:col-span-2 md:row-span-2 bg-slate-950 text-white border-slate-800",
+  },
+  {
+    icon: DocumentCheckIcon,
+    title: "Audit evidence by default",
+    text: "Cryptographic receipts, reason codes, OpenTelemetry spans, SIEM exports, SARIF, JUnit, and JSON evidence.",
+    className: "bg-white/80 border-teal-200",
+  },
+  {
+    icon: FingerPrintIcon,
+    title: "Non-human identity",
+    text: "Scope-bound access, Zero Standing Privilege, workload attestation, and revoked-agent enforcement.",
+    className: "bg-teal-900 text-white border-teal-700",
+  },
+  {
+    icon: LockClosedIcon,
+    title: "Data protection",
+    text: "PII detection, prompt-injection checks, content policy enforcement, Unicode normalization, and encoded output detection.",
+    className: "bg-white/80 border-teal-200",
+  },
+  {
+    icon: ChartBarSquareIcon,
+    title: "Financial controls",
+    text: "Budgets by request, session, agent, and day with anomaly alerts and reasoning-token ceilings.",
+    className: "bg-cyan-50 border-cyan-200",
+  },
+  {
+    icon: BoltIcon,
+    title: "Provider adapter layer",
+    text: "OpenAI, Anthropic, Gemini, Bedrock, Azure OpenAI, Cohere, Mistral, and platform adapters.",
+    className: "bg-emerald-50 border-emerald-200",
+  },
+];
 
-  const SecondaryButton = ({ href, children }: { href: string; children: React.ReactNode }) => (
-    <a href={href} {...ext} className="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800 shadow-sm hover:bg-slate-50">
-      {children}
-    </a>
-  );
+const governanceDomains = [
+  ["Security", "SEC", "Secret leakage, PII exposure, prompt injection, content policy violations", "v1.1"],
+  ["Cost", "COST", "Budget overrun, cost anomaly, reasoning-token abuse, unattributed spend", "v1.1"],
+  ["Reliability", "REL", "Provider degradation, cascading failure, fallback chain failure", "v1.1"],
+  ["Memory", "MEM", "Data provenance gaps, instruction injection via memory, stored-context exfiltration", "v1.2"],
+  ["Registry", "REG", "Unapproved model or tool usage, MCP definition drift, supply chain compromise", "v1.2"],
+  ["Evidence", "EVID", "Audit gaps, non-repudiation failure, evidence tampering", "v1.2"],
+  ["Identity", "NHI", "Excessive standing privilege, missing attestation, scope creep", "v1.3"],
+  ["Workflow", "FLOW", "Policy bypass, missing approvals, weakened organization controls", "v1.3"],
+  ["Temporal", "TEMP", "Stale session context, off-hours execution, cooldown bypass", "v1.3"],
+  ["Drift", "DRIFT", "Behavioral deviation, model output regression, tool definition mutation", "v1.3"],
+];
 
-  const CodeBlock = ({ code }: { code: string }) => (
-    <div className="mt-3 rounded-2xl border border-slate-200 bg-slate-50 p-4">
-      <pre className="overflow-x-auto text-xs leading-5 text-slate-800">{code}</pre>
-    </div>
-  );
+const installs = [
+  {
+    icon: CodeBracketIcon,
+    title: "TypeScript",
+    command: "npm install tealtiger",
+    packageUrl: npmUrl,
+    sourceUrl: githubTsUrl,
+  },
+  {
+    icon: CommandLineIcon,
+    title: "Python",
+    command: "pip install tealtiger",
+    packageUrl: pypiUrl,
+    sourceUrl: githubPyUrl,
+  },
+  {
+    icon: CubeIcon,
+    title: "Docker",
+    command: "docker pull tealtigeradmin/tealtiger-docker",
+    packageUrl: dockerHubOrgUrl,
+    sourceUrl: dockerHubDockerUrl,
+  },
+];
 
-  const integrations = [
-    { name: "LangChain", pkg: "pip install tealtiger-langchain" },
-    { name: "CrewAI", pkg: "pip install tealtiger-crewai" },
-    { name: "AG2 (AutoGen)", pkg: "pip install tealtiger-ag2" },
-    { name: "Haystack", pkg: "pip install tealtiger-haystack" },
-    { name: "Google ADK", pkg: "pip install tealtiger-google-adk" },
-    { name: "Composio", pkg: "pip install tealtiger-composio" },
-    { name: "Strands", pkg: "pip install tealtiger-strands" },
-    { name: "PydanticAI", pkg: "pip install tealtiger-pydanticai" },
-    { name: "Phoenix (Arize)", pkg: "pip install tealtiger-phoenix" },
-    { name: "Langfuse", pkg: "pip install tealtiger-langfuse" },
-    { name: "AgentOps", pkg: "pip install tealtiger-agentops" },
-    { name: "Opik (Comet)", pkg: "pip install tealtiger-opik" },
-    { name: "Hindsight (Vectorize)", pkg: "pip install tealtiger-hindsight" },
-    { name: "CopilotKit", pkg: "npm install tealtiger-copilotkit" },
-  ];
+const useCases = [
+  [
+    "Financial services",
+    "Model risk management, regulatory audit trails, cost attribution, and separation of duties for agent-initiated transactions.",
+  ],
+  [
+    "Healthcare and life sciences",
+    "PHI governance in agent memory, consent-aware data handling, deterministic audit evidence, and role-scoped access.",
+  ],
+  [
+    "Platform and infrastructure",
+    "Multi-agent orchestration governance, MCP supply-chain integrity, cost runaway prevention, and policy-as-code.",
+  ],
+];
 
-  return (
-    <main className="min-h-screen bg-white text-slate-900">
-      {/* Header */}
-      <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/85 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-          <a href="#" className="flex items-center gap-2">
-            <img src="/tealtiger-logo.png" alt="TealTiger" width={36} height={36} className="rounded-xl" />
-            <span className="text-base font-semibold tracking-tight">TealTiger</span>
-          </a>
+const trustedContributors = [
+  {
+    handle: "lleonardo-franco",
+    name: "Leonardo Franco",
+    role: "Trusted Contributor",
+    avatarUrl: "https://github.com/lleonardo-franco.png",
+    profileUrl: "https://github.com/lleonardo-franco",
+    bio: "Recognized in TealTiger governance for sustained, high-quality work across SDK examples, guardrails, secret detection coverage, policy runtime features, tracing, SARIF export, and cross-SDK parity.",
+    highlights: [
+      "DeepSeek, CrewAI, MCP, Redis memory, and Python async examples",
+      "SaaS secret detector coverage and provider key detection",
+      "Custom guardrail support across TypeScript and Python SDKs",
+      "Policy hot-reload, OpenTelemetry tracing, SARIF export, and streaming evaluator work",
+    ],
+  },
+  {
+    handle: "CleanDev-Fix",
+    name: "Chad Nelson",
+    role: "Trusted Contributor",
+    avatarUrl: "/chad-nelson-profile.jpg",
+    profileUrl: "https://github.com/CleanDev-Fix",
+    bio: "Open-source contributor focused on practical AI agent tooling, repo readiness, workflow reliability, SDK examples, tests, and contributor documentation.",
+    highlights: [
+      "Provider quickstart examples across TealTiger SDK workflows",
+      "Policy examples and contributor-facing documentation",
+      "Focused SDK tests and metadata/link cleanup",
+      "Narrow, review-ready changes aligned with maintainer guidance",
+    ],
+  },
+];
 
-          <nav className="hidden items-center gap-5 text-sm text-slate-700 md:flex">
-            <a href="#capabilities" className="hover:text-slate-900">Capabilities</a>
-            <a href="#observe" className="hover:text-slate-900">Observe Mode</a>
-            <a href="#integrations" className="hover:text-slate-900">Integrations</a>
-            <a href="#governance" className="hover:text-slate-900">Governance</a>
-            <a href="#install" className="hover:text-slate-900">Install</a>
-            <a href="#releases" className="hover:text-slate-900">Releases</a>
-            <a href="#use-cases" className="hover:text-slate-900">Use Cases</a>
-            <a href="#contribute" className="hover:text-slate-900">Contribute</a>
-            <a href={docsUrl} {...ext} className="hover:text-slate-900">Docs</a>
-            <a href={playgroundUrl} {...ext} className="hover:text-slate-900">Playground</a>
-          </nav>
+const particlePoints = Array.from({ length: 150 }, (_, index) => {
+  const angle = index * 2.3999632297;
+  const radius = 8 + Math.sqrt(index) * 3.2;
+  const x = 50 + Math.cos(angle) * radius + ((index * 17) % 11) - 5;
+  const y = 50 + Math.sin(angle) * radius + ((index * 29) % 13) - 6;
+  const size = 1 + (index % 4) * 0.55;
+  const delay = (index % 12) * 0.14;
 
-          <div className="flex items-center gap-2">
-            <PrimaryButton href={docsUrl}>Get Started</PrimaryButton>
-          </div>
-          <div className="mt-3">
-            <a href="https://www.producthunt.com/products/tealtiger/reviews/new?utm_source=badge-product_review&utm_medium=badge&utm_source=badge-tealtiger" target="_blank" rel="noopener noreferrer">
-              <img src="https://api.producthunt.com/widgets/embed-image/v1/product_review.svg?product_id=1198099&theme=light" alt="TealTiger - Open source AI agent security SDK — zero infrastructure | Product Hunt" width="250" height="54" />
-            </a>
-          </div>
-        </div>
-      </header>
-
-      {/* Hero */}
-      <section className="mx-auto max-w-6xl px-4 pb-12 pt-12">
-        <div className="grid gap-10 md:grid-cols-2 md:items-start">
-          <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm">
-              <span className="font-semibold text-slate-900">v1.4.0</span>
-              <span className="text-slate-300">•</span>
-              <span className="font-medium text-teal-800">Released</span>
-              <span className="text-slate-300">•</span>
-              <span>Observe Mode + Dashboard + 14 Adapters</span>
-            </div>
-
-            <h1 className="mt-5 text-4xl font-semibold tracking-tight md:text-5xl">
-              Enterprise-grade AI Governance &amp; Security SDK
-            </h1>
-
-            <p className="mt-4 max-w-xl text-base leading-7 text-slate-600">
-              Runtime governance for AI agents and applications — deterministic policy enforcement, continuous compliance evidence, and separation of duties between development and governance teams. No LLM in the decision path.
-            </p>
-
-            {/* Hero stats */}
-            <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
-              <div className="text-center">
-                <p className="text-2xl font-bold text-teal-700">14+</p>
-                <p className="text-xs text-slate-600">Framework adapters</p>
-              </div>
-              <div className="text-center">
-                <p className="text-2xl font-bold text-teal-700">11</p>
-                <p className="text-xs text-slate-600">Governance domains</p>
-              </div>
-              <div className="text-center">
-                <p className="text-2xl font-bold text-teal-700">12</p>
-                <p className="text-xs text-slate-600">LLM providers</p>
-              </div>
-              <div className="text-center">
-                <p className="text-2xl font-bold text-teal-700">v1.4</p>
-                <p className="text-xs text-slate-600">Latest release</p>
-              </div>
-            </div>
-
-            <div className="mt-6 flex flex-wrap gap-2">
-              <Chip text="TypeScript" />
-              <Chip text="Python" />
-              <Chip text="Docker" />
-              <Chip text="12 LLM Providers" />
-              <Chip text="14+ Adapters" />
-              <Chip text="OWASP ASI Coverage" />
-              <Chip text="Apache 2.0" />
-            </div>
-
-            <div className="mt-4 text-sm text-slate-600">
-              <span className="inline-flex flex-wrap items-center gap-x-2 gap-y-1">
-                <Link href={docsUrl}>Docs</Link>
-                <span className="text-slate-300">•</span>
-                <Link href={playgroundUrl}>Playground</Link>
-                <span className="text-slate-300">•</span>
-                <Link href={blogsUrl}>Blog</Link>
-                <span className="text-slate-300">•</span>
-                <Link href={npmUrl}>npm</Link>
-                <span className="text-slate-300">•</span>
-                <Link href={pypiUrl}>PyPI</Link>
-                <span className="text-slate-300">•</span>
-                <Link href={dockerHubOrgUrl}>Docker</Link>
-                <span className="text-slate-300">•</span>
-                <Link href={githubUrl}>GitHub</Link>
-                <span className="text-slate-300">•</span>
-                <Link href={discordUrl}>Discord</Link>
-                <span className="text-slate-300">•</span>
-                <span className="inline-flex items-center gap-1 whitespace-nowrap">
-                  <span className="font-medium text-slate-700">{contactEmailText}</span>
-                </span>
-              </span>
-            </div>
-
-            <div className="mt-7 flex flex-wrap gap-3">
-              <PrimaryButton href={docsUrl}>Open Docs</PrimaryButton>
-              <SecondaryButton href={playgroundUrl}>Try Playground</SecondaryButton>
-              <SecondaryButton href={githubUrl}>⭐ Star on GitHub</SecondaryButton>
-            </div>
-          </div>
-
-          {/* Right card: install */}
-          <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-            <h2 className="text-lg font-semibold">Install in 30 seconds</h2>
-            <p className="mt-2 text-sm text-slate-600">Choose your stack. No infrastructure required.</p>
-            <div className="mt-5 grid gap-3">
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                <p className="text-sm font-semibold text-slate-900">TypeScript</p>
-                <CodeBlock code={`npm install tealtiger`} />
-              </div>
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                <p className="text-sm font-semibold text-slate-900">Python</p>
-                <CodeBlock code={`pip install tealtiger`} />
-              </div>
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                <p className="text-sm font-semibold text-slate-900">Docker</p>
-                <CodeBlock code={`docker pull tealtigeradmin/tealtiger-docker`} />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Capabilities */}
-      <section id="capabilities" className="border-t border-slate-200 bg-slate-50/40">
-        <div className="mx-auto max-w-6xl px-4 py-14">
-          <h2 className="text-2xl font-semibold tracking-tight">Core Controls</h2>
-          <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
-            Enforceable governance controls that evaluate policy before execution — deterministic, auditable, and reconstructable.
-          </p>
-
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-              <p className="text-sm font-semibold">🛡️ Data Protection &amp; Input Validation</p>
-              <p className="mt-2 text-sm text-slate-600">PII detection, prompt injection (regex + ML classifier), content policy enforcement, secret leakage prevention (500+ patterns), Unicode normalization, encoded output detection.</p>
-            </div>
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-              <p className="text-sm font-semibold">💰 Financial Risk Controls</p>
-              <p className="mt-2 text-sm text-slate-600">Governance-owned budget limits per request, session, agent, and day. Cost anomaly alerting, reasoning-token budgets, and ceiling enforcement that application code cannot override.</p>
-            </div>
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-              <p className="text-sm font-semibold">🔌 12 LLM Providers</p>
-              <p className="mt-2 text-sm text-slate-600">OpenAI, Anthropic, Gemini, Bedrock, Azure OpenAI, Cohere, Mistral + 5 new. Platform adapters for AWS AgentCore, Bedrock Agents, and Azure AI Agent Service.</p>
-            </div>
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-              <p className="text-sm font-semibold">📋 Audit &amp; Non-Repudiation</p>
-              <p className="mt-2 text-sm text-slate-600">Cryptographic governance receipts (Merkle tree + RFC 3161 timestamping). SIEM-compatible export, OpenTelemetry spans, SARIF/JUnit/JSON evidence. Standalone Verification SDK for third-party audit.</p>
-            </div>
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-              <p className="text-sm font-semibold">🤖 Non-Human Identity (NHI)</p>
-              <p className="mt-2 text-sm text-slate-600">Agent identity lifecycle management, scope-bound access, Zero Standing Privilege (JIT grants), workload attestation. Agents governed as first-class principals — not ambient credentials.</p>
-            </div>
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-              <p className="text-sm font-semibold">🏗️ Policy Enforcement Engine</p>
-              <p className="mt-2 text-sm text-slate-600">No LLM in the governance path. FREEZE rules (immutable controls), PLAN_ONLY mode, hot-swap policy bundles, anti-tamper detection. Every decision traceable to the human policy author.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* v1.4 — Observe Before You Enforce */}
-      <section id="observe" className="border-t border-slate-200 bg-white">
-        <div className="mx-auto max-w-6xl px-4 py-14">
-          <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-800 mb-4">
-            NEW IN v1.4
-          </div>
-          <h2 className="text-2xl font-semibold tracking-tight">Start with visibility. Enforce when ready.</h2>
-          <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
-            Zero-config passive monitoring for teams not ready to enforce. Observe Mode allows all requests through while tracking every decision, cost event, and policy evaluation — giving you complete visibility before flipping the switch.
-          </p>
-
-          {/* Three modes progression */}
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
-            <div className="rounded-3xl border-2 border-emerald-200 bg-emerald-50/30 p-6 shadow-sm">
-              <div className="flex items-center gap-2">
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-100 text-sm font-bold text-emerald-700">1</span>
-                <p className="text-sm font-semibold text-emerald-800">OBSERVE</p>
-              </div>
-              <p className="mt-3 text-sm text-slate-600">Allow all requests. Track everything. Zero enforcement. See what your agents are actually doing before writing a single policy.</p>
-              <p className="mt-2 text-xs text-emerald-700 font-medium">← Start here</p>
-            </div>
-            <div className="rounded-3xl border border-amber-200 bg-amber-50/30 p-6 shadow-sm">
-              <div className="flex items-center gap-2">
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-amber-100 text-sm font-bold text-amber-700">2</span>
-                <p className="text-sm font-semibold text-amber-800">MONITOR</p>
-              </div>
-              <p className="mt-3 text-sm text-slate-600">Evaluate policies but don&apos;t block. Log violations, generate alerts, build confidence in your rule set before enforcement.</p>
-            </div>
-            <div className="rounded-3xl border border-red-200 bg-red-50/30 p-6 shadow-sm">
-              <div className="flex items-center gap-2">
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-red-100 text-sm font-bold text-red-700">3</span>
-                <p className="text-sm font-semibold text-red-800">ENFORCE</p>
-              </div>
-              <p className="mt-3 text-sm text-slate-600">Block policy violations. Deterministic deny decisions. Full audit trail. Production-grade governance with zero ambiguity.</p>
-            </div>
-          </div>
-
-          {/* Code example + Dashboard */}
-          <div className="mt-8 grid gap-6 md:grid-cols-2">
-            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
-              <p className="text-sm font-semibold">Zero-config Observe Mode</p>
-              <CodeBlock code={`import { TealEngine } from "tealtiger";
-
-const engine = new TealEngine({
-  mode: "OBSERVE",  // allow all, track everything
+  return {
+    x: `${x.toFixed(4)}%`,
+    y: `${y.toFixed(4)}%`,
+    size: `${size.toFixed(2)}px`,
+    delay: `${delay.toFixed(2)}s`,
+  };
 });
 
-// All requests pass through — no enforcement
-// Every decision is logged with full context
-const decision = await engine.evaluate(request);
-// decision.action === "ALLOW" (always)
-// decision.observations → cost, PII, latency, tokens`} />
-            </div>
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-              <p className="text-sm font-semibold">📊 Governance Dashboard</p>
-              <p className="mt-3 text-sm text-slate-600">Real-time governance visualization built for observe-first workflows.</p>
-              <ul className="mt-4 space-y-2 text-sm text-slate-700">
-                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-teal-700" />Real-time decision stream</li>
-                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-teal-700" />Cost analytics per agent/session</li>
-                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-teal-700" />PII findings timeline</li>
-                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-teal-700" />Canary alerts for anomaly detection</li>
-                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-teal-700" />Policy simulation (what-if enforcement)</li>
-              </ul>
-              <div className="mt-5 rounded-2xl border border-slate-200 bg-slate-100 p-8 text-center text-xs text-slate-400">
-                Dashboard screenshot — coming soon
-              </div>
-            </div>
-          </div>
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0 },
+};
+
+function MotionBlock({ children, className = "" }: { children: ReactNode; className?: string }) {
+  const shouldReduceMotion = useReducedMotion();
+
+  return (
+    <motion.div
+      initial={false}
+      whileInView="visible"
+      viewport={{ once: true, margin: "-90px" }}
+      variants={shouldReduceMotion ? undefined : fadeUp}
+      transition={{ duration: 0.55, ease: "easeOut" }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+function PrimaryButton({ href, children }: { href: string; children: ReactNode }) {
+  return (
+    <a
+      href={href}
+      {...ext}
+      className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-white px-6 py-3 text-sm font-semibold text-slate-950 shadow-[0_20px_50px_rgba(0,0,0,0.22)] transition hover:-translate-y-0.5 hover:bg-teal-50 focus:outline-none focus:ring-2 focus:ring-teal-300 focus:ring-offset-2 focus:ring-offset-slate-950"
+    >
+      {children}
+      <ArrowRightIcon className="h-4 w-4" aria-hidden="true" />
+    </a>
+  );
+}
+
+function SecondaryButton({ href, children }: { href: string; children: ReactNode }) {
+  return (
+    <a
+      href={href}
+      {...ext}
+      className="inline-flex min-h-12 items-center justify-center rounded-lg border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition hover:-translate-y-0.5 hover:border-teal-200/50 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-teal-300 focus:ring-offset-2 focus:ring-offset-slate-950"
+    >
+      {children}
+    </a>
+  );
+}
+
+function LightButton({ href, children }: { href: string; children: ReactNode }) {
+  return (
+    <a
+      href={href}
+      {...ext}
+      className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-slate-950 px-5 py-2.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-teal-800 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
+    >
+      {children}
+      <ArrowRightIcon className="h-4 w-4" aria-hidden="true" />
+    </a>
+  );
+}
+
+function ExternalLink({ href, children, className = "" }: { href: string; children: ReactNode; className?: string }) {
+  return (
+    <a
+      href={href}
+      {...ext}
+      className={`inline-flex items-center gap-1 text-sm font-semibold text-slate-700 transition hover:text-teal-800 ${className}`}
+    >
+      {children}
+      <ArrowTopRightOnSquareIcon className="h-3.5 w-3.5" aria-hidden="true" />
+    </a>
+  );
+}
+
+function SectionTitle({
+  title,
+  children,
+  invert = false,
+}: {
+  title: string;
+  children: ReactNode;
+  invert?: boolean;
+}) {
+  return (
+    <div className="mx-auto max-w-4xl text-center">
+      <h2 className={`text-4xl font-semibold leading-tight md:text-6xl ${invert ? "text-white" : "text-slate-950"}`}>
+        {title}
+      </h2>
+      <p className={`mx-auto mt-5 max-w-3xl text-lg leading-8 ${invert ? "text-teal-50/70" : "text-slate-600"}`}>
+        {children}
+      </p>
+    </div>
+  );
+}
+
+function ParticleField() {
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 700], [0, -90]);
+  const rotate = useTransform(scrollY, [0, 900], [0, 12]);
+
+  return (
+    <motion.div style={{ y, rotate }} className="relative h-[25rem] w-full max-w-[34rem] md:h-[34rem]" aria-hidden="true">
+      <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_center,rgba(20,184,166,0.42)_0%,rgba(20,184,166,0.18)_12%,rgba(2,6,23,0)_48%)] blur-xl" />
+      <div className="absolute inset-0">
+        {particlePoints.map((point, index) => (
+          <span
+            key={index}
+            className="tealtiger-particle absolute rounded-full bg-teal-100 shadow-[0_0_16px_rgba(94,234,212,0.75)]"
+            style={{
+              left: point.x,
+              top: point.y,
+              width: point.size,
+              height: point.size,
+              animationDelay: point.delay,
+            }}
+          />
+        ))}
+      </div>
+      <div className="absolute left-1/2 top-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-full border border-teal-200/25 bg-teal-300/10 shadow-[0_0_70px_rgba(45,212,191,0.45)]" />
+    </motion.div>
+  );
+}
+
+function ProductPanel() {
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 1100], [60, -60]);
+
+  return (
+    <motion.div
+      style={{ y }}
+      className="rounded-lg border border-white/20 bg-[#061512]/80 p-4 text-white shadow-[0_30px_90px_rgba(0,0,0,0.22)] backdrop-blur"
+    >
+      <div className="flex items-center justify-between border-b border-white/10 pb-4">
+        <div className="flex items-center gap-2">
+          <span className="h-2.5 w-2.5 rounded-full bg-teal-300" />
+          <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
+          <span className="h-2.5 w-2.5 rounded-full bg-cyan-300" />
         </div>
-      </section>
-
-      {/* Integrations */}
-      <section id="integrations" className="border-t border-slate-200 bg-slate-50/40">
-        <div className="mx-auto max-w-6xl px-4 py-14">
-          <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-800 mb-4">
-            NEW IN v1.4
-          </div>
-          <h2 className="text-2xl font-semibold tracking-tight">14+ Framework Integrations</h2>
-          <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
-            Drop-in governance adapters for the most popular AI agent frameworks. One package install, zero config changes to your existing code.
-          </p>
-
-          <div className="mt-8 grid gap-3 grid-cols-2 md:grid-cols-4">
-            {integrations.map((item) => (
-              <div key={item.name} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-                <p className="text-sm font-semibold text-slate-900">{item.name}</p>
-                <p className="mt-2 font-mono text-xs text-slate-500 break-all">{item.pkg}</p>
+        <span className="rounded-md border border-teal-300/25 px-2.5 py-1 text-xs text-teal-100">runtime allow</span>
+      </div>
+      <div className="grid gap-4 pt-4 md:grid-cols-[1fr_0.85fr]">
+        <div>
+          <p className="text-sm font-semibold text-teal-100">Policy trace</p>
+          <div className="mt-4 space-y-3">
+            {[
+              ["SEC", "Prompt injection check", "pass"],
+              ["COST", "Daily budget ceiling", "within"],
+              ["NHI", "Workload identity", "attested"],
+              ["EVID", "Receipt export", "signed"],
+            ].map(([id, label, state]) => (
+              <div key={id} className="grid grid-cols-[3.25rem_1fr_auto] items-center gap-3 border-b border-white/10 pb-3 text-sm">
+                <span className="rounded-md bg-teal-300/10 px-2 py-1 font-mono text-xs text-teal-100">{id}</span>
+                <span className="text-slate-100">{label}</span>
+                <span className="hidden text-xs text-teal-100/70 sm:block">{state}</span>
               </div>
             ))}
           </div>
-
-          <div className="mt-6 rounded-3xl border border-teal-200 bg-teal-50/30 p-6 shadow-sm">
-            <p className="text-sm font-semibold mb-3">🏆 Listed on official integration pages</p>
-            <div className="grid gap-3 md:grid-cols-3">
-              <div className="flex items-center gap-3">
-                <div>
-                  <p className="text-sm font-medium text-slate-900">Hindsight (Vectorize)</p>
-                  <p className="text-xs text-slate-500">Official observability integration</p>
-                </div>
-                <a href={hindsightUrl} {...ext} className="ml-auto text-xs font-semibold text-teal-700 hover:text-teal-900">View →</a>
-              </div>
-              <div className="flex items-center gap-3">
-                <div>
-                  <p className="text-sm font-medium text-slate-900">Haystack (deepset)</p>
-                  <p className="text-xs text-slate-500">Listed in Haystack integrations</p>
-                </div>
-                <a href={haystackUrl} {...ext} className="ml-auto text-xs font-semibold text-teal-700 hover:text-teal-900">View →</a>
-              </div>
-              <div className="flex items-center gap-3">
-                <div>
-                  <p className="text-sm font-medium text-slate-900">AG2 (AutoGen)</p>
-                  <p className="text-xs text-slate-500">Listed in AG2 ecosystem docs</p>
-                </div>
-                <a href={ag2Url} {...ext} className="ml-auto text-xs font-semibold text-teal-700 hover:text-teal-900">View →</a>
-              </div>
+        </div>
+        <div className="border-t border-white/10 pt-4 md:border-l md:border-t-0 md:pl-4 md:pt-0">
+          <p className="text-sm font-semibold text-teal-100">Receipt</p>
+          <div className="mt-4 space-y-3 font-mono text-xs text-slate-300">
+            <div className="flex justify-between gap-4">
+              <span>hash</span>
+              <span className="text-teal-100">7fa8...d91c</span>
             </div>
+            <div className="flex justify-between gap-4">
+              <span>export</span>
+              <span className="text-teal-100">SIEM / OTel</span>
+            </div>
+            <div className="flex justify-between gap-4">
+              <span>mode</span>
+              <span className="text-teal-100">FREEZE</span>
+            </div>
+          </div>
+          <div className="mt-5 h-1.5 overflow-hidden rounded-full bg-white/10">
+            <motion.div
+              className="h-full w-1/2 rounded-full bg-teal-300"
+              animate={{ x: ["-100%", "220%"] }}
+              transition={{ duration: 2.6, repeat: Infinity, ease: "linear" }}
+            />
           </div>
         </div>
-      </section>
+      </div>
+    </motion.div>
+  );
+}
 
-      {/* Governance Domains */}
-      <section id="governance" className="border-t border-slate-200 bg-white">
-        <div className="mx-auto max-w-6xl px-4 py-14">
-          <h2 className="text-2xl font-semibold tracking-tight">11 Governance Domains</h2>
-          <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
-            Controls organized by risk domain — each maps to enforceable policies, named reason codes, and OWASP Agentic Security coverage.
-          </p>
+function BentoCard({
+  item,
+}: {
+  item: {
+    icon: IconType;
+    title: string;
+    text: string;
+    className: string;
+  };
+}) {
+  const Icon = item.icon;
+  const isDark = item.className.includes("text-white");
 
-          <div className="mt-8 overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b border-slate-200 text-left">
-                  <th className="pb-3 pr-6 font-semibold text-slate-900">Domain</th>
-                  <th className="pb-3 pr-6 font-semibold text-slate-900">Control ID</th>
-                  <th className="pb-3 pr-6 font-semibold text-slate-900">Risk Coverage</th>
-                  <th className="pb-3 font-semibold text-slate-900">Since</th>
-                </tr>
-              </thead>
-              <tbody className="text-slate-700">
-                <tr className="border-b border-slate-100"><td className="py-3 pr-6 font-medium">Security</td><td className="py-3 pr-6">SEC</td><td className="py-3 pr-6">Secret leakage, PII exposure, prompt injection, content policy violations, Unicode manipulation</td><td className="py-3"><span className="rounded-full bg-teal-50 px-2.5 py-1 text-xs font-medium text-teal-800">v1.1</span></td></tr>
-                <tr className="border-b border-slate-100"><td className="py-3 pr-6 font-medium">Cost</td><td className="py-3 pr-6">COST</td><td className="py-3 pr-6">Budget overrun, cost anomaly, reasoning-token abuse, unattributed spend</td><td className="py-3"><span className="rounded-full bg-teal-50 px-2.5 py-1 text-xs font-medium text-teal-800">v1.1</span></td></tr>
-                <tr className="border-b border-slate-100"><td className="py-3 pr-6 font-medium">Reliability</td><td className="py-3 pr-6">REL</td><td className="py-3 pr-6">Cascading failure, retry exhaustion, provider degradation, fallback chain failure</td><td className="py-3"><span className="rounded-full bg-teal-50 px-2.5 py-1 text-xs font-medium text-teal-800">v1.1</span></td></tr>
-                <tr className="border-b border-slate-100"><td className="py-3 pr-6 font-medium">Memory</td><td className="py-3 pr-6">MEM</td><td className="py-3 pr-6">Data provenance gaps, instruction injection via memory, exfiltration through stored context</td><td className="py-3"><span className="rounded-full bg-indigo-50 px-2.5 py-1 text-xs font-medium text-indigo-800">v1.2</span></td></tr>
-                <tr className="border-b border-slate-100"><td className="py-3 pr-6 font-medium">Registry</td><td className="py-3 pr-6">REG</td><td className="py-3 pr-6">Unapproved model/tool usage, MCP definition drift, supply chain compromise</td><td className="py-3"><span className="rounded-full bg-indigo-50 px-2.5 py-1 text-xs font-medium text-indigo-800">v1.2</span></td></tr>
-                <tr className="border-b border-slate-100"><td className="py-3 pr-6 font-medium">Evidence</td><td className="py-3 pr-6">EVID</td><td className="py-3 pr-6">Audit gap, non-repudiation failure, evidence tampering, verification insufficiency</td><td className="py-3"><span className="rounded-full bg-indigo-50 px-2.5 py-1 text-xs font-medium text-indigo-800">v1.2</span></td></tr>
-                <tr className="border-b border-slate-100"><td className="py-3 pr-6 font-medium">Identity</td><td className="py-3 pr-6">NHI</td><td className="py-3 pr-6">Excessive standing privilege, scope creep, revoked agent access, missing attestation</td><td className="py-3"><span className="rounded-full bg-violet-50 px-2.5 py-1 text-xs font-medium text-violet-800">v1.3</span></td></tr>
-                <tr className="border-b border-slate-100"><td className="py-3 pr-6 font-medium">Workflow</td><td className="py-3 pr-6">FLOW</td><td className="py-3 pr-6">Policy bypass via team override, missing approval gates, weakened org-level controls</td><td className="py-3"><span className="rounded-full bg-violet-50 px-2.5 py-1 text-xs font-medium text-violet-800">v1.3</span></td></tr>
-                <tr className="border-b border-slate-100"><td className="py-3 pr-6 font-medium">Temporal</td><td className="py-3 pr-6">TEMP</td><td className="py-3 pr-6">Session hijack via stale context, off-hours execution, cooldown bypass</td><td className="py-3"><span className="rounded-full bg-violet-50 px-2.5 py-1 text-xs font-medium text-violet-800">v1.3</span></td></tr>
-                <tr className="border-b border-slate-100"><td className="py-3 pr-6 font-medium">Drift</td><td className="py-3 pr-6">DRIFT</td><td className="py-3 pr-6">Behavioral deviation from baseline, model output regression, tool definition mutation</td><td className="py-3"><span className="rounded-full bg-violet-50 px-2.5 py-1 text-xs font-medium text-violet-800">v1.3</span></td></tr>
-                <tr><td className="py-3 pr-6 font-medium">Observe</td><td className="py-3 pr-6">OBS</td><td className="py-3 pr-6">Passive monitoring gaps, visibility coverage, observation fidelity, telemetry completeness</td><td className="py-3"><span className="rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-medium text-emerald-800">v1.4</span></td></tr>
-              </tbody>
-            </table>
-          </div>
+  return (
+    <MotionBlock className={`rounded-lg border p-6 shadow-sm ${item.className}`}>
+      <div className={`flex h-12 w-12 items-center justify-center rounded-lg ${isDark ? "bg-white/10 text-teal-100" : "bg-teal-100 text-teal-800"}`}>
+        <Icon className="h-6 w-6" aria-hidden="true" />
+      </div>
+      <h3 className="mt-8 text-2xl font-semibold">{item.title}</h3>
+      <p className={`mt-4 text-base leading-7 ${isDark ? "text-slate-200" : "text-slate-600"}`}>{item.text}</p>
+      {item.title === "Policy engine before execution" ? (
+        <div className="mt-8 grid gap-3 text-sm">
+          {["evaluate", "enforce", "export evidence"].map((step, index) => (
+            <div key={step} className="flex items-center gap-3 border-t border-white/10 pt-3">
+              <span className="flex h-7 w-7 items-center justify-center rounded-md bg-teal-300 text-xs font-bold text-slate-950">
+                {index + 1}
+              </span>
+              <span className="text-slate-100">{step}</span>
+            </div>
+          ))}
         </div>
-      </section>
+      ) : null}
+    </MotionBlock>
+  );
+}
 
-      {/* Install */}
-      <section id="install" className="border-t border-slate-200 bg-slate-50/40">
-        <div className="mx-auto max-w-6xl px-4 py-14">
-          <h2 className="text-2xl font-semibold tracking-tight">Install</h2>
-          <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
-            Standard distribution channels. No infrastructure required — governance enforcement runs inside your application boundary with zero external dependencies.
-          </p>
+function InstallCard({ item }: { item: (typeof installs)[number] }) {
+  const Icon = item.icon;
+  return (
+    <div className="rounded-lg border border-teal-200 bg-white/90 p-5 shadow-sm">
+      <div className="flex items-center gap-3">
+        <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-950 text-teal-100">
+          <Icon className="h-5 w-5" aria-hidden="true" />
+        </span>
+        <h3 className="font-semibold text-slate-950">{item.title}</h3>
+      </div>
+      <div className="mt-5 overflow-x-auto rounded-lg bg-slate-950 p-4 font-mono text-xs text-teal-50">
+        <span className="text-teal-300">$ </span>
+        {item.command}
+      </div>
+      <div className="mt-4 flex gap-4">
+        <ExternalLink href={item.packageUrl}>Package</ExternalLink>
+        <ExternalLink href={item.sourceUrl}>Source</ExternalLink>
+      </div>
+    </div>
+  );
+}
 
-          <div className="mt-6 grid gap-4 md:grid-cols-3">
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-              <p className="text-sm font-semibold">npm (TypeScript)</p>
-              <CodeBlock code={`npm install tealtiger`} />
-              <div className="mt-4 text-sm"><Link href={npmUrl}>npm package</Link> · <Link href={githubTsUrl}>Source</Link></div>
-            </div>
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-              <p className="text-sm font-semibold">PyPI (Python)</p>
-              <CodeBlock code={`pip install tealtiger`} />
-              <div className="mt-4 text-sm"><Link href={pypiUrl}>PyPI project</Link> · <Link href={githubPyUrl}>Source</Link></div>
-            </div>
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-              <p className="text-sm font-semibold">Docker</p>
-              <CodeBlock code={`docker pull tealtigeradmin/tealtiger-docker`} />
-              <div className="mt-4 text-sm"><Link href={dockerHubOrgUrl}>Docker Hub</Link></div>
-            </div>
+export default function HomePage() {
+  return (
+    <main className="min-h-screen bg-white text-slate-950">
+      <section className="relative min-h-screen overflow-hidden bg-[#040d0b] text-white">
+        <div className="absolute inset-0 bg-[linear-gradient(110deg,rgba(4,13,11,1)_0%,rgba(4,13,11,0.98)_46%,rgba(7,47,42,0.74)_100%)]" />
+        <div className="absolute inset-x-0 top-0 h-28 border-b border-white/10 bg-[#040d0b]/80 backdrop-blur-xl" />
+
+        <header className="relative z-20">
+          <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-6 sm:px-6 lg:px-8">
+            <a href="#" className="flex items-center gap-3" aria-label="TealTiger home">
+              <Image src="/tealtiger-logo.png" alt="" width={42} height={42} className="rounded-lg" priority />
+              <span className="text-xl font-semibold">TealTiger</span>
+            </a>
+            <nav className="hidden items-center gap-9 text-sm font-medium text-teal-50/70 md:flex">
+              {navItems.map((item) => (
+                <a key={item.href} href={item.href} className="transition hover:text-white">
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+            <a
+              href={docsUrl}
+              {...ext}
+              className="rounded-lg border border-white/20 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10"
+            >
+              Docs
+            </a>
           </div>
-        </div>
-      </section>
+        </header>
 
-      {/* Releases */}
-      <section id="releases" className="border-t border-slate-200 bg-white">
-        <div className="mx-auto max-w-6xl px-4 py-14">
-          <h2 className="text-2xl font-semibold tracking-tight">Releases</h2>
-          <p className="mt-2 text-sm text-slate-600">Clear status for enterprise planning.</p>
-
-          <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-              <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold text-slate-700">
-                <span className="text-slate-900">v1.1.1</span>
-                <span className="text-slate-300">•</span>
-                <span className="text-teal-800">Released</span>
-              </div>
-              <h3 className="mt-3 text-base font-semibold">Security + cost + 7 providers</h3>
-              <ul className="mt-4 space-y-2 text-sm text-slate-700">
-                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-teal-700" />TealEngine — deterministic policy evaluation</li>
-                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-teal-700" />7 LLM providers</li>
-                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-teal-700" />Security guardrails (PII, prompt injection)</li>
-                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-teal-700" />Cost governance (budgets, tracking, alerts)</li>
-              </ul>
-            </div>
-
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-              <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold text-slate-700">
-                <span className="text-slate-900">v1.2.0</span>
-                <span className="text-slate-300">•</span>
-                <span className="text-teal-800">Released</span>
-              </div>
-              <h3 className="mt-3 text-base font-semibold">Governance Bundle</h3>
-              <ul className="mt-4 space-y-2 text-sm text-slate-700">
-                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-teal-700" />7 governance modules across 6 domains</li>
-                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-teal-700" />Formal evidence contract (TEEC v1.0)</li>
-                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-teal-700" />Secret detection (500+ patterns)</li>
-                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-teal-700" />Docker governance sidecar</li>
-              </ul>
-            </div>
-
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-              <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold text-slate-700">
-                <span className="text-slate-900">v1.3.0</span>
-                <span className="text-slate-300">•</span>
-                <span className="text-teal-800">Released</span>
-              </div>
-              <h3 className="mt-3 text-base font-semibold">Autonomous Agent Governance</h3>
-              <ul className="mt-4 space-y-2 text-sm text-slate-700">
-                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-violet-700" />FREEZE rules — immutable safety controls</li>
-                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-violet-700" />NHI governance + Zero Standing Privilege</li>
-                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-violet-700" />TealProof — cryptographic receipts</li>
-                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-violet-700" />12 providers + platform adapters</li>
-                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-violet-700" />OWASP Agentic Top 10 policy pack</li>
-              </ul>
-            </div>
-
-            <div className="rounded-3xl border-2 border-emerald-200 bg-emerald-50/30 p-6 shadow-sm">
-              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-white px-3 py-1 text-xs font-semibold text-slate-700">
-                <span className="text-slate-900">v1.4.0</span>
-                <span className="text-slate-300">•</span>
-                <span className="text-emerald-800">Latest</span>
-              </div>
-              <h3 className="mt-3 text-base font-semibold">Observe + Dashboard + Adapters</h3>
-              <ul className="mt-4 space-y-2 text-sm text-slate-700">
-                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-emerald-700" />Observe Mode — zero-config passive monitoring</li>
-                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-emerald-700" />Governance Dashboard with real-time decision stream</li>
-                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-emerald-700" />14+ framework adapters (LangChain, CrewAI, ADK, …)</li>
-                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-emerald-700" />Cost analytics &amp; PII findings timeline</li>
-                <li className="flex gap-2"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-emerald-700" />Canary alerts for anomaly detection</li>
-              </ul>
-              <div className="mt-5 flex flex-wrap gap-3 text-sm">
-                <Link href="https://docs.tealtiger.ai/versions/v1.4.0">Release Notes</Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Docker */}
-      <section id="docker" className="border-t border-slate-200 bg-slate-50/40">
-        <div className="mx-auto max-w-6xl px-4 py-14">
-          <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
-            <div>
-              <h2 className="text-2xl font-semibold tracking-tight">Docker</h2>
-              <p className="mt-2 text-sm text-slate-600">Official images published under tealtigeradmin.</p>
-            </div>
-            <a href={dockerHubOrgUrl} {...ext} className="text-sm font-semibold text-slate-800 hover:text-slate-900">View Docker Hub →</a>
-          </div>
-          <div className="mt-6 grid gap-4 md:grid-cols-2">
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-              <p className="text-sm font-semibold">Quick pull</p>
-              <CodeBlock code={`docker pull tealtigeradmin/tealtiger-docker\ndocker pull tealtigeradmin/tealtiger-python\ndocker pull tealtigeradmin/tealtiger-typescript`} />
-            </div>
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-              <p className="text-sm font-semibold">Image links</p>
-              <div className="mt-4 grid gap-2 text-sm">
-                <Link href={dockerHubDockerUrl}>tealtigeradmin/tealtiger-docker</Link>
-                <Link href={dockerHubPythonUrl}>tealtigeradmin/tealtiger-python</Link>
-                <Link href={dockerHubTypescriptUrl}>tealtigeradmin/tealtiger-typescript</Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Bring Your Use Case */}
-      <section id="use-cases" className="border-t border-slate-200 bg-white">
-        <div className="mx-auto max-w-6xl px-4 py-14">
-          <h2 className="text-2xl font-semibold tracking-tight">Bring Your Use Case</h2>
-          <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
-            We build governance for real compliance gaps — not theoretical ones. If your team is deploying AI agents and needs enforceable controls, audit evidence, or risk management, we want to hear about it.
-          </p>
-
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-              <p className="text-sm font-semibold">🏦 Financial Services</p>
-              <p className="mt-2 text-sm text-slate-600">Model risk management (SR 11-7), audit trails for regulatory examination, cost attribution across business units, separation of duties for agent-initiated transactions.</p>
-            </div>
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-              <p className="text-sm font-semibold">🏥 Healthcare &amp; Life Sciences</p>
-              <p className="mt-2 text-sm text-slate-600">PHI governance in agent memory (HIPAA §164.312), consent-aware data handling, deterministic audit for compliance reviews, role-based access controls with session scoping.</p>
-            </div>
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-              <p className="text-sm font-semibold">🔧 Platform &amp; Infrastructure</p>
-              <p className="mt-2 text-sm text-slate-600">Multi-agent orchestration governance, supply chain integrity for MCP tools, cost runaway prevention, policy-as-code for platform teams managing AI workloads.</p>
-            </div>
-          </div>
-
-          <div className="mt-6 rounded-3xl border border-violet-200 bg-violet-50/30 p-6">
-            <p className="text-sm font-semibold">💬 Tell us what&apos;s broken</p>
-            <p className="mt-2 text-sm text-slate-600">
-              Deploying agents without enforceable controls? Facing audit requirements for AI systems with no evidence trail? Need deterministic policy enforcement that your risk and compliance teams can independently verify? Open a discussion — we prioritize controls based on real regulatory and operational gaps.
+        <div className="relative z-10 mx-auto grid max-w-7xl gap-10 px-4 pb-24 pt-20 sm:px-6 md:pt-28 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:px-8">
+          <MotionBlock>
+            <h1 className="max-w-4xl text-5xl font-semibold leading-[1.03] md:text-7xl">
+              Govern the future of autonomous AI.
+            </h1>
+            <p className="mt-7 max-w-2xl text-lg leading-8 text-teal-50/70">
+              TealTiger is the open-source runtime governance layer for AI agents. Enforce deterministic policy, control spend, and produce audit-ready evidence before an agent reaches a model, tool, or workflow.
             </p>
-            <div className="mt-5 flex flex-wrap gap-3">
-              <PrimaryButton href="https://github.com/agentguard-ai/tealtiger/discussions">Start a Discussion</PrimaryButton>
-              <SecondaryButton href={`mailto:${contactEmailText}`}>Email Us</SecondaryButton>
+            <div className="mt-9 flex flex-wrap gap-4">
+              <PrimaryButton href={docsUrl}>Get started</PrimaryButton>
+              <SecondaryButton href={playgroundUrl}>View playground</SecondaryButton>
+            </div>
+          </MotionBlock>
+
+          <div className="relative min-h-[34rem]">
+            <div className="absolute inset-x-0 top-0 flex justify-center lg:justify-end">
+              <ParticleField />
+            </div>
+            <div className="absolute bottom-0 left-0 right-0 mx-auto max-w-3xl lg:right-auto lg:w-[42rem]">
+              <ProductPanel />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Build With Us — Contributor Section */}
-      <section id="contribute" className="border-t border-slate-200 bg-slate-50/40">
-        <div className="mx-auto max-w-6xl px-4 py-14">
-          <h2 className="text-2xl font-semibold tracking-tight">Build With Us</h2>
-          <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
-            TealTiger is open source (Apache 2.0). We&apos;re building the governance layer for autonomous AI — and we need contributors who understand both the engineering and the compliance side.
-          </p>
+      <section className="border-y border-teal-900/20 bg-[#061512] text-white">
+        <div className="mx-auto grid max-w-7xl gap-8 px-4 py-16 sm:px-6 md:grid-cols-4 lg:px-8">
+          {productFacts.map(([value, label]) => (
+            <MotionBlock key={label} className="text-center">
+              <p className="text-6xl font-semibold leading-none text-white">{value}</p>
+              <p className="mt-4 text-base text-teal-50/60">{label}</p>
+            </MotionBlock>
+          ))}
+        </div>
+      </section>
 
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-              <p className="text-sm font-semibold">🔍 Detection Patterns</p>
-              <p className="mt-2 text-sm text-slate-600">Secret detection (500+ patterns), prompt injection signatures, Unicode attack vectors. Contribute patterns from real-world incidents.</p>
-              <p className="mt-3"><span className="rounded-full bg-green-50 px-2.5 py-1 text-xs font-medium text-green-800">Beginner</span></p>
-            </div>
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-              <p className="text-sm font-semibold">🔌 Framework Integrations</p>
-              <p className="mt-2 text-sm text-slate-600">Governance adapters for LangChain, CrewAI, AG2, Haystack, Google ADK, Composio, Strands, PydanticAI, and more. 14+ adapters and growing.</p>
-              <p className="mt-3"><span className="rounded-full bg-yellow-50 px-2.5 py-1 text-xs font-medium text-yellow-800">Intermediate</span></p>
-            </div>
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-              <p className="text-sm font-semibold">📋 Policy Packs &amp; Compliance Mappings</p>
-              <p className="mt-2 text-sm text-slate-600">OWASP ASI mappings, industry-specific policy templates, control framework crosswalks (NIST AI RMF, ISO 42001, EU AI Act).</p>
-              <p className="mt-3"><span className="rounded-full bg-yellow-50 px-2.5 py-1 text-xs font-medium text-yellow-800">Intermediate</span></p>
-            </div>
-          </div>
-
-          <div className="mt-6 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-            <p className="text-sm font-semibold">🎖️ Founding Contributor Program</p>
-            <p className="mt-2 text-sm text-slate-600">
-              The first 25 contributors with merged PRs get permanent recognition in CONTRIBUTORS.md, shoutouts on our social channels, and early access to upcoming governance features.
+      <section className="border-b border-teal-900/15 bg-[#09231f] text-white">
+        <div className="mx-auto max-w-7xl px-4 py-16 text-center sm:px-6 lg:px-8">
+          <MotionBlock className="mx-auto flex max-w-3xl flex-col items-center">
+            <Image
+              src="/nvidia-inception-badge.svg"
+              alt="NVIDIA Inception Program"
+              width={340}
+              height={147}
+              className="h-auto w-72 sm:w-80"
+            />
+            <p className="mt-5 max-w-xl text-base leading-7 text-teal-50/70">
+              Part of the NVIDIA Inception ecosystem for AI startups.
             </p>
-            <div className="mt-5 flex flex-wrap gap-3">
-              <PrimaryButton href={goodFirstIssuesUrl}>Browse Good First Issues</PrimaryButton>
-              <SecondaryButton href={githubUrl}>⭐ Star on GitHub</SecondaryButton>
-              <SecondaryButton href={contributingUrl}>Contributing Guide</SecondaryButton>
+          </MotionBlock>
+        </div>
+      </section>
+
+      <section id="features" className="relative overflow-hidden bg-[#e7fff9]">
+        <ParallaxWash />
+        <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
+          <SectionTitle title="Comprehensive controls for production AI systems.">
+            Security, cost, identity, evidence, and workflow governance are treated as one runtime system instead of separate after-the-fact reviews.
+          </SectionTitle>
+
+          <div className="mt-14 grid auto-rows-[minmax(17rem,auto)] gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {bentoItems.map((item) => (
+              <BentoCard key={item.title} item={item} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="governance" className="bg-[#072f2a] text-white">
+        <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
+          <MotionBlock className="max-w-4xl">
+            <h2 className="text-4xl font-semibold leading-tight md:text-6xl">Governance domains mapped to real risk.</h2>
+            <p className="mt-6 text-lg leading-8 text-teal-50/70">
+              Every policy decision is legible: a domain, a control ID, a risk reason, a release lineage, and evidence that can be reconstructed later.
+            </p>
+            <div className="mt-9 flex flex-wrap gap-3">
+              <LightButton href={docsUrl}>Read governance docs</LightButton>
+              <a
+                href={githubUrl}
+                {...ext}
+                className="inline-flex min-h-11 items-center justify-center rounded-lg border border-white/20 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10"
+              >
+                Star on GitHub
+              </a>
+            </div>
+          </MotionBlock>
+
+          <MotionBlock className="mt-12">
+            <div className="hidden overflow-hidden rounded-lg border border-white/20 bg-[#041411]/70 shadow-[0_24px_80px_rgba(0,0,0,0.22)] lg:block">
+              <table className="w-full table-fixed text-left text-sm">
+                <thead className="border-b border-white/10 text-teal-100/70">
+                  <tr>
+                    <th className="w-[18%] px-5 py-4 font-semibold">Domain</th>
+                    <th className="w-[14%] px-5 py-4 font-semibold">Control</th>
+                    <th className="px-5 py-4 font-semibold">Risk coverage</th>
+                    <th className="w-[12%] px-5 py-4 font-semibold">Since</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-white/10">
+                  {governanceDomains.map(([domain, id, risk, since]) => (
+                    <tr key={id} className="transition hover:bg-white/[0.04]">
+                      <td className="px-5 py-4 font-semibold text-white">{domain}</td>
+                      <td className="px-5 py-4">
+                        <span className="rounded-md bg-teal-300/10 px-2.5 py-1 font-mono text-xs font-semibold text-teal-100">
+                          {id}
+                        </span>
+                      </td>
+                      <td className="px-5 py-4 leading-6 text-teal-50/70">{risk}</td>
+                      <td className="px-5 py-4 text-teal-100">{since}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <div className="grid gap-3 lg:hidden">
+              {governanceDomains.map(([domain, id, risk, since]) => (
+                <div key={id} className="rounded-lg border border-white/20 bg-[#041411]/70 p-4 shadow-sm">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <h3 className="font-semibold text-white">{domain}</h3>
+                      <p className="mt-2 text-sm leading-6 text-teal-50/70">{risk}</p>
+                    </div>
+                    <span className="shrink-0 rounded-md bg-teal-300/10 px-2.5 py-1 font-mono text-xs font-semibold text-teal-100">
+                      {id}
+                    </span>
+                  </div>
+                  <p className="mt-4 text-xs font-semibold uppercase tracking-[0.14em] text-teal-100/70">Since {since}</p>
+                </div>
+              ))}
+            </div>
+          </MotionBlock>
+        </div>
+      </section>
+
+      <section id="install" className="bg-[#f0fdfa]">
+        <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
+          <SectionTitle title="Ship governance where your agents already run.">
+            TealTiger installs through standard developer channels. No hosted governance service is required for policy enforcement.
+          </SectionTitle>
+
+          <div className="mt-14 grid gap-4 lg:grid-cols-3">
+            {installs.map((item) => (
+              <MotionBlock key={item.title}>
+                <InstallCard item={item} />
+              </MotionBlock>
+            ))}
+          </div>
+
+          <MotionBlock className="mt-5 rounded-lg border border-teal-200 bg-white/80 p-6 shadow-sm">
+            <div className="grid gap-4 md:grid-cols-4">
+              {["App request", "Policy engine", "Provider adapter", "Evidence export"].map((step, index) => (
+                <div key={step} className="flex items-center gap-3">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-slate-950 text-sm font-semibold text-white">
+                    {index + 1}
+                  </span>
+                  <span className="font-semibold text-slate-800">{step}</span>
+                </div>
+              ))}
+            </div>
+          </MotionBlock>
+        </div>
+      </section>
+
+      <section className="bg-[#d7fbef]">
+        <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
+          <SectionTitle title="Designed for teams with real operational obligations.">
+            The product story stays focused: governed AI systems for organizations that need runtime enforcement, cost accountability, and evidence.
+          </SectionTitle>
+          <div className="mt-14 grid gap-4 lg:grid-cols-3">
+            {useCases.map(([title, text]) => (
+              <MotionBlock key={title}>
+                <div className="min-h-72 rounded-lg border border-teal-300/70 bg-white/70 p-7 shadow-sm">
+                  <CircleStackIcon className="h-8 w-8 text-teal-800" aria-hidden="true" />
+                  <h3 className="mt-10 text-2xl font-semibold text-slate-950">{title}</h3>
+                  <p className="mt-5 text-base leading-7 text-slate-600">{text}</p>
+                </div>
+              </MotionBlock>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="contributors" className="overflow-hidden bg-[#f5fffc]">
+        <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
+          <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+            <MotionBlock>
+              <div className="inline-flex items-center gap-2 rounded-lg border border-teal-200 bg-white px-3 py-2 text-sm font-semibold text-teal-900 shadow-sm">
+                <UserGroupIcon className="h-4 w-4" aria-hidden="true" />
+                Trusted contributors
+              </div>
+              <h2 className="mt-7 text-4xl font-semibold leading-tight text-slate-950 md:text-6xl">
+                Recognition for the people raising the bar.
+              </h2>
+              <p className="mt-6 text-lg leading-8 text-slate-600">
+                TealTiger highlights trusted contributors directly in the product story, giving sustained community work the visibility it deserves.
+              </p>
+            </MotionBlock>
+
+            <div className="grid gap-4">
+              {trustedContributors.map((contributor) => (
+                <MotionBlock key={contributor.handle}>
+                  <article className="grid gap-8 rounded-lg border border-teal-200 bg-white p-6 shadow-sm md:grid-cols-[13rem_1fr] md:p-8">
+                    <div>
+                      <img
+                        src={contributor.avatarUrl}
+                        alt={`${contributor.name} profile photo`}
+                        className="aspect-square w-full max-w-52 rounded-lg object-cover shadow-[0_20px_60px_rgba(15,118,110,0.18)]"
+                        loading="lazy"
+                      />
+                      <a
+                        href={contributor.profileUrl}
+                        {...ext}
+                        className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-teal-800 transition hover:text-teal-950"
+                      >
+                        @{contributor.handle}
+                        <ArrowTopRightOnSquareIcon className="h-3.5 w-3.5" aria-hidden="true" />
+                      </a>
+                    </div>
+
+                    <div>
+                      <div className="flex flex-wrap items-center gap-3">
+                        <h3 className="text-3xl font-semibold text-slate-950">{contributor.name}</h3>
+                        <span className="rounded-md bg-teal-100 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-teal-900">
+                          {contributor.role}
+                        </span>
+                      </div>
+                      <p className="mt-5 text-base leading-7 text-slate-600">{contributor.bio}</p>
+                      <div className="mt-7 grid gap-3">
+                        {contributor.highlights.map((highlight) => (
+                          <div key={highlight} className="flex gap-3 border-t border-teal-100 pt-3">
+                            <CheckCircleIcon className="mt-0.5 h-5 w-5 shrink-0 text-teal-700" aria-hidden="true" />
+                            <p className="text-sm leading-6 text-slate-700">{highlight}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </article>
+                </MotionBlock>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-slate-200 bg-white">
-        <div className="mx-auto max-w-6xl px-4 py-10">
-          <div className="grid gap-8 md:grid-cols-4">
-            <div>
-              <p className="text-sm font-semibold text-slate-900">TealTiger</p>
-              <p className="mt-2 text-sm text-slate-600">Enterprise-grade AI governance &amp; security SDK. Open source. Apache 2.0.</p>
-              <p className="mt-3 text-sm text-slate-500">{contactEmailText}</p>
+      <section id="contribute" className="bg-[#041411] text-white">
+        <div className="mx-auto grid max-w-7xl gap-12 px-4 py-24 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
+          <MotionBlock>
+            <h2 className="text-4xl font-semibold leading-tight md:text-6xl">Open-source governance for autonomous AI.</h2>
+            <p className="mt-6 text-lg leading-8 text-teal-50/70">
+              TealTiger is Apache 2.0. Contribute detection patterns, framework integrations, compliance mappings, and policy packs for real-world agent deployments.
+            </p>
+            <div className="mt-9 flex flex-wrap gap-4">
+              <PrimaryButton href={goodFirstIssuesUrl}>Browse issues</PrimaryButton>
+              <SecondaryButton href={discussionsUrl}>Start discussion</SecondaryButton>
             </div>
+          </MotionBlock>
+          <MotionBlock>
+            <div className="grid gap-4 md:grid-cols-2">
+              {[
+                ["Detection patterns", "Secret detection, prompt injection signatures, Unicode attack vectors, and incident-informed policy checks."],
+                ["Framework integrations", "Governance middleware for LangChain, CrewAI, AutoGen, LlamaIndex, and agent platforms."],
+                ["Policy packs", "OWASP ASI mappings, industry templates, and control crosswalks for AI risk frameworks."],
+                ["Contributor program", "The first 25 contributors with merged PRs get permanent recognition and early access."],
+              ].map(([title, text]) => (
+                <div key={title} className="rounded-lg border border-white/20 bg-white/[0.04] p-6">
+                  <CheckCircleIcon className="h-7 w-7 text-teal-300" aria-hidden="true" />
+                  <h3 className="mt-8 text-xl font-semibold">{title}</h3>
+                  <p className="mt-4 text-sm leading-6 text-teal-50/60">{text}</p>
+                </div>
+              ))}
+            </div>
+          </MotionBlock>
+        </div>
+      </section>
+
+      <footer className="bg-[#020806] text-white">
+        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+          <div className="grid gap-10 md:grid-cols-[1.3fr_0.8fr_0.8fr_0.8fr]">
             <div>
-              <p className="text-sm font-semibold text-slate-900 mb-3">Product</p>
-              <div className="grid gap-2 text-sm">
-                <a href={docsUrl} {...ext} className="text-slate-600 hover:text-slate-900">Documentation</a>
-                <a href={playgroundUrl} {...ext} className="text-slate-600 hover:text-slate-900">Playground</a>
-                <a href={blogsUrl} {...ext} className="text-slate-600 hover:text-slate-900">Blog</a>
-                <a href={npmUrl} {...ext} className="text-slate-600 hover:text-slate-900">npm Package</a>
-                <a href={pypiUrl} {...ext} className="text-slate-600 hover:text-slate-900">PyPI Package</a>
+              <div className="flex items-center gap-3">
+                <Image src="/tealtiger-logo.png" alt="" width={36} height={36} className="rounded-lg" />
+                <span className="text-lg font-semibold">TealTiger</span>
               </div>
+              <p className="mt-4 max-w-sm text-sm leading-6 text-teal-50/60">
+                Runtime governance for autonomous AI. Built for engineers, legible to security, risk, and compliance teams.
+              </p>
+              <a href={`mailto:${contactEmailText}`} className="mt-4 inline-flex text-sm font-semibold text-teal-100 hover:text-white">
+                {contactEmailText}
+              </a>
             </div>
-            <div>
-              <p className="text-sm font-semibold text-slate-900 mb-3">Open Source</p>
-              <div className="grid gap-2 text-sm">
-                <a href={githubUrl} {...ext} className="text-slate-600 hover:text-slate-900">GitHub</a>
-                <a href={githubTsUrl} {...ext} className="text-slate-600 hover:text-slate-900">TypeScript SDK</a>
-                <a href={githubPyUrl} {...ext} className="text-slate-600 hover:text-slate-900">Python SDK</a>
-                <a href={contributingUrl} {...ext} className="text-slate-600 hover:text-slate-900">Contributing</a>
-                <a href={goodFirstIssuesUrl} {...ext} className="text-slate-600 hover:text-slate-900">Good First Issues</a>
-                <a href={hindsightUrl} {...ext} className="text-slate-600 hover:text-slate-900">Hindsight Integration</a>
-                <a href={haystackUrl} {...ext} className="text-slate-600 hover:text-slate-900">Haystack Integration</a>
-                <a href={ag2Url} {...ext} className="text-slate-600 hover:text-slate-900">AG2 Ecosystem</a>
-                <a href={copilotKitUrl} {...ext} className="text-slate-600 hover:text-slate-900">CopilotKit Adapter</a>
-              </div>
-            </div>
-            <div>
-              <p className="text-sm font-semibold text-slate-900 mb-3">Community</p>
-              <div className="grid gap-2 text-sm">
-                <a href={discordUrl} {...ext} className="text-slate-600 hover:text-slate-900">💬 Discord</a>
-                <a href={linkedinUrl} {...ext} className="text-slate-600 hover:text-slate-900">💼 LinkedIn</a>
-                <a href={xUrl} {...ext} className="text-slate-600 hover:text-slate-900">🐦 X (Twitter)</a>
-                <a href={blogsUrl} {...ext} className="text-slate-600 hover:text-slate-900">📝 Dev.to Blog</a>
-                <a href={dockerHubOrgUrl} {...ext} className="text-slate-600 hover:text-slate-900">🐳 Docker Hub</a>
-              </div>
-            </div>
+            <FooterColumn title="Product">
+              <FooterLink href={docsUrl}>Documentation</FooterLink>
+              <FooterLink href={playgroundUrl}>Playground</FooterLink>
+              <FooterLink href={blogsUrl}>Blog</FooterLink>
+              <FooterLink href={npmUrl}>npm package</FooterLink>
+              <FooterLink href={pypiUrl}>PyPI package</FooterLink>
+            </FooterColumn>
+            <FooterColumn title="Build">
+              <FooterLink href={githubUrl}>GitHub</FooterLink>
+              <FooterLink href={githubTsUrl}>TypeScript SDK</FooterLink>
+              <FooterLink href={githubPyUrl}>Python SDK</FooterLink>
+              <FooterLink href={contributingUrl}>Contributing</FooterLink>
+              <FooterLink href={dockerHubPythonUrl}>Docker Python</FooterLink>
+            </FooterColumn>
+            <FooterColumn title="Community">
+              <FooterLink href={discordUrl}>Discord</FooterLink>
+              <FooterLink href={linkedinUrl}>LinkedIn</FooterLink>
+              <FooterLink href={xUrl}>X</FooterLink>
+              <FooterLink href={discussionsUrl}>Discussions</FooterLink>
+              <FooterLink href={dockerHubOrgUrl}>Docker Hub</FooterLink>
+            </FooterColumn>
           </div>
-          <div className="mt-8 border-t border-slate-200 pt-6 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-            <p className="text-sm text-slate-500">© {new Date().getFullYear()} TealTiger. Apache License 2.0.</p>
-            <p className="text-sm text-slate-500">Runtime governance for autonomous AI. Built for engineers. Trusted by compliance.</p>
+          <div className="mt-10 flex flex-col gap-3 border-t border-white/10 pt-6 text-sm text-teal-50/50 md:flex-row md:items-center md:justify-between">
+            <p>Copyright {new Date().getFullYear()} TealTiger. Apache License 2.0.</p>
+            <p>Governance before the agent acts.</p>
           </div>
         </div>
       </footer>
     </main>
+  );
+}
+
+function ParallaxWash() {
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [500, 1800], [90, -120]);
+
+  return (
+    <motion.div
+      style={{ y }}
+      className="absolute left-0 right-0 top-10 h-[30rem] bg-[linear-gradient(115deg,rgba(20,184,166,0),rgba(20,184,166,0.22),rgba(14,116,144,0.08),rgba(20,184,166,0))]"
+      aria-hidden="true"
+    />
+  );
+}
+
+function FooterColumn({ title, children }: { title: string; children: ReactNode }) {
+  return (
+    <div>
+      <h3 className="text-sm font-semibold text-white">{title}</h3>
+      <div className="mt-4 grid gap-2.5 text-sm">{children}</div>
+    </div>
+  );
+}
+
+function FooterLink({ href, children }: { href: string; children: ReactNode }) {
+  return (
+    <a href={href} {...ext} className="text-teal-50/60 transition hover:text-white">
+      {children}
+    </a>
   );
 }
