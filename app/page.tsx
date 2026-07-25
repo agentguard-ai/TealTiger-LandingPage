@@ -49,14 +49,15 @@ const navItems = [
   { label: "Features", href: "#features" },
   { label: "Governance", href: "#governance" },
   { label: "Install", href: "#install" },
+  { label: "Integrations", href: "#integrations" },
   { label: "Contributors", href: "#contributors" },
   { label: "Open source", href: "#contribute" },
 ];
 
 const productFacts = [
-  ["10", "Governance domains"],
+  ["14+", "Framework adapters"],
+  ["11", "Governance domains"],
   ["12", "LLM providers"],
-  ["3", "Distribution channels"],
   ["0", "External governance services"],
 ];
 
@@ -115,6 +116,7 @@ const governanceDomains = [
   ["Workflow", "FLOW", "Policy bypass, missing approvals, weakened organization controls", "v1.3"],
   ["Temporal", "TEMP", "Stale session context, off-hours execution, cooldown bypass", "v1.3"],
   ["Drift", "DRIFT", "Behavioral deviation, model output regression, tool definition mutation", "v1.3"],
+  ["Observe", "OBS", "Passive monitoring gaps, visibility coverage, telemetry completeness", "v1.4"],
 ];
 
 const installs = [
@@ -139,6 +141,23 @@ const installs = [
     packageUrl: dockerHubOrgUrl,
     sourceUrl: dockerHubDockerUrl,
   },
+];
+
+const integrations = [
+  { name: "LangChain", pkg: "tealtiger-langchain", url: "https://python.langchain.com/docs/integrations/" },
+  { name: "CrewAI", pkg: "tealtiger-crewai", url: "https://www.crewai.com/" },
+  { name: "AG2 (AutoGen)", pkg: "tealtiger-ag2", url: "https://docs.ag2.ai/latest/docs/ecosystem/tealtiger/" },
+  { name: "Haystack", pkg: "tealtiger-haystack", url: "https://haystack.deepset.ai/integrations/tealtiger" },
+  { name: "Google ADK", pkg: "tealtiger-google-adk", url: "https://google.github.io/adk-docs/" },
+  { name: "Composio", pkg: "tealtiger-composio", url: "https://composio.dev/" },
+  { name: "Strands", pkg: "tealtiger-strands", url: "https://strandsagents.com/" },
+  { name: "PydanticAI", pkg: "tealtiger-pydanticai", url: "https://ai.pydantic.dev/" },
+  { name: "Phoenix (Arize)", pkg: "tealtiger-phoenix", url: "https://phoenix.arize.com/" },
+  { name: "Langfuse", pkg: "tealtiger-langfuse", url: "https://langfuse.com/" },
+  { name: "AgentOps", pkg: "tealtiger-agentops", url: "https://www.agentops.ai/" },
+  { name: "Opik (Comet)", pkg: "tealtiger-opik", url: "https://www.comet.com/site/products/opik/" },
+  { name: "Hindsight (Vectorize)", pkg: "tealtiger-hindsight", url: "https://www.vectorize.io/integrations/tealtiger" },
+  { name: "CopilotKit", pkg: "tealtiger-copilotkit", url: "https://www.copilotkit.ai/" },
 ];
 
 const useCases = [
@@ -641,6 +660,40 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section id="integrations" className="bg-[#f0fdfa]">
+        <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
+          <SectionTitle title="14+ framework integrations. Drop-in governance.">
+            One-line adapter installs that add runtime governance to the frameworks your agents already use. No config changes to existing code.
+          </SectionTitle>
+
+          <div className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+            {integrations.map((item) => (
+              <MotionBlock key={item.name}>
+                <a
+                  href={item.url}
+                  {...ext}
+                  className="flex min-h-[7rem] flex-col items-center justify-center rounded-lg border border-teal-300/70 bg-white/70 p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-teal-400 hover:shadow-md"
+                >
+                  <span className="text-sm font-semibold text-slate-950">{item.name}</span>
+                  <span className="mt-2 font-mono text-[11px] text-slate-500">{item.pkg}</span>
+                </a>
+              </MotionBlock>
+            ))}
+          </div>
+
+          <MotionBlock className="mt-8 rounded-lg border border-teal-300/70 bg-white/70 p-6 shadow-sm">
+            <p className="text-center text-sm font-semibold text-slate-800">
+              🏆 Listed on official integration pages:{" "}
+              <a href="https://haystack.deepset.ai/integrations/tealtiger" {...ext} className="text-teal-800 underline underline-offset-2 hover:text-teal-950">Haystack</a>
+              {" · "}
+              <a href="https://docs.ag2.ai/latest/docs/ecosystem/tealtiger/" {...ext} className="text-teal-800 underline underline-offset-2 hover:text-teal-950">AG2</a>
+              {" · "}
+              <a href="https://www.vectorize.io/integrations/tealtiger" {...ext} className="text-teal-800 underline underline-offset-2 hover:text-teal-950">Hindsight</a>
+            </p>
+          </MotionBlock>
+        </div>
+      </section>
+
       <section className="bg-[#d7fbef]">
         <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
           <SectionTitle title="Designed for teams with real operational obligations.">
@@ -738,7 +791,7 @@ export default function HomePage() {
             <div className="grid gap-4 md:grid-cols-2">
               {[
                 ["Detection patterns", "Secret detection, prompt injection signatures, Unicode attack vectors, and incident-informed policy checks."],
-                ["Framework integrations", "Governance middleware for LangChain, CrewAI, AutoGen, LlamaIndex, and agent platforms."],
+                ["Framework integrations", "Governance adapters for LangChain, CrewAI, AG2, Haystack, Google ADK, Composio, Strands, PydanticAI, and more."],
                 ["Policy packs", "OWASP ASI mappings, industry templates, and control crosswalks for AI risk frameworks."],
                 ["Contributor program", "The first 25 contributors with merged PRs get permanent recognition and early access."],
               ].map(([title, text]) => (
@@ -781,6 +834,8 @@ export default function HomePage() {
               <FooterLink href={githubPyUrl}>Python SDK</FooterLink>
               <FooterLink href={contributingUrl}>Contributing</FooterLink>
               <FooterLink href={dockerHubPythonUrl}>Docker Python</FooterLink>
+              <FooterLink href="https://haystack.deepset.ai/integrations/tealtiger">Haystack Integration</FooterLink>
+              <FooterLink href="https://docs.ag2.ai/latest/docs/ecosystem/tealtiger/">AG2 Ecosystem</FooterLink>
             </FooterColumn>
             <FooterColumn title="Community">
               <FooterLink href={discordUrl}>Discord</FooterLink>
