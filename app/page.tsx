@@ -156,7 +156,7 @@ const integrations = [
   { name: "Langfuse", pkg: "tealtiger-langfuse", url: "https://langfuse.com/" },
   { name: "AgentOps", pkg: "tealtiger-agentops", url: "https://www.agentops.ai/" },
   { name: "Opik (Comet)", pkg: "tealtiger-opik", url: "https://www.comet.com/site/products/opik/" },
-  { name: "Hindsight (Vectorize)", pkg: "tealtiger-hindsight", url: "https://www.vectorize.io/integrations/tealtiger" },
+  { name: "Hindsight (Vectorize)", pkg: "tealtiger-hindsight", url: "https://hindsight.vectorize.io/integrations" },
   { name: "CopilotKit", pkg: "tealtiger-copilotkit", url: "https://www.copilotkit.ai/" },
 ];
 
@@ -688,7 +688,7 @@ export default function HomePage() {
               {" · "}
               <a href="https://docs.ag2.ai/latest/docs/ecosystem/tealtiger/" {...ext} className="text-teal-800 underline underline-offset-2 hover:text-teal-950">AG2</a>
               {" · "}
-              <a href="https://www.vectorize.io/integrations/tealtiger" {...ext} className="text-teal-800 underline underline-offset-2 hover:text-teal-950">Hindsight</a>
+              <a href="https://hindsight.vectorize.io/integrations" {...ext} className="text-teal-800 underline underline-offset-2 hover:text-teal-950">Hindsight</a>
             </p>
           </MotionBlock>
         </div>
