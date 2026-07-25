@@ -144,20 +144,20 @@ const installs = [
 ];
 
 const integrations = [
-  { name: "LangChain", pkg: "tealtiger-langchain", url: "https://github.com/agentguard-ai/tealtiger/tree/main/packages/tealtiger-langchain" },
-  { name: "CrewAI", pkg: "tealtiger-crewai", url: "https://github.com/agentguard-ai/tealtiger/tree/main/packages/tealtiger-crewai" },
-  { name: "AG2 (AutoGen)", pkg: "tealtiger-ag2", url: "https://docs.ag2.ai/latest/docs/ecosystem/tealtiger/" },
-  { name: "Haystack", pkg: "tealtiger-haystack", url: "https://haystack.deepset.ai/integrations/tealtiger" },
-  { name: "Google ADK", pkg: "tealtiger-google-adk", url: "https://github.com/agentguard-ai/tealtiger/tree/main/packages/tealtiger-google-adk" },
-  { name: "Composio", pkg: "tealtiger-composio", url: "https://github.com/agentguard-ai/tealtiger/tree/main/packages/tealtiger-composio" },
-  { name: "Strands", pkg: "tealtiger-strands", url: "https://github.com/agentguard-ai/tealtiger/tree/main/packages/tealtiger-strands" },
-  { name: "PydanticAI", pkg: "tealtiger-pydanticai", url: "https://github.com/agentguard-ai/tealtiger/tree/main/packages/tealtiger-pydanticai" },
-  { name: "Phoenix (Arize)", pkg: "tealtiger-phoenix", url: "https://github.com/agentguard-ai/tealtiger/tree/main/packages/tealtiger-phoenix" },
-  { name: "Langfuse", pkg: "tealtiger-langfuse", url: "https://github.com/agentguard-ai/tealtiger/tree/main/packages/tealtiger-langfuse" },
-  { name: "AgentOps", pkg: "tealtiger-agentops", url: "https://github.com/agentguard-ai/tealtiger/tree/main/packages/tealtiger-agentops" },
-  { name: "Opik (Comet)", pkg: "tealtiger-opik", url: "https://github.com/agentguard-ai/tealtiger/tree/main/packages/tealtiger-opik" },
+  { name: "LangChain", pkg: "langchain-tealtiger", url: "https://github.com/agentguard-ai/tealtiger/tree/main/packages/langchain-tealtiger" },
+  { name: "CrewAI", pkg: "tealtiger-crewai", url: "https://github.com/agentguard-ai/tealtiger/tree/main/packages" },
+  { name: "AG2 (AutoGen)", pkg: "ag2-tealtiger", url: "https://docs.ag2.ai/latest/docs/ecosystem/tealtiger/" },
+  { name: "Haystack", pkg: "haystack-tealtiger", url: "https://haystack.deepset.ai/integrations/tealtiger" },
+  { name: "Google ADK", pkg: "tealtiger-adk", url: "https://github.com/agentguard-ai/tealtiger/tree/main/packages/tealtiger-adk" },
+  { name: "Composio", pkg: "tealtiger-composio", url: "https://github.com/agentguard-ai/tealtiger/tree/main/packages" },
+  { name: "Strands", pkg: "tealtiger-strands", url: "https://github.com/agentguard-ai/tealtiger/tree/main/packages" },
+  { name: "PydanticAI", pkg: "pydanticai-tealtiger", url: "https://github.com/agentguard-ai/tealtiger/tree/main/packages/pydanticai-tealtiger" },
+  { name: "Phoenix (Arize)", pkg: "tealtiger-phoenix", url: "https://github.com/agentguard-ai/tealtiger/tree/main/packages" },
+  { name: "Langfuse", pkg: "tealtiger-langfuse", url: "https://github.com/agentguard-ai/tealtiger/tree/main/packages" },
+  { name: "AgentOps", pkg: "tealtiger-agentops", url: "https://github.com/agentguard-ai/tealtiger/tree/main/packages" },
+  { name: "Opik (Comet)", pkg: "tealtiger-opik", url: "https://github.com/agentguard-ai/tealtiger/tree/main/packages" },
   { name: "Hindsight (Vectorize)", pkg: "tealtiger-hindsight", url: "https://hindsight.vectorize.io/integrations" },
-  { name: "CopilotKit", pkg: "tealtiger-copilotkit", url: "https://github.com/agentguard-ai/tealtiger/tree/main/packages/tealtiger-copilotkit" },
+  { name: "CopilotKit", pkg: "tealtiger-copilotkit", url: "https://github.com/agentguard-ai/tealtiger/tree/main/packages" },
 ];
 
 const useCases = [
